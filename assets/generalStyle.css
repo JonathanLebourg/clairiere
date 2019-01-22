@@ -1,0 +1,124 @@
+/* 
+    Created on : 3 déc. 2018, 13:13:48
+    Author     : jonathan
+*/
+body,footer{
+    font-family: 'Open Sans Condensed', sans-serif;
+    background: white;
+    text-align: center;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+.basic{
+    min-height: 60vh;   
+}
+.connection {
+    background-color: white;
+    height: 9.8vh;
+}
+/* -- le bouton connecter et "s'inscrire" */
+.connect{
+    margin: 1.6vh;
+    width: 29.2vh;
+    height: 5.7vh;
+    color: black;
+    background-color: white;
+}
+.connect:hover{
+    background-color: grey;
+}
+.buttons{
+    float: right;
+}
+.inscription{
+    margin: 1.6vh;
+    width: 29.2vh;
+    height: 5.7vh;
+    color: black;
+}
+.inscription:hover{
+    color: grey;
+}
+.material-icons{
+    float: left;
+}
+
+nav{
+    height: 0vh;
+}
+.nav-wrapper{
+    background-color: white;
+}
+.nav-wrapper a{
+    background-color: white;
+    color: black;
+}
+.page-footer{
+    background-color: white;
+}
+h1, h2{
+    text-align: center;  
+    margin: 25px;
+}
+hr{
+    background-color: black;
+    margin-bottom: 25px;
+    width: 500px;
+    border: solid grey 2px;
+    border-radius: 50px;
+}
+.card{
+    height: 70vh;
+}
+.content1{
+    height: 45vh;
+}
+/*.choice{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    border: solid grey 2px;
+    border-radius: 25px;
+    padding: 30px;
+    margin: 50px;
+}
+.p_choice{
+    text-align: center;
+    height: 250px;
+    padding: 35px;
+}
+.choicebutton{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 39.2vh;
+    height: 12vh;
+    color: black;
+    background-color: white;
+    text-align: center;
+    border-radius: 25px;
+}
+.choicebutton:hover{
+    background-color: grey;
+}*/
+.userchoicebutton{
+    margin: 1.6vh;
+    width: 29.2vh;
+    height: 12vh;
+    color: black;
+    background-color: white;
+}
+.userchoicebutton:hover{
+    background-color: grey;
+}
+.text-danger{
+    color: red;
+    font-size:14px;
+    font-weight: bold;
+}
