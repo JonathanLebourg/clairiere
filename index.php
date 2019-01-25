@@ -53,9 +53,9 @@
 //                    case 'worksForm':
 //                        include('views/worksForm.php');
 //                        break;
-//                    case 'estimateForm':
-//                        include('views/estimateForm.php');
-//                        break;
+                    case 'validate':
+                        include('views/validate.php');
+                        break;
                     case 'admin':
                         include('views/myprofileAdmin.php');
                         break;
@@ -78,7 +78,7 @@
             }
             ?>
         </div>
-           
+            </main>
         
         <div class="container-fluid">
             <?php
@@ -96,6 +96,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 
         <script src="assets/script/tableScriptUsers.js"></script>
-         </main>
+        
     </body>
 </html>

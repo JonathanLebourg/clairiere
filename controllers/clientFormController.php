@@ -3,7 +3,7 @@
 require 'models/users.php';
 require 'models/biography.php';
 
-$client = new user;
+$client = new user();
 $client->id_userTypes = 3;
 //Déclaration des regex
 //Déclaration regex nom
@@ -109,18 +109,17 @@ if (count($formError) == 0 && isset($_POST['submit'])) {
     $client->firstName = $firstName;
     $client->lastName = $lastName;
     $client->nickName = $pseudo;
-    $client->mai = $mail;
+    $client->mail = $mail;
     $client->password = $password;
 
     $exist = $client->alreadyExist();
     if ($exist == TRUE) {
         $addOK = FALSE;
-
-        echo "<script>alert(\"Ce patient existe déjà\")</script>";
+//        echo "<script>alert(\"Ce patient existe déjà\")</script>";
     } else {
+        $addOK = TRUE;
         $client->addUser();
-        header('Location:./index.php?page=admin');
-//        echo 'existe déjà';
+//        header('location:index.php?page=validate');
     }
 }
 ?>

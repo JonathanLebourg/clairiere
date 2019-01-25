@@ -15,9 +15,19 @@ class user extends BDD {
 //**-----------------
 //*PARTIE GENERALE
 //**-----------------
+    
+//    super requete avec tout de tout le monde
+//-----------------------------------------------
+//"SELECT * FROM clairiere.Users INNER JOIN userTypes ON userTypes.id = Users.id_userTypes LEFT JOIN biography ON biography.id_Users = Users.id LEFT JOIN specialities ON specialities.id = biography.id_specialities";
 
     public function listUsers() {
-        $query = "SELECT * FROM Users";
+        $query = "SELECT * FROM clairiere.Users "
+                . "INNER JOIN userTypes "
+                . "ON userTypes.id = Users.id_userTypes "
+                . "LEFT JOIN biography "
+                . "ON biography.id_Users = Users.id "
+                . "LEFT JOIN specialities "
+                . "ON specialities.id = biography.id_specialities";
         $result = $this->BDD->query($query);
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
@@ -70,13 +80,28 @@ class user extends BDD {
                 . '      WHERE `nickName`= :nickName AND `mail`= :mail';
         $alreadyExist = $this->BDD->prepare($query);
         $alreadyExist->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
-        $alreadyExist->bindValue(':mail', $this->mail, PDO::PARAM_STR);$alreadyExist->execute();
+        $alreadyExist->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+        $alreadyExist->execute();
         if ($alreadyExist->rowCount() >= 1) {
             $count = TRUE;
         } else {
             $count = FALSE;
         }
         return $count;
+    }
+    public function userById() {
+        $query = "SELECT * FROM clairiere.Users "
+                . "INNER JOIN userTypes "
+                . "ON userTypes.id = Users.id_userTypes "
+                . "LEFT JOIN biography "
+                . "ON biography.id_Users = Users.id "
+                . "LEFT JOIN specialities "
+                . "ON specialities.id = biography.id_specialities "
+                . "WHERE Users.id =:id";
+             $result = $this->BDD->query($query);
+             $result->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $data = $result->fetch(PDO::FETCH_OBJ);
+        return $data;
     }
 
 //**-----------------

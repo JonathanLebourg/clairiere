@@ -1,6 +1,15 @@
 <?php require 'controllers/clientFormController.php'; ?>
-
-<div class="container">            
+<div class="container-fluid">
+    <div class="col s12 m8">
+        <div class="col s12 m9">
+            <h1>Vous vous apprêtez à vous inscrire sur le site en tant que client</h1>
+            <p>Suivez les instuctions et renseignez chaque champ</p>
+        </div>
+        <?php if ($addOK === FALSE) { ?>
+            <div class="col s9 m6">VOUS EXISTEZ DÉJÀ !!</div>
+        </div>
+    <?php } else { ?>
+        <div class="container">            
             <form class="col s12" method="POST" action="" >
                 <div class="row">
                     <div class="input-field col s12 m6">
@@ -38,10 +47,11 @@
                         <p class="text-danger"><?= isset($formError['passwordCheck']) ? $formError['passwordCheck'] : ''; ?></p>
                     </div>
                 </div>
-
                 <div class="row">
                     <button class="userchoicebutton btn waves-effect waves-light" type="submit" name="submit">S'inscrire
-                        </button>
+                    </button>
                 </div>
             </form>
         </div>
+    </div>
+<?php } ?>

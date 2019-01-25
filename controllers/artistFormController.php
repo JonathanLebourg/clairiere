@@ -4,10 +4,10 @@ require 'models/users.php';
 require 'models/biography.php';
 require 'models/specialities.php';
 
-$artist = new user;
+$artist = new user();
 $artist->id_userTypes = 2;
 
-$bio = new biography;
+$bio = new biography();
 
 $speciality = new speciality();
 $listSpeciality = $speciality->listSpec();
@@ -200,7 +200,7 @@ if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name'])) {
                     $lastArtistId = $lastArtist->lastUser();
                     $bio->id_Users = $lastArtistId->lastId;
                     $bio->addBio();
-                    header('location:index.php?page=admin');
+//                    header('location:index.php?page=validate');
                 } else {
                     echo "Désolé, une erreur a eu lieu lors du téléchargement";
                 }

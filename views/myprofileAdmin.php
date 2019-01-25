@@ -18,8 +18,8 @@ require 'controllers/adminCtl.php';
                     <li class="tab col s4 m4"><a href="#clients">Clients</a></li>
                 </ul>
             </div>
-            <div id="stats" class="col s9 m9 centered">
-                <div class="col s12 centered">
+            <div id="stats" class="col s9 m10 offset-m1 centered">
+                <div class="col s12 m10 offset-m1 centered">
                 <ul class="tabs">
                     <li class="tab col s3 m3"><a href="#numbers">Chiffres</a></li>
                     <li class="tab col s3 m3"><a class="active" href="#usersList">Liste complète des inscrites</a></li>
