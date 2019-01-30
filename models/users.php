@@ -1,16 +1,16 @@
 <?php
 
-require 'connectBDD.php';
+require_once 'connectBDD.php';
 
 class user extends BDD {
 
-    public $id;
+    public $idUser;
     public $nickName;
     public $lastName;
     public $firstName;
     public $password;
     public $mail;
-    public $id_userTypes;
+    public $idUserType;
 
 //**-----------------
 //*PARTIE GENERALE
@@ -21,39 +21,61 @@ class user extends BDD {
 //"SELECT * FROM clairiere.Users INNER JOIN userTypes ON userTypes.id = Users.id_userTypes LEFT JOIN biography ON biography.id_Users = Users.id LEFT JOIN specialities ON specialities.id = biography.id_specialities";
 
     public function listUsers() {
-        $query = "SELECT * FROM clairiere.Users "
-                . "INNER JOIN userTypes "
-                . "ON userTypes.id = Users.id_userTypes "
-                . "LEFT JOIN biography "
-                . "ON biography.id_Users = Users.id "
-                . "LEFT JOIN specialities "
-                . "ON specialities.id = biography.id_specialities";
+        $query = "SELECT * FROM clair_users "
+                . "INNER JOIN clair_userTypes "
+                . "ON clair_userTypes.idUserType = clair_users.idUserType "
+                . "LEFT JOIN clair_biographies "
+                . "ON clair_biographies.idUser = clair_users.idUser "
+                . "LEFT JOIN clair_specialities "
+                . "ON clair_specialities.idSpeciality = clair_biographies.idSpeciality";
         $result = $this->BDD->query($query);
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
     }
 
-    public function listUsersWithBio() {
-        $query = "SELECT * FROM Users LEFT JOIN `biography` ON `Users`.`id` = `biography`.`id_Users` INNER JOIN `specialities` ON `biography`.`id_specialities` = `specialities`.`id` WHERE `id_userTypes`=2";
+    public function listArtists() {
+        $query = "SELECT * FROM clair_users "
+                . "INNER JOIN clair_userTypes "
+                . "ON clair_userTypes.idUserType = clair_users.idUserType "
+                . "LEFT JOIN clair_biographies "
+                . "ON clair_biographies.idUser = clair_users.idUser "
+                . "LEFT JOIN clair_specialities "
+                . "ON clair_specialities.idSpeciality = clair_biographies.idSpeciality "
+                . "WHERE `clair_users`.`idUserType`=2";
+        $result = $this->BDD->query($query);
+        $data = $result->fetchAll(PDO::FETCH_OBJ);
+        return $data;
+    }
+    
+    public function listArtistsBySpeciality($searchOrder) {
+        $query = "SELECT * FROM clair_users "
+                . "INNER JOIN clair_userTypes "
+                . "ON clair_userTypes.idUserType = clair_users.idUserType "
+                . "LEFT JOIN clair_biographies "
+                . "ON clair_biographies.idUser = clair_users.idUser "
+                . "LEFT JOIN clair_specialities "
+                . "ON clair_specialities.idSpeciality = clair_biographies.idSpeciality "
+                . "WHERE `clair_users`.`idUserType` = 2 "
+                . "AND clair_biographies.idSpeciality LIKE $searchOrder";
         $result = $this->BDD->query($query);
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
     }
 
     public function lastUser() {
-        $query = "SELECT MAX(`id`) as lastId FROM Users";
+        $query = "SELECT MAX(`idUser`) as lastId FROM clair_users";
         $result = $this->BDD->query($query);
         $data = $result->fetch(PDO::FETCH_OBJ);
         return $data;
     }
 
     public function addUser() {
-        $query = 'INSERT INTO Users '
+        $query = 'INSERT INTO clair_users '
                 . '      SET `lastName`= :lastName, '
                 . '      `firstName`= :firstName,'
                 . '      `nickName`= :nickName,'
                 . '      `password`= :password,'
-                . '      `id_userTypes`= :id_userTypes,'
+                . '      `idUserType`= :idUserType,'
                 . '      `mail`= :mail';
 
         $addPatient = $this->BDD->prepare($query);
@@ -62,21 +84,21 @@ class user extends BDD {
         $addPatient->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
         $addPatient->bindValue(':password', $this->password, PDO::PARAM_STR);
         $addPatient->bindValue(':mail', $this->mail, PDO::PARAM_STR);
-        $addPatient->bindValue(':id_userTypes', $this->id_userTypes, PDO::PARAM_INT);
+        $addPatient->bindValue(':idUserType', $this->idUserType, PDO::PARAM_INT);
         return $addPatient->execute();
     }
 
     public function deleteUser() {
 
-        $query = 'DELETE FROM `Users`
-                WHERE `id` = :id';
+        $query = 'DELETE FROM `clair_users`
+                WHERE `idUser` = :idUser';
         $deletePatient = $this->BDD->prepare($query);
-        $deletePatient->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $deletePatient->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $deletePatient->execute();
     }
 
     public function alreadyExist() {
-        $query = 'SELECT * FROM Users '
+        $query = 'SELECT * FROM clair_users '
                 . '      WHERE `nickName`= :nickName AND `mail`= :mail';
         $alreadyExist = $this->BDD->prepare($query);
         $alreadyExist->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
@@ -90,16 +112,17 @@ class user extends BDD {
         return $count;
     }
     public function userById() {
-        $query = "SELECT * FROM clairiere.Users "
-                . "INNER JOIN userTypes "
-                . "ON userTypes.id = Users.id_userTypes "
-                . "LEFT JOIN biography "
-                . "ON biography.id_Users = Users.id "
-                . "LEFT JOIN specialities "
-                . "ON specialities.id = biography.id_specialities "
-                . "WHERE Users.id =:id";
-             $result = $this->BDD->query($query);
-             $result->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $query = "SELECT * FROM clair_users "
+                . "INNER JOIN clair_userTypes "
+                . "ON clair_userTypes.idUserType = clair_users.idUserType "
+                . "LEFT JOIN clair_biographies "
+                . "ON clair_biographies.idUser = clair_users.idUser "
+                . "LEFT JOIN clair_specialities "
+                . "ON clair_specialities.idSpeciality = clair_biographies.idSpeciality "
+                . "WHERE clair_users.idUser = :idUser";
+             $result = $this->BDD->prepare($query);
+             $result->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+             $result->execute();
         $data = $result->fetch(PDO::FETCH_OBJ);
         return $data;
     }
@@ -108,7 +131,7 @@ class user extends BDD {
 //*PARTIE STATS
 //**-----------------
     public function usersCount() {
-        $query = "SELECT * FROM Users";
+        $query = "SELECT * FROM clair_users";
         $result = $this->BDD->query($query);
         $result->execute();
         $usersCount = $result->rowCount();

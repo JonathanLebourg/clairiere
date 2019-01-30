@@ -2,10 +2,10 @@
 
 require 'models/users.php';
 require 'models/biography.php';
-require 'models/specialities.php';
+//require 'models/specialities.php';
 
 $artist = new user();
-$artist->id_userTypes = 2;
+$artist->idUserType = 2;
 
 $bio = new biography();
 
@@ -133,7 +133,7 @@ if (isset($_POST['present'])) {
 //    $formError['fileToUpload'] = 'Image obligatoire';
 //}
 if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name'])) {
-
+ 
     $uploadError = [];
 
     $fileToUpload = $_FILES['fileToUpload'];
@@ -185,7 +185,7 @@ if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name'])) {
             $artist->password = $password;
 
             $bio->profilePicture = $file['basename'];
-            $bio->id_specialities = $specialities;
+            $bio->idSpeciality = $specialities;
             $bio->present = $present;
             
             $exist = $artist->alreadyExist();
@@ -198,7 +198,9 @@ if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name'])) {
                     $artist->addUser();
                     $lastArtist = new user();
                     $lastArtistId = $lastArtist->lastUser();
-                    $bio->id_Users = $lastArtistId->lastId;
+                    
+                    var_dump($lastArtistId);
+                    $bio->idUser = $lastArtistId->lastId;
                     $bio->addBio();
 //                    header('location:index.php?page=validate');
                 } else {

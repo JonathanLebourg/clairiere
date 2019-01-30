@@ -1,5 +1,5 @@
 <?php
-require 'controllers/artistFormController.php';
+require 'controllers/formsCtl/artistFormController.php';
 ?>
 <div class="container-fluid">
     <div class="col s12 m8">
@@ -75,7 +75,7 @@ require 'controllers/artistFormController.php';
                             <select name="specialities">
                                 <option value="" disabled selected>choisir une spécialité</option>
                                 <?php foreach ($listSpeciality as $spec) { ?>
-                                    <option value="<?= $spec->id ?>"><?= $spec->speciality ?></option>
+                                    <option value="<?= $spec->idSpeciality ?>"><?= $spec->speciality ?></option>
                                 <?php } ?>
                             </select>
                             <label for="specialities">Domaine artistique</label>

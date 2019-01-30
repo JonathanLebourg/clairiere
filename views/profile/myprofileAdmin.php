@@ -52,32 +52,32 @@ require 'controllers/adminCtl.php';
                                         <td><?= $user->firstName ?></td>
                                         <td><?= $user->nickName ?></td>
                                         <td><?= $user->mail ?></td>
-                                        <?php if ($user->id_userTypes == 1) { ?>
+                                        <?php if ($user->idUserType == 1) { ?>
                                             <td> Administrateur </td> <?php } ?>
-                                        <?php if ($user->id_userTypes == 2) { ?>
+                                        <?php if ($user->idUserType == 2) { ?>
                                             <td> Artiste </td> <?php } ?>
-                                        <?php if ($user->id_userTypes == 3) { ?>
+                                        <?php if ($user->idUserType == 3) { ?>
                                             <td> Client </td> <?php } ?>
 
-                                        <?php if ($user->id_userTypes == 2) { ?>
-                                            <td> <a href="index.php?page=myprofileArtist&id=<?= $user->id; ?>">
+                                        <?php if ($user->idUserType == 2) { ?>
+                                            <td> <a href="index.php?page=myprofileArtist&id=<?= $user->idUser; ?>">
                                                     <i class="tiny material-icons">person</i>
                                                 </a> </td> <?php } ?>
-                                        <?php if ($user->id_userTypes == 3) { ?>
-                                            <td> <a href="index.php?page=myprofileClient&id=<?= $user->id; ?>">
+                                        <?php if ($user->idUserType == 3) { ?>
+                                            <td> <a href="index.php?page=myprofileClient&id=<?= $user->idUser; ?>">
                                                     <i class="tiny material-icons">person</i>
                                                 </a> </td> <?php } ?>
-                                        <?php if ($user->id_userTypes == 1) { ?>
-                                            <td> <a href="index.php?page=admin&id=<?= $user->id; ?>">
+                                        <?php if ($user->idUserType == 1) { ?>
+                                            <td> <a href="index.php?page=admin&id=<?= $user->idUser; ?>">
                                                     <i class="tiny material-icons">person</i>
                                                 </a> </td> <?php } ?>
 
-                                        <td><a href="" data-target="modal<?= $user->id; ?>" class="modal-trigger">
+                                        <td><a href="" data-target="modal<?= $user->idUser; ?>" class="modal-trigger">
                                                 <i class="tiny material-icons">delete</i>
                                             </a></td>
                                     </tr>
                                     <!--Modal Structure--> 
-                                <div id="modal<?= $user->id; ?>" class="modal">
+                                <div id="modal<?= $user->idUser; ?>" class="modal">
                                     <div class="modal-content">
                                         <div class="container">
                                             <h1>SUPPRIMER</h1>
@@ -85,8 +85,8 @@ require 'controllers/adminCtl.php';
                                         </div>
                                         <div class="container">
                                             <p>ATTENTION, action irreversible !!!</p>
-                                            <form method="POST" action="index.php?page=admin&id=<?= $user->id; ?>" id="formId<?= $user->id; ?>">
-                                                <input  form="formId<?= $user->id; ?>" class="modal-action btn waves-effect waves-light choicebutton delete" type="submit" value="EFFACER PATIENT" name="submit" />
+                                            <form method="POST" action="index.php?page=admin&id=<?= $user->idUser; ?>" id="formId<?= $user->idUser; ?>">
+                                                <input  form="formId<?= $user->idUser; ?>" class="modal-action btn waves-effect waves-light choicebutton delete" type="submit" value="EFFACER PATIENT" name="submit" />
                                             </form>
                                             <div class="row">
                                                 <a class="modal-close waves-effect waves-light choicebutton delete">ANNULER</a>

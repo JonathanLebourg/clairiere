@@ -1,10 +1,5 @@
 <?php
-$lastName = htmlspecialchars($_POST['lastName']);
-$firstName = htmlspecialchars($_POST['firstName']);
-$pseudo = htmlspecialchars($_POST['pseudo']);
-$mail = htmlspecialchars($_POST['mail']);
-$password = htmlspecialchars($_POST['password']);
-$passwordCheck = htmlspecialchars($_POST['passwordCheck']);
+require 'controllers/listCtl.php';
 ?>
 <div class="container">
     <h1 class="result">Bien le bonjour <?= $firstName . ' ' . $lastName; ?> aka <b><?= $pseudo; ?></b></h1>

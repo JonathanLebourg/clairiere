@@ -1,14 +1,16 @@
+<?php
+require 'controllers/navCtl.php';
+?>
 <!--**----------NavBar----------**-->
 <div class="row">
     <div>
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="index.php?page=listAll">Tous</a></li>
+            <li><a href="index.php?page=list&speciality=tout">Tout</a></li>
             <li class="divider"></li>
-            <li><a href="#!">peintres</a></li>
-            <li><a href="#!">dessinateurs</a></li>
-            <li><a href="#!">sculpteurs</a></li>
-            <li><a href="#!">photographes</a></li>
+            <?php foreach ($listSpecialities as $speciality) {?>
+            <li><a href="index.php?page=list&speciality=<?= $speciality->speciality?>"><?= $speciality->speciality?></a></li>
+                <?php } ?>
         </ul>
         <!--navbar-->
         <div class="navbar-fixed">
@@ -24,8 +26,7 @@
                         <li><a href="index.php?page=accueil">Accueil</a></li>
                         <li><a href="index.php?page=whoIam">Qui sommes-nous ?</a></li>
                         <!-- Dropdown Trigger -->
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Artistes<i class="material-icons right">arrow_drop_down</i></a></li>
-                        <li><a href="#">Estimer une oeuvre</a></li>
+                        <li><a class="dropdown-trigger" href="index.php?page=list" data-target="dropdown1">Artistes<i class="material-icons right">arrow_drop_down</i></a></li>
                         <li><a href="index.php?page=contact">Nous contacter</a></li>
                     </ul>
                 </div>

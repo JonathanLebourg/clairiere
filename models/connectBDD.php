@@ -3,7 +3,7 @@ class BDD {
   public $BDD;
   public function __construct() {
       try {
-           $this->BDD = new PDO('mysql:host=localhost;dbname=clairiere','jonathan','admin', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));  
+           $this->BDD = new PDO('mysql:host=localhost;dbname=clairierePRO','jonathan','admin', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));  
       } catch (Exception $error) {
           die('Erreur de connexion : ' . $error ->getMessage());
       }  

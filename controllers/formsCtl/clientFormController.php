@@ -1,10 +1,9 @@
 <?php
 
 require 'models/users.php';
-require 'models/biography.php';
 
 $client = new user();
-$client->id_userTypes = 3;
+$client->idUserType = 3;
 //Déclaration des regex
 //Déclaration regex nom
 $regexName = '/^[a-zA-Zà-Ÿ\-\']+$/';

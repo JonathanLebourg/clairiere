@@ -3,6 +3,8 @@
     <div class="row">
         <h1>Ou plutôt qui suis-je... ?</h1>
         <div class="divider"></div>
+        <hr class="style13">
+        <hr class="style14">
     </div>
     <div class="row">
         <p>Car oui, même si l'équipe est amené à s'agrandir, pour l'instant 

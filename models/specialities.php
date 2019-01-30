@@ -4,7 +4,7 @@ require_once 'connectBDD.php';
 
 class speciality extends BDD {
 
-    public $id;
+    public $idSpeciality;
     public $speciality;
     
 //**-----------------
@@ -12,7 +12,7 @@ class speciality extends BDD {
 //**-----------------
     
     public function listSpec() {
-        $query = "SELECT * FROM specialities";
+        $query = "SELECT * FROM clair_specialities";
         $result = $this->BDD->query($query);
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
