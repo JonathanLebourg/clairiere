@@ -45,8 +45,8 @@
                         case 'clientForm':
                             include('views/form/clientForm.php');
                             break;
-                        case 'worksForm':
-                            include('views/worksForm.php');
+                        case 'ajoutOeuvre':
+                            include('views/form/worksForm.php');
                             break;
                         
                         case 'validate':

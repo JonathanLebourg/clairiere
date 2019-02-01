@@ -16,7 +16,7 @@ class user extends BDD {
 //*PARTIE GENERALE
 //**-----------------
     
-//    super requete avec tout de tout le monde
+//super requete à jointures avec tout de tout le monde
 //-----------------------------------------------
 //"SELECT * FROM clairiere.Users INNER JOIN userTypes ON userTypes.id = Users.id_userTypes LEFT JOIN biography ON biography.id_Users = Users.id LEFT JOIN specialities ON specialities.id = biography.id_specialities";
 
