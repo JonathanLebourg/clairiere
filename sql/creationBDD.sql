@@ -81,8 +81,6 @@ CREATE TABLE clair_artworks(
         idArtwork   Int  Auto_increment  NOT NULL ,
         title       Varchar (100) NOT NULL ,
         technic     Varchar (100) NOT NULL ,
-        size        Varchar (50) NOT NULL ,
-        weight      Varchar (50) NOT NULL ,
         date        Year NOT NULL ,
         description Varchar (200) NOT NULL ,
         picture     Varchar (100) NOT NULL ,

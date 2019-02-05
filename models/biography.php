@@ -3,19 +3,18 @@
 require_once 'connectBDD.php';
 
 class biography extends BDD {
-
+//déclaration des attributs identiques à la table `biographiess`
     public $idBiography;
     public $present;
     public $profilePicture;
     public $idSpeciality;
     public $idUser;
-
-//**-----------------
-//*PARTIE GENERALE
-//**-----------------
-
+//-----------------
+//PARTIE GENERALE
+//-----------------
+//fonction pour ajouter la bio à un artiste après avori fait le addUser
     public function addBio() {
-        $query = 'INSERT INTO clair_biographies '
+        $query = 'INSERT INTO `clair_biographies` '
                 . '      SET `present`= :present, '
                 . '      `profilePicture`= :profilePicture,'
                 . '      `idSpeciality`= :idSpeciality,'
@@ -28,9 +27,9 @@ class biography extends BDD {
         $addBio->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $addBio->execute();
     }
-    
+//    UPDATE BIO
     public function updateBio() {
-        $query = 'UPDATE clair_biographies '
+        $query = 'UPDATE `clair_biographies` '
                 . '      SET `present`= :present, '
                 . '      `profilePicture`= :profilePicture,'
                 . '      `idSpeciality`= :idSpeciality,'
@@ -43,21 +42,23 @@ class biography extends BDD {
         $updateBio->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateBio->execute();
     }
-    
-    public function listBio() {
-        $query = "SELECT * FROM clair_biographies";
-        $result = $this->BDD->query($query);
-        $data = $result->fetchAll(PDO::FETCH_OBJ);
-        return $data;
+//    EFFACER BIO
+    public function deleteBio() {
+        
     }
-    
+//    fonction qui liste toutes les bio
+    public function listBio() {
+        $query = 'SELECT * FROM `clair_biographies`';
+        $list = $this->BDD->query($query);
+        $listBio = $list->fetchAll(PDO::FETCH_OBJ);
+        return $listBio;
+    }
+//    fonction qui ressort une bio selon l'idUser
     public function bioByIdUser() {
-        $query = "SELECT * FROM clair_biographies WHERE idUser = :idUser";
+        $query = 'SELECT * FROM `clair_biographies` WHERE `idUser` = :idUser';
         $bioByUser = $this->BDD->prepare($query);
         $bioByUser->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         $bioByUser->execute();
         return $bioByUser->fetch(PDO::FETCH_OBJ);
     }
-    
-
 }
