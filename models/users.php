@@ -78,16 +78,37 @@ class user extends BDD {
                 . '      `idUserType`= :idUserType,'
                 . '      `mail`= :mail';
 
-        $addPatient = $this->BDD->prepare($query);
-        $addPatient->bindValue(':lastName', $this->lastName, PDO::PARAM_STR);
-        $addPatient->bindValue(':firstName', $this->firstName, PDO::PARAM_STR);
-        $addPatient->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
-        $addPatient->bindValue(':password', $this->password, PDO::PARAM_STR);
-        $addPatient->bindValue(':mail', $this->mail, PDO::PARAM_STR);
-        $addPatient->bindValue(':idUserType', $this->idUserType, PDO::PARAM_INT);
-        return $addPatient->execute();
+        $addUser = $this->BDD->prepare($query);
+        $addUser->bindValue(':lastName', $this->lastName, PDO::PARAM_STR);
+        $addUser->bindValue(':firstName', $this->firstName, PDO::PARAM_STR);
+        $addUser->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
+        $addUser->bindValue(':password', $this->password, PDO::PARAM_STR);
+        $addUser->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+        $addUser->bindValue(':idUserType', $this->idUserType, PDO::PARAM_INT);
+        return $addUser->execute();
     }
 
+    public function updateUser() {
+        $query = 'UPDATE clair_users '
+                . 'SET `lastName`= :lastName, '
+                . '`firstName`= :firstName, '
+                . '`nickName`= :nickName, '
+                . '`password`= :password, '
+                . '`idUserType`= :idUserType, '
+                . '`mail`= :mail '
+                . 'WHERE `idUser` LIKE :idUser ';
+
+        $updateUser = $this->BDD->prepare($query);
+        $updateUser->bindValue(':lastName', $this->lastName, PDO::PARAM_STR);
+        $updateUser->bindValue(':firstName', $this->firstName, PDO::PARAM_STR);
+        $updateUser->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
+        $updateUser->bindValue(':password', $this->password, PDO::PARAM_STR);
+        $updateUser->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+        $updateUser->bindValue(':idUserType', $this->idUserType, PDO::PARAM_INT);
+        $updateUser->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        return $updateUser->execute();
+    }
+    
     public function deleteUser() {
 
         $query = 'DELETE FROM `clair_users`

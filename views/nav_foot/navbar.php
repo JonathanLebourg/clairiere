@@ -6,10 +6,18 @@ require 'controllers/navCtl.php';
     <div>
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="index.php?page=list&speciality=tout">Tout</a></li>
+            <li><a href="index.php?page=listArtists&speciality=tout">Tout</a></li>
             <li class="divider"></li>
             <?php foreach ($listSpecialities as $speciality) {?>
             <li><a href="index.php?page=list&speciality=<?= $speciality->speciality?>"><?= $speciality->speciality?></a></li>
+                <?php } ?>
+        </ul>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown2" class="dropdown-content">
+            <li><a href="index.php?page=listArtWorks&style=tout">Tout</a></li>
+            <li class="divider"></li>
+            <?php foreach ($listStyles as $style) {?>
+            <li><a href="index.php?page=listArtWorks&style=<?= $style->workStyle?>"><?= $style->workStyle?></a></li>
                 <?php } ?>
         </ul>
         <!--navbar-->
@@ -26,7 +34,8 @@ require 'controllers/navCtl.php';
                         <li><a href="index.php?page=accueil">Accueil</a></li>
                         <li><a href="index.php?page=whoIam">Qui sommes-nous ?</a></li>
                         <!-- Dropdown Trigger -->
-                        <li><a class="dropdown-trigger" href="index.php?page=list" data-target="dropdown1">Artistes<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-trigger" href="index.php?page=listArtists" data-target="dropdown1">Artistes<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-trigger" href="index.php?page=listArtWorks" data-target="dropdown2">Oeuvres<i class="material-icons right">arrow_drop_down</i></a></li>
                         <li><a href="index.php?page=contact">Nous contacter</a></li>
                     </ul>
                 </div>

@@ -1,6 +1,6 @@
         <?php
-require 'models/workStyles.php';
-require 'models/artWorks.php';
+require_once 'models/workStyles.php';
+require_once 'models/artWorks.php';
 
 $workStyle = new workStyle();
 $listWorkStyles = $workStyle->listStyles();
@@ -10,9 +10,9 @@ $artWork = new artWork();
 
 //Déclaration des regex
 //Déclaration regex nom
-$regexText = '/^[A-zà-Ÿ -\',;.:?]+$/';
+$regexText = '/^[A-zà-Ÿ -\'\!,;.:?]+$/';
 //Déclaration regex nom
-$regexTextAndNumber = '/^[0-9a-zA-Zà-Ÿ\-\',;.:?]+$/';
+$regexTextAndNumber = '/^[0-9a-zA-Zà-Ÿ\- \!\',;.:?]+$/';
 //Déclaration regex password
 $regexDate = '/^[0-9]{4}+$/';
 $formError = [];
@@ -131,6 +131,7 @@ if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name'])) {
 // if everything is ok, try to upload file
     } else {
         if (count($uploadError) == 0 && count($formError) == 0) {
+            
             $artWork->title = $title;
             $artWork->technic = $technic;
             $artWork->date = $date;

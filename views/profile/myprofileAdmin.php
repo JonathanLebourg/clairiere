@@ -6,7 +6,6 @@ require 'controllers/adminCtl.php';
     <div class="col s12 m2">
         <div class="row"><button data-target="modalArtist" class="btn waves-effect waves-light modal-trigger more">+ Artiste</button></div>
         <div class="row"><button data-target="modalPicture" class="btn waves-effect waves-light modal-trigger more">+ Dessin</button></div>
-
     </div>
     <div class="col s12 m10  basic">
 
@@ -31,7 +30,7 @@ require 'controllers/adminCtl.php';
                 </div>
                 <div id="usersList" class="col s12" >
                     <div class="row">
-                        <table id="datatable" class="centered responsive-table">
+                        <table id="datatable" class="display centered responsive-table">
                             <thead>
                                 <tr>
                                     <th><b>Nom</b></th>
@@ -86,7 +85,7 @@ require 'controllers/adminCtl.php';
                                         <div class="container">
                                             <p>ATTENTION, action irreversible !!!</p>
                                             <form method="POST" action="index.php?page=admin&id=<?= $user->idUser; ?>" id="formId<?= $user->idUser; ?>">
-                                                <input  form="formId<?= $user->idUser; ?>" class="modal-action btn waves-effect waves-light choicebutton delete" type="submit" value="EFFACER PATIENT" name="submit" />
+                                                <input  form="formId<?= $user->idUser; ?>" class="modal-action btn waves-effect waves-light choicebutton delete" type="submit" value="EFFACER ARTISTE" name="deleteUser" />
                                             </form>
                                             <div class="row">
                                                 <a class="modal-close waves-effect waves-light choicebutton delete">ANNULER</a>
@@ -100,7 +99,64 @@ require 'controllers/adminCtl.php';
                     </div>
                 </div>
                 <div id="worksList" class="col s12" >
-                    <p>des count</p>
+                    <div class="row">
+                        <table id="datatable_2" class="display centered responsive-table">
+                            <thead>
+                                <tr>
+                                    <th><b>Titre</b></th>
+                                    <th><b>date</b></th>
+                                    <th><b>technique</b></th>
+                                    <th><b>description</b></th>
+                                    <th><b>Style</b></th>
+                                    <th><b>nom du fichier</b></th>
+                                    <th><b>Détail</b></th>
+                                    <th><b>Supprimer</b></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($listArtWorks as $work) {
+                                    ?>
+                                    <tr>
+                                        <td><?= $work->title ?></td>
+                                        <td><?= $work->date ?></td>
+                                        <td><?= $work->technic ?></td>
+                                        <td><?= $work->description ?></td>
+                                        <td> <?= $work->workStyle ?> </td> 
+                                        
+
+                                        
+                                            <td> <a href="index.php?page=ArtWork&id=<?= $work->idArtWork; ?>">
+                                                    <i class="tiny material-icons">person</i>
+                                                </a> </td> 
+                                        
+
+                                        <td><a href="" data-target="modalWork<?= $work->idArtWork; ?>" class="modal-trigger">
+                                                <i class="tiny material-icons">delete</i>
+                                            </a></td>
+                                    </tr>
+                                    <!--Modal Structure--> 
+                                <div id="modalWork<?= $work->idArtWork; ?>" class="modal">
+                                    <div class="modal-content">
+                                        <div class="container">
+                                            <h1>SUPPRIMER</h1>
+                                            <div class="divider"></div>
+                                        </div>
+                                        <div class="container">
+                                            <p>ATTENTION, action irreversible !!!</p>
+                                            <form method="POST" action="index.php?page=admin&id=<?= $work->idArtWork; ?>" id="formWorkId<?= $work->idArtWork; ?>">
+                                                <input  form="formWorkId<?= $work->idArtWork; ?>" class="modal-action btn waves-effect waves-light choicebutton delete" type="submit" value="EFFACER OEUVRE" name="deleteWork" />
+                                            </form>
+                                            <div class="row">
+                                                <a class="modal-close waves-effect waves-light choicebutton delete">ANNULER</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div id="artists" class="col s12">
@@ -110,3 +166,5 @@ require 'controllers/adminCtl.php';
                 <p>plein de count</p>
             </div>
         </div>
+    </div>
+</div>

@@ -19,6 +19,14 @@ $(document).ready(function () {
             $('.card-action a').addClass("disabled")
     })
     $('.tabs').tabs();
+//    
+//    var tables = $('.datatable').DataTable();
+// 
+//tables.page( 'next' ).draw( false );
+//    $('#datatable').DataTable();
+//    $('#datatable2').DataTable();
+$("table[id^='datatable']").DataTable();
+
 });
 
 //**-------carousel--------**

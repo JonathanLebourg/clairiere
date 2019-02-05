@@ -22,10 +22,10 @@ class artWork extends BDD {
 
     public function listArtWorks() {
         $query = "SELECT * FROM clair_artWorks "
-                . "LEFT JOIN clair_users "
-                . "ON clair_artWorks.idUser = clair_users.idUser"
-                . "INNER JOIN clair_workStyles"
-                . "ON clair_artWorks.idWorkStyle = clair_workStyles.idWorkStyle";
+                . "LEFT JOIN clair_users as t1 "
+                . "ON clair_artWorks.idUser = t1.idUser "
+                . "INNER JOIN clair_workStyles as t2 "
+                . "ON clair_artWorks.idWorkStyle = t2.idWorkStyle ";
         $result = $this->BDD->query($query);
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
@@ -34,11 +34,11 @@ class artWork extends BDD {
    
     public function listArtWorksByStyle($searchOrder) {
         $query = "SELECT * FROM clair_artWorks "
-                . "LEFT JOIN clair_users "
-                . "ON clair_artWorks.idUser = clair_users.idUser"
-                . "INNER JOIN clair_workStyles"
-                . "ON clair_artWorks.idWorkStyle = clair_workStyles.idWorkStyle"
-                . "AND clair_artWorks.workStyle LIKE $searchOrder";
+                . "LEFT JOIN clair_users as t1 "
+                . "ON clair_artWorks.idUser = t1.idUser "
+                . "INNER JOIN clair_workStyles as t2 "
+                . "ON clair_artWorks.idWorkStyle = t2.idWorkStyle "
+                . "WHERE t2.idWorkStyle LIKE $searchOrder";
         $result = $this->BDD->query($query);
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
@@ -65,6 +65,30 @@ class artWork extends BDD {
         $addArtWork->bindValue(':idWorkStyle', $this->idWorkStyle, PDO::PARAM_STR);
         return $addArtWork->execute();
     }
+    
+    public function updateArtWork() {
+        $query = 'UPDATE clair_artWorks '
+                . '      SET `title`= :title, '
+                . '      `technic`= :technic,'
+                . '      `date`= :date,'
+                . '      `description`= :description,'
+                . '      `picture`=:picture,'
+                . '      `idUser`= :idUser,'
+                . '      `idWorkStyle`= :idWorkStyle'
+                . '      WHERE `clair_artWorks`.`idArtWork` = :id';
+
+        $updateArtWork = $this->BDD->prepare($query);
+        $updateArtWork->bindValue(':title', $this->title, PDO::PARAM_STR);
+        $updateArtWork->bindValue(':technic', $this->technic, PDO::PARAM_STR);
+        $updateArtWork->bindValue(':date', $this->date, PDO::PARAM_STR);
+        $updateArtWork->bindValue(':description', $this->description, PDO::PARAM_STR);
+        $updateArtWork->bindValue(':picture', $this->picture, PDO::PARAM_STR);
+        $updateArtWork->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        $updateArtWork->bindValue(':idWorkStyle', $this->idWorkStyle, PDO::PARAM_STR);
+        $updateArtWork->bindValue(':id', $this->idArtWork, PDO::PARAM_INT);
+        return $updateArtWork->execute();
+    }
+    
 
     public function deleteArtWork() {
         $query = 'DELETE FROM `clair_artWorks`
@@ -103,4 +127,17 @@ class artWork extends BDD {
         return $data;
     }
 
+     public function SeeArtWork() {
+        $query = "SELECT * FROM clair_artWorks "
+                . "INNER JOIN clair_users "
+                . "ON clair_artWorks.idUser = clair_users.idUser "
+                . "INNER JOIN clair_workStyles "
+                . "ON clair_artWorks.idWorkStyle = clair_workStyles.idWorkStyle "
+                . "WHERE clair_artWorks.idArtWork = :idArtWork";
+        $result = $this->BDD->prepare($query);
+        $result->bindValue(':idArtWork', $this->idArtWork, PDO::PARAM_INT);
+        $result->execute();
+        $data = $result->fetch(PDO::FETCH_OBJ);
+        return $data;
+    }
 }
