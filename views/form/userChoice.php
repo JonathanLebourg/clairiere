@@ -1,6 +1,10 @@
-<div class="container">
-    <h1>Vous êtes ?</h1>
-    <div class="divider"></div>
+<div class="container-fluid">
+    <div class="row">
+        <hr>
+        <h1>Vous êtes ?</h1>
+        <hr>
+    </div>
+
     <div class="col s12 m6 center-align conditionCheck">
         <h5>IMPORTANT</h5>
         <form method="POST" action="#">  

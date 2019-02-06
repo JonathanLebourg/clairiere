@@ -44,7 +44,11 @@ class biography extends BDD {
     }
 //    EFFACER BIO
     public function deleteBio() {
-        
+        $query = 'DELETE FROM `clair_biographies` '
+                . 'WHERE `idUser` = :idUser';
+        $deleteBio = $this->BDD->prepare($query);
+        $deleteBio->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        return $deleteBio->execute();
     }
 //    fonction qui liste toutes les bio
     public function listBio() {

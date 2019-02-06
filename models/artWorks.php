@@ -122,7 +122,7 @@ class artWork extends BDD {
     }
 //fonction pour acceder aux attritubutes d une oeuvre selon on idArtWork
      public function SeeArtWork() {
-        $query = 'SELECT * FROM `lair_artWorks` '
+        $query = 'SELECT * FROM `clair_artWorks` '
                 . 'INNER JOIN `clair_users` '
                 . 'ON `clair_artWorks`.`idUser` = `clair_users`.`idUser` '
                 . 'INNER JOIN `clair_workStyles` '

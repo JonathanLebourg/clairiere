@@ -11,88 +11,86 @@
         <link rel="stylesheet" href="assets/style/generalStyle.css" /> 
     </head>
     <body>
-        <main>
+        <?php
+        if (!isset($_GET['page'])) {
+            include('views/pageZERO.php');
+        } else {
+            ?>
             <div class="container-fluid">
                 <?php
                 include 'views/nav_foot/navbar.php';
                 ?>
             </div>
-
-            <div class="container-fluid">
+            <main>
                 <?php
-                if (!isset($_GET['page'])) {
-                    include('views/accueil.php');
-                } else {
-                    switch ($_GET['page']) {
-                        case 'accueil':
-                            include('views/accueil.php');
-                            break;
+                switch ($_GET['page']) {
+                    case 'accueil':
+                        include('views/accueil.php');
+                        break;
 //                  
-                        case 'whoIam':
-                            include('views/whoIam.php');
-                            break;
+                    case 'whoIam':
+                        include('views/whoIam.php');
+                        break;
 //                   ----------FORMULAIRES-----------
-                        case 'contact':
-                            include('views/contact.php');
-                            break;
+                    case 'contact':
+                        include('views/form/contact.php');
+                        break;
 
-                        case 'inscription':
-                            include('views/form/userChoice.php');
-                            break;
+                    case 'inscription':
+                        include('views/form/userChoice.php');
+                        break;
 //                 -
-                        case 'artistForm':
-                            include('views/form/artistForm.php');
-                            break;
-                        case 'modifProfile':
-                            include('views/form/modifArtistForm.php');
-                            break;
-                        case 'clientForm':
-                            include('views/form/clientForm.php');
-                            break;
-                        case 'ajoutOeuvre':
-                            include('views/form/worksForm.php');
-                            break;
+                    case 'artistForm':
+                        include('views/form/artistForm.php');
+                        break;
+                    case 'modifProfile':
+                        include('views/form/modifArtistForm.php');
+                        break;
+                    case 'clientForm':
+                        include('views/form/clientForm.php');
+                        break;
+                    case 'ajoutOeuvre':
+                        include('views/form/worksForm.php');
+                        break;
 
-                        case 'validate':
-                            include('views/form/validate.php');
-                            break;
+                    case 'validate':
+                        include('views/form/validate.php');
+                        break;
 //                        -----------PROFILS-----------
-                        case 'admin':
-                            include('views/profile/myprofileAdmin.php');
-                            break;
-                        case 'myprofileArtist':
-                            include('views/profile/myprofileArtist.php');
-                            break;
-                        case 'myprofileClient':
-                            include('views/profile/myprofileClient.php');
-                            break;
+                    case 'admin':
+                        include('views/profile/myprofileAdmin.php');
+                        break;
+                    case 'myprofileArtist':
+                        include('views/profile/myprofileArtist.php');
+                        break;
+                    case 'myprofileClient':
+                        include('views/profile/myprofileClient.php');
+                        break;
 
-                        case 'listArtists':
-                            include('views/lists/listArtists.php');
-                            break;
-                        case 'listArtWorks':
-                            include('views/lists/listArtWorks.php');
-                            break;
+                    case 'listArtists':
+                        include('views/lists/listArtists.php');
+                        break;
+                    case 'listArtWorks':
+                        include('views/lists/listArtWorks.php');
+                        break;
 
-                        case 'validateDelete':
-                            include('views/validate/validateDelete.php');
-                            break;
+                    case 'validateDelete':
+                        include('views/validate/validateDelete.php');
+                        break;
 
-                        case 'mentions':
-                            include('views/legalMention.php');
-                            break;
-                        default :
-                            include('views/accueil.php');
-                            break;
-                    }
+                    case 'mentions':
+                        include('views/legalMention.php');
+                        break;
+                    default :
+                        include('views/pageERROR.php');
+                        break;
                 }
                 ?>
-            </div>
-        </main>
-
-        <div class="container-fluid">
-            <?php
-            include 'views/nav_foot/footer.php';
+            </main>
+            <div class="container-fluid">
+                <?php
+                include 'views/nav_foot/footer.php';
+            }
             ?>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

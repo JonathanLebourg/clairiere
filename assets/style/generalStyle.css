@@ -1,7 +1,12 @@
-/* 
-    Created on : 3 déc. 2018, 13:13:48
-    Author     : jonathan
-*/
+/*------------------------
+-------PENSE-BETE-------
+------------------------
+--COULEURS :
+---vert du logo  :  #31d019 = rgb(49,208,25)*/
+
+/*-------------------
+------GENERAL--------
+-------------------*/
 body{
     font-family: 'Open Sans Condensed', sans-serif;
     background: white;
@@ -9,17 +14,79 @@ body{
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-size: 3vh;
 }
 
 main {
     flex: 1 0 auto;
 }
-.basic{
-    min-height: 60vh;   
+h1{
+    color:rgb(49,208,25);
+    font-size: 5vh;
 }
-.connection {
+p{
+    text-align: center;
+}
+hr { 
+    border: 0; 
+    height: 0.15rem; 
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #31d019, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #31d019, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #31d019, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #31d019, #f0f0f0); 
+}
+/*boutons d envois ou de validations*/
+.validateButton{
+    color: black;
+    background-color: white;
+    font-size: 2.5vh;
+}
+.validateButton:hover{
+    background-color: rgb(49,208,25);
+}
+/*------------------
+--------NAVBAR------
+-------------------*/
+/*pour la marge en haut du nav-fixed*/
+nav{
+    height: 0vh;
+}
+/*couleur du text des titres de la nav*/
+.nav-wrapper a{
+    color: black;
+}
+/*fonds et border avec et sans hover*/
+nav ul li a{
+    font-size: 2.5vh;
+    background: white;
+    border-radius: 5px;
+}
+nav ul li a:hover {
+    background: rgba(49,208,25,0.6);
+    border-radius: 5px;
+}
+/*idem pour les dropdown*/
+nav .dropdown-content li a{
+    background: white;
+    border-radius: 5px;
+}
+nav .dropdown-content li a:hover {
+    background: rgba(49,208,25,0.6);
+    border-radius: 5px;
+}
+/*taille et hover du logo*/
+.navLogo{
+    width: 10rem;
+}
+#navLogoLi:hover{
+    background-color: white;
+}
+/*partie boutons de connexion et inscription*/
+/*la div pour les boutons a droite*/
+.connectButtons {
     background-color: white;
     height: 9.8vh;
+    float: right;
 }
 /* -- le bouton connecter et "s'inscrire" */
 .connect{
@@ -30,62 +97,43 @@ main {
     background-color: white;
 }
 .connect:hover{
-    background-color: green;
-}
-.buttons{
-    float: right;
+    background-color: rgb(49,208,25, 0.6);
 }
 .inscription{
     margin: 1.6vh;
     width: 29.2vh;
-    height: 5.7vh;
+    height: 6vh;
     color: black;
+    font-size: 2.5vh;
 }
 .inscription:hover{
-    color: grey;
+    color: rgb(49,208,25);
 }
+
+/*-------------------
+------FOOTER--------
+-------------------*/
+.page-footer{
+    background-color: white;
+}
+/*-------------------
+------FOOTER--------
+-------------------*/
+.accueilText{
+    margin-bottom: 3vh;
+}
+
+
+
+
+.basic{
+    min-height: 60vh;   
+}
+
 .material-icons{
     float: left;
 }
 
-nav{
-    height: 0vh;
-}
-.nav-wrapper{
-    background-color: white;
-}
-.nav-wrapper a{
-    background-color: white;
-    color: black;
-}
-.page-footer{
-    background-color: white;
-}
-
-
-hr.style13 {
-	height: 10px;
-	border: 0;
-	box-shadow: 0 10px 10px -10px #8c8b8b inset;
-}
-
-
-hr.style14 { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
-
-.divider{
-    color: geen;
-    margin-bottom: 4vh;
-    width: 50vh;
-    border: solid grey 4px;
-    border-radius: 50px;
-}
 
 /*h1, h2{
     text-align: center;  

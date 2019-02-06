@@ -22,13 +22,13 @@ class user extends BDD {
 //    fonction qui liste tous les utilisateurs 
 //    avec les jointures avec leurs biographies et leurs specialités
     public function listUsers() {
-        $query = 'SELECT * FROM `clair_users` '
+        $query = 'SELECT *,  `clair_users`.`idUser` AS `userId` FROM `clair_users` '
                 . 'INNER JOIN `clair_userTypes` '
                 . 'ON `clair_userTypes`.`idUserType` = `clair_users`.`idUserType` '
-                . 'LEFT JOIN `clair_biographies` '
-                . 'ON `clair_biographies`.`idUser` = `clair_users.idUser` '
-                . 'LEFT JOIN `clair_specialities` '
-                . 'ON `clair_specialities`.`idSpeciality` = `clair_biographies`.`idSpeciality`';
+                . 'LEFT JOIN `clair_biographies` AS t1 '
+                . 'ON `t1`.`idUser` = `clair_users`.`idUser` '
+                . 'LEFT JOIN `clair_specialities` AS t2 '
+                . 'ON `t2`.`idSpeciality` = `t1`.`idSpeciality` ';
         $result = $this->BDD->query($query);
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
@@ -75,11 +75,11 @@ class user extends BDD {
     }
 //    FONCTION EFFACER
     public function deleteUser() {
-        $query = 'DELETE FROM `clair_users`
-                WHERE `idUser` = :idUser';
-        $deletePatient = $this->BDD->prepare($query);
-        $deletePatient->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
-        return $deletePatient->execute();
+        $query = 'DELETE FROM `clair_users` '
+                . 'WHERE `idUser` = :idUser';
+        $deleteUser = $this->BDD->prepare($query);
+        $deleteUser->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        return $deleteUser->execute();
     }
 //fonction pour vérifier si un utilisateur existe déjà en cherchant avec le pseudo ET le mail
     public function alreadyExist() {
@@ -100,13 +100,13 @@ class user extends BDD {
     }
 //    fonctionne pour cibler un utilisateur selon son id
     public function userById() {
-        $query = 'SELECT * FROM `clair_users` '
-                . 'INNER JOIN `clair_userTypes` '
-                . 'ON `clair_userTypes`.`idUserType` = `clair_users`.`idUserType` '
-                . 'LEFT JOIN `clair_biographies` '
-                . 'ON `clair_biographies`.`idUser` = `clair_users.idUser` '
-                . 'LEFT JOIN `clair_specialities` '
-                . 'ON `clair_specialities`.`idSpeciality` = `clair_biographies`.`idSpeciality` '
+        $query = 'SELECT *, `clair_users`.`idUser` AS `userId` FROM `clair_users` '
+                . 'INNER JOIN `clair_userTypes`  AS `t1` '
+                . 'ON `t1`.`idUserType` = `clair_users`.`idUserType` '
+                . 'LEFT JOIN `clair_biographies` AS `t2` '
+                . 'ON `t2`.`idUser` = `clair_users`.`idUser` '
+                . 'LEFT JOIN `clair_specialities` AS `t3` '
+                . 'ON `t3`.`idSpeciality` = `t2`.`idSpeciality` '
                 . 'WHERE `clair_users`.`idUser` = :idUser';
              $result = $this->BDD->prepare($query);
              $result->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
@@ -124,10 +124,10 @@ class user extends BDD {
                 . 'INNER JOIN `clair_userTypes` '
                 . 'ON `clair_userTypes`.`idUserType` = `clair_users`.`idUserType` '
                 . 'LEFT JOIN `clair_biographies` '
-                . 'ON `clair_biographies`.idUser` = `clair_users`.`idUser` '
+                . 'ON `clair_biographies`.`idUser` = `clair_users`.`idUser` '
                 . 'LEFT JOIN `clair_specialities` '
                 . 'ON `clair_specialities`.`idSpeciality` = `clair_biographies`.`idSpeciality` '
-                . 'WHERE `clair_users`.`idUserType`=2';
+                . 'WHERE `clair_users`.`idUserType` = 2';
         $result = $this->BDD->query($query);
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;

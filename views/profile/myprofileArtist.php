@@ -50,7 +50,7 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                 <?php foreach ($ListArtWorkByArtist as $work) { ?>
                     <div class="col s6 m3">
                         <div class="col s12 m12">
-                            <img src="./img/artWorks/<?= $work->picture ?>" width=85%/>                    
+                            <img src="img/artWorks/<?= $work->picture ?>" width="85%" />                    
                         </div>
                         <div class="col s12 m12">
                             <div class="col s12 m6">
@@ -104,18 +104,18 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                                 <form class="col s12" method="POST" action="index.php?page=myprofileArtist&id=<?= $work->idUser; ?>&modif=<?= $work->idArtWork; ?>" id="formIdModif<?= $work->idArtWork; ?>" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="input-field col s12 m12">
-                                            <input name="title" id="title" type="text" class="validate" value="<?= isset($title) ? $title : '' ?>" />
+                                            <input name="title" id="title" type="text" class="validate" value="<?= isset($work->title) ? $work->title : '' ?>" />
                                             <label for="title">Titre de l'oeuvre</label>
                                             <p class="text-danger"><?= isset($formError['title']) ? $formError['title'] : ''; ?></p>
                                         </div>
                                         <div class="input-field col s12 m6">
-                                            <input name="date" id="date" type="text" class="validate" value="<?= isset($date) ? $date : '' ?>" />
+                                            <input name="date" id="date" type="text" class="validate" value="<?= isset($work->date) ? $work->date : '' ?>" />
                                             <label for="date">Date</label>
                                             <p class="text-danger"><?= isset($formError['date']) ? $formError['date'] : ''; ?></p>
                                         </div>
                                         <div class="input-field col s12 m6">
                                             <select name="workStyle">
-                                                <option value="" disabled selected>Choisir</option>
+                                                <option value="<?= isset($work->idWorkStyle) ? $work->idWorkStyle : '' ?>" selected><?= isset($work->workStyle) ? $work->workStyle : '' ?></option>
                                                 <?php foreach ($listWorkStyles as $style) { ?>
                                                     <option value="<?= $style->idWorkStyle ?>"><?= $style->workStyle ?></option>
                                                 <?php } ?>
@@ -126,7 +126,7 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12 m12">
-                                            <input name="technic" id="technic" type="text" class="validate" value="<?= isset($technic) ? $technic : '' ?>" />
+                                            <input name="technic" id="technic" type="text" class="validate" value="<?= isset($work->technic) ? $work->technic : '' ?>" />
                                             <label for="technic">Spécificités techniques (taille poids, etc)</label>
                                             <p class="text-danger"><?= isset($formError['technic']) ? $formError['technic'] : ''; ?></p>
                                         </div>
@@ -137,10 +137,10 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                                             <div class="file-field input-field">
                                                 <div class="userchoicebutton btn">
                                                     <span>Photo</span>
-                                                    <input  type="file" name="fileToUpload" id="fileToUpload">
+                                                    <input  type="file" name="fileToUpload" id="fileToUpload" />
                                                 </div>
                                                 <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text" placeholder="jpg, jpeg ou png || 2Mo MAX">
+                                                    <input class="file-path validate" type="text" placeholder="jpg, jpeg ou png || 2Mo MAX" value="<?= isset($work->picture) ? $work->picture : '' ?>" />
                                                 </div>
                                                 <p class="text-danger"><?= isset($formError['fileToUpload']) ? $formError['fileToUpload'] : ''; ?></p>
                                                 <p class="text-danger"><?= isset($uploadError['NaImage']) ? $uploadError['NaImage'] : ''; ?></p>

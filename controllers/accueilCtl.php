@@ -1,6 +1,6 @@
 <?php
 //On indique le dossier images
-$chem_img = "./img";
+$chem_img = "./img/artWorks";
 //On ouvre le dossier images
 $handle = opendir($chem_img);
 //On parcoure chaque élément du dossier
@@ -30,5 +30,4 @@ if ($size[0] > $largeur_maxi) {
 }
 //On ferme le dossier
 closedir($handle);
-?>
 

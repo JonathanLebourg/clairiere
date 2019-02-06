@@ -1,9 +1,11 @@
-<div class="container">
+<div class="container-fluid">
     <div class="col s12 m8">
-        <h1>CONTACT</h1>
-        <div class="divider"></div>
+        <hr>
+        <h1><b>Contactez le site</b></h1>
+        <hr>
         <p>Vous desirez nous faire part d'un message, vous êtes sur la bonne page.</p>        
     </div>
+    <div class="container">
     <div class="col s12 m6">
         <form class="col s12" method="POST" action="" >
             <div class="row">
@@ -30,6 +32,7 @@
             </div>
         </form>
     </div>
+        </div>
 </div>
 
 

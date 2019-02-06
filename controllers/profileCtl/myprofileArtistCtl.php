@@ -110,18 +110,12 @@ if (isset($_GET['id'])) {
     }
 
     if (isset($_POST['submitModif']) && isset($_GET['modif'])) {
-        $artWorkModif = new artWork();
-        $artWorkModif->idArtWork = $_GET['modif'];
-        $modifiedArtWork = $artWorkModif->SeeArtWork();
-        
-        $fileToDelete = './img/artWorks/' . $modifiedArtWork->picture;
-        unlink($fileToDelete);
-        
+
         $uploadError = [];
 
         $fileToUpload = $_FILES['fileToUpload'];
         $file = pathinfo($_FILES['fileToUpload']['name']);
-
+        var_dump($fileToUpload);
         $target_dir = "./img/artWorks/";
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
@@ -160,8 +154,14 @@ if (isset($_GET['id'])) {
 // if everything is ok, try to upload file
         } else {
             if (count($uploadError) == 0 && count($formError) == 0) {
-                
-                
+
+                $artWorkModif = new artWork();
+                $artWorkModif->idArtWork = $_GET['modif'];
+                $modifiedArtWork = $artWorkModif->SeeArtWork();
+
+                $fileToDelete = './img/artWorks/' . $modifiedArtWork->picture;
+                unlink($fileToDelete);
+
                 $artWorkModif->title = $title;
                 $artWorkModif->technic = $technic;
                 $artWorkModif->date = $date;
