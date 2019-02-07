@@ -33,18 +33,18 @@ if (isset($_POST['title'])) {
     }
 }
 
-if (isset($_POST['technic'])) {
+if (isset($_POST['technicalDescription'])) {
     //déclarion de la variable pseudo avec le htmlspecialchar 
-    $technic = htmlspecialchars($_POST['technic']);
+    $technicalDescription = htmlspecialchars($_POST['technicalDescription']);
     //test de la regex si elle est invalide
-    if (!preg_match($regexTextAndNumber, $_POST['technic'])) {
+    if (!preg_match($regexTextAndNumber, $_POST['technicalDescription'])) {
         //stocker dans le tableau le rapport d'erreur
-        $formError['technic'] = 'Saisie invalide';
+        $formError['technicalDescription'] = 'Saisie invalide';
     }
     // verifie si le champs de nom et vide
-    if (empty($_POST['technic'])) {
+    if (empty($_POST['technicalDescription'])) {
         //stocker dans le tableau le rapport d'érreur
-        $formError['technic'] = 'Champ obligatoire';
+        $formError['technicalDescription'] = 'Champ obligatoire';
     }
 }
 if (isset($_POST['date'])) {
@@ -70,17 +70,17 @@ if (isset($_POST['workStyle'])) {
     $formError['workStyle'] = 'Choix obligatoire';
 }
 
-if (isset($_POST['description'])) {
+if (isset($_POST['optionalDescription'])) {
     //déclarion de la variable town avec le htmlspecialchar 
-    $description = htmlspecialchars($_POST['description']);
+    $optionalDescription = htmlspecialchars($_POST['optionalDescription']);
     //test de la regex si elle est invalide
-    if (strlen($description) > 2000) {
+    if (strlen($optionalDescription) > 2000) {
         //stocker dans le tableau le rapport d'erreur
-        $formError['description'] = '2 000 caractères maximum';
+        $formError['optionalDescription'] = '2 000 caractères maximum';
     }
-    if (empty($_POST['description'])) {
+    if (empty($_POST['optionalDescription'])) {
         //stocker dans le tableau le rapport d'érreur
-        $formError['description'] = 'Champ obligatoire';
+        $formError['optionalDescription'] = 'Champ obligatoire';
     }
 }
 //if (empty($_POST['fileToUpload'])) {
@@ -133,9 +133,9 @@ if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name'])) {
         if (count($uploadError) == 0 && count($formError) == 0) {
             
             $artWork->title = $title;
-            $artWork->technic = $technic;
+            $artWork->technicalDescription = $technicalDescription;
             $artWork->date = $date;
-            $artWork->description = $description;
+            $artWork->optionalDescription = $optionalDescription;
             $artWork->picture = $file['basename'];
             $artWork->idUser = $_GET['id'];
             $artWork->idWorkStyle = $workStyle;

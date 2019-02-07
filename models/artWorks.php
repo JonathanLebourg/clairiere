@@ -6,12 +6,14 @@ class artWork extends BDD {
 //déclaration des attributs identiques à la table `artWorks`
     public $idArtWork;
     public $title;
-    public $technic;
+    public $technicalDescription;
     public $date;
-    public $description;
+    public $optionalDescription;
     public $picture;
+    public $price;
     public $idUser;
     public $idWorkStyle;
+    public $modality;
 //-----------------
 //PARTIE GENERALE
 //-----------------
@@ -43,38 +45,41 @@ class artWork extends BDD {
     public function addArtWork() {
         $query = 'INSERT INTO `clair_artWorks` '
                 . '      SET `title`= :title, '
-                . '      `technic`= :technic,'
+                . '      `technicalDescription`= :technicalDescription,'
                 . '      `date`= :date,'
-                . '      `description`= :description,'
-                . '      `picture`=:picture,'
+                . '      `optionalDescription`= :optionalDescription,'
+                . '      `picture`=:picture, '
+                . '      `price`=:price, '
                 . '      `idUser`= :idUser,'
-                . '      `idWorkStyle`= :idWorkStyle';
+                . '      `idWorkStyle`= :idWorkStyle, ';
         $addArtWork = $this->BDD->prepare($query);
         $addArtWork->bindValue(':title', $this->title, PDO::PARAM_STR);
-        $addArtWork->bindValue(':technic', $this->technic, PDO::PARAM_STR);
+        $addArtWork->bindValue(':technicalDescription', $this->technicalDescription, PDO::PARAM_STR);
         $addArtWork->bindValue(':date', $this->date, PDO::PARAM_STR);
-        $addArtWork->bindValue(':description', $this->description, PDO::PARAM_STR);
+        $addArtWork->bindValue(':optionalDescription', $this->optionalDescription, PDO::PARAM_STR);
         $addArtWork->bindValue(':picture', $this->picture, PDO::PARAM_STR);
+        $addArtWork->bindValue(':price', $this->price, PDO::PARAM_INT);
         $addArtWork->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         $addArtWork->bindValue(':idWorkStyle', $this->idWorkStyle, PDO::PARAM_STR);
+        $addArtWork->bindValue(':idCategory', $this->idCategory, PDO::PARAM_STR);
         return $addArtWork->execute();
     }
 //FONCTION UPDATE UNE OEUVRE    
     public function updateArtWork() {
         $query = 'UPDATE `clair_artWorks` '
                 . '      SET `title`= :title, '
-                . '      `technic`= :technic,'
+                . '      `technicaloptionalDescription`= :technicaloptionalDescription,'
                 . '      `date`= :date,'
-                . '      `description`= :description,'
+                . '      `optionalDescription`= :optionalDescription,'
                 . '      `picture`=:picture,'
                 . '      `idUser`= :idUser,'
                 . '      `idWorkStyle`= :idWorkStyle'
                 . '      WHERE `clair_artWorks`.`idArtWork` = :id';
         $updateArtWork = $this->BDD->prepare($query);
         $updateArtWork->bindValue(':title', $this->title, PDO::PARAM_STR);
-        $updateArtWork->bindValue(':technic', $this->technic, PDO::PARAM_STR);
+        $updateArtWork->bindValue(':technicaloptionalDescription', $this->technicaloptionalDescription, PDO::PARAM_STR);
         $updateArtWork->bindValue(':date', $this->date, PDO::PARAM_STR);
-        $updateArtWork->bindValue(':description', $this->description, PDO::PARAM_STR);
+        $updateArtWork->bindValue(':optionalDescription', $this->optionalDescription, PDO::PARAM_STR);
         $updateArtWork->bindValue(':picture', $this->picture, PDO::PARAM_STR);
         $updateArtWork->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         $updateArtWork->bindValue(':idWorkStyle', $this->idWorkStyle, PDO::PARAM_STR);
@@ -133,5 +138,16 @@ class artWork extends BDD {
         $artWork->execute();
         $artWorkById = $artWork->fetch(PDO::FETCH_OBJ);
         return $artWorkById;
+    }
+//-----------------
+//----STATS
+//-----------------
+//    fonction pour compter le nombre d'artistes avec la fonction rowcount()
+    public function artWorksCount() {
+        $query = 'SELECT * FROM `clair_artWorks` ';
+        $result = $this->BDD->query($query);
+        $result->execute();
+        $artWorksCount = $result->rowCount();
+        return $artWorksCount;
     }
 }

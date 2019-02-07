@@ -179,7 +179,6 @@ if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name'])) {
         if (count($uploadError) == 0 && count($formError) == 0) {
             $artist->lastName = $lastName;
             $artist->firstName = $firstName;
-            $artist->lastName = $lastName;
             $artist->nickName = $pseudo;
             $artist->mail = $mail;
             $artist->password = $password;

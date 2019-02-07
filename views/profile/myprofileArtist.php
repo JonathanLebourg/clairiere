@@ -50,13 +50,15 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                 <?php foreach ($ListArtWorkByArtist as $work) { ?>
                     <div class="col s6 m3">
                         <div class="col s12 m12">
-                            <img src="img/artWorks/<?= $work->picture ?>" width="85%" />                    
+                            <a href="index.php?page=artWork&id=<?= $work->idArtWork; ?>">
+                                <img src="img/artWorks/<?= $work->picture ?>"  width="75%"/></a>                    
                         </div>
                         <div class="col s12 m12">
                             <div class="col s12 m6">
                                 <div class="card-title left-align"><?= $work->technic ?></div>
                                 <div class="card-title left-align"><?= $work->date ?></div>
                                 <div class="card-title left-align"><i><?= $work->workStyle ?></i></div>
+                                <div class="card-title left-align"><?= $work->description ?></div>
 
                             </div>
                             <div class="col s12 m6">

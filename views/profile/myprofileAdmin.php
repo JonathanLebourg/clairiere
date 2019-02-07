@@ -12,9 +12,9 @@ require 'controllers/adminCtl.php';
         <div class="col s12 m2">
             <div class="row"><p><b><?= $countUsers ?></b> INSCRITS sur le site</p></div>
             <div class="row"><p>dont :</p></div>
-            <div class="row"><p><b>$count</b> ARTISTES</p></div>
-            <div class="row"><p><b>$count</b> CLIENTS</p></div>
-            <div class="row"><p><b>$count</b> OEUVRES</p></div>
+            <div class="row"><p><b><?= $countArtists ?></b> ARTISTES</p></div>
+            <div class="row"><p><b><?= $countClients ?></b> CLIENTS</p></div>
+            <div class="row"><p><b><?= $countArtWorks ?></b> OEUVRES</p></div>
         </div>
         <div class="col s12 m10  basic">
             <div class="row">

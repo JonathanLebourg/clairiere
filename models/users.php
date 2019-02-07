@@ -12,10 +12,6 @@ class user extends BDD {
     public $mail;
     public $idUserType;
 
-//super requete à jointures avec tout de tout le monde
-//-----------------------------------------------
-//"SELECT * FROM clairiere.Users INNER JOIN userTypes ON userTypes.id = Users.id_userTypes LEFT JOIN biography ON biography.id_Users = Users.id LEFT JOIN specialities ON specialities.id = biography.id_specialities";
-
 //-----------------
 //PARTIE GENERALE
 //-----------------
@@ -34,7 +30,7 @@ class user extends BDD {
         return $data;
     }
 //     fonction pour ajouter un utilisateur de type client ou artiste
-//     (pour l artiste aller voir aussi le addBio dans le model biographies)
+//     (pour l artiste aller voir aussi la fonction addBio() dans le model biographies)
 //    FONCTION AJOUT
     public function addUser() {
         $query = 'INSERT INTO clair_users '
@@ -94,7 +90,8 @@ class user extends BDD {
         } else {
             $count = FALSE;
         }
-//        si le nombre de ligne trouvées avec la fction rowcount() est 1
+//        si le nombre de ligne trouvées avec la fction rowcount() est 1 ou superieur
+//        return TRUE
 //        alors le user existe déjà
         return $count;
     }
@@ -162,6 +159,22 @@ class user extends BDD {
 //    fonction pour compter le nombre d'utilisateurs avec la fonction rowcount()
     public function usersCount() {
         $query = 'SELECT * FROM `clair_users`';
+        $result = $this->BDD->query($query);
+        $result->execute();
+        $usersCount = $result->rowCount();
+        return $usersCount;
+    }
+//    fonction pour compter le nombre de clients avec la fonction rowcount()
+    public function clientsCount() {
+        $query = 'SELECT * FROM `clair_users` WHERE `idUserType` = 3 ';
+        $result = $this->BDD->query($query);
+        $result->execute();
+        $usersCount = $result->rowCount();
+        return $usersCount;
+    }
+//    fonction pour compter le nombre d'artistes avec la fonction rowcount()
+    public function artistsCount() {
+        $query = 'SELECT * FROM `clair_users` WHERE `idUserType` = 2 ';
         $result = $this->BDD->query($query);
         $result->execute();
         $usersCount = $result->rowCount();

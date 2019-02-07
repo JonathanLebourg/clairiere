@@ -15,6 +15,10 @@ $listSpec = $spec->listSpec();
 $listArtWorks = $artWork->listArtWorks();
 //DETERMINER LE NOMBRES D UTILISATEURS
 $countUsers = $user->usersCount();
+$countClients = $user->clientsCount();
+$countArtists = $user->artistsCount();
+$countArtWorks = $artWork->artWorksCount();
+
 
 if (isset($_POST['deleteUser'])) {
 

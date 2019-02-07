@@ -53,8 +53,8 @@
                         include('views/form/worksForm.php');
                         break;
 
-                    case 'validate':
-                        include('views/form/validate.php');
+                    case 'validateUser':
+                        include('views/form/validate/validateUser.php');
                         break;
 //                        -----------PROFILS-----------
                     case 'admin':
@@ -65,6 +65,10 @@
                         break;
                     case 'myprofileClient':
                         include('views/profile/myprofileClient.php');
+                        break;
+                    
+                    case 'artWork':
+                        include('views/profile/profileArtWork.php');
                         break;
 
                     case 'listArtists':
