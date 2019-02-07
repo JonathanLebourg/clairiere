@@ -2,9 +2,6 @@
 require 'controllers/profileCtl/myprofileArtistCtl.php';
 ?>
 
-
-
-
 <div class="profileArtistBody">
 
     <div class="container-fluid">

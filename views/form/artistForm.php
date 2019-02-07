@@ -18,12 +18,12 @@ require 'controllers/formsCtl/artistFormController.php';
             <form class="col s12" method="POST" action="" enctype="multipart/form-data">
                 <div class="row">
                     <div class="input-field col s12 m6">
-                        <input name="lastName" id="lastName" type="text" class="validate" value="<?= isset($lastName) ? $lastName : '' ?>" />
+                        <input name="lastName" id="lastName" type="text" class="validate" value="<?= isset($artistById->lastName) ? $artistById->lastName : '' ?>" />
                         <label for="lastName">Nom</label>
                         <p class="text-danger"><?= isset($formError['lastName']) ? $formError['lastName'] : ''; ?></p>
                     </div>
                     <div class="input-field col s12 m6">
-                        <input name="firstName" id="firstName" type="text" class="validate" value="<?= isset($firstName) ? $firstName : '' ?>" />
+                        <input name="firstName" id="firstName" type="text" class="validate" value="<?= isset($artistById->firstName) ? $artistById->firstName : '' ?>" />
                         <label for="firstName">Prénom</label>
                         <p class="text-danger"><?= isset($formError['firstName']) ? $formError['firstName'] : ''; ?></p>
                     </div>
@@ -31,19 +31,19 @@ require 'controllers/formsCtl/artistFormController.php';
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <span></span>
-                        <input name="pseudo" id="pseudo" type="text" class="validate" value="<?= isset($pseudo) ? $pseudo : '' ?>" />
+                        <input name="pseudo" id="pseudo" type="text" class="validate" value="<?= isset($artistById->nickName) ? $artistById->nickName : '' ?>" />
                         <label for="pseudo">Nom d'artiste | sera aussi votre pseudo de connexion </label>
                         <p class="text-danger"><?= isset($formError['pseudo']) ? $formError['pseudo'] : ''; ?></p>
                     </div>
                     <div class="input-field col s12 m6">
-                        <input name="mail" id="mail" type="text" class="validate" value="<?= isset($mail) ? $mail : '' ?>" />
+                        <input name="mail" id="mail" type="text" class="validate" value="<?= isset($artistById->mail) ? $artistById->mail : '' ?>" />
                         <label for="mail">Mail</label>
                         <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6">
-                        <input name="password" id="password" type="password" class="validate" value="<?= isset($password) ? $password : '' ?>" />
+                        <input name="password" id="password" type="password" class="validate" value="<?= isset($artistById->password) ? $artistById->password : '' ?>" />
                         <label for="password">Mot de passe | 8 à 12 caractères (minuscules, MAJUSCULES, chiffres UNIQUEMENT)</label>
                         <p class="text-danger"><?= isset($formError['password']) ? $formError['password'] : ''; ?></p>
                     </div>
@@ -58,10 +58,10 @@ require 'controllers/formsCtl/artistFormController.php';
                         <div class="file-field input-field">
                             <div class="userchoicebutton btn">
                                 <span>Photo de profil</span>
-                                <input  class="validateButton" type="file" name="fileToUpload" id="fileToUpload">
+                                <input  type="file" name="fileToUpload" id="fileToUpload">
                             </div>
                             <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="jpg, jpeg ou png || 2Mo MAX">
+                                <input class="file-path validate" type="text" value="<?= isset($artistById->profilePicture) ? $artistById->profilePicture : '' ?>" placeholder="jpg, jpeg ou png || 2Mo MAX">
                             </div>
                             <p class="text-danger"><?= isset($formError['fileToUpload']) ? $formError['fileToUpload'] : ''; ?></p>
                             <p class="text-danger"><?= isset($uploadError['NaImage']) ? $uploadError['NaImage'] : ''; ?></p>
@@ -75,7 +75,7 @@ require 'controllers/formsCtl/artistFormController.php';
                         <div class="col s12 m3"></div>
                         <div class="input-field col s12 m6">
                             <select name="specialities">
-                                <option value="" disabled selected>choisir une spécialité</option>
+                                <option value="<?= isset($artistById->speciality) ? $artistById->speciality : '' ?>" disabled selected>choisir une spécialité</option>
                                 <?php foreach ($listSpeciality as $spec) { ?>
                                     <option value="<?= $spec->idSpeciality ?>"><?= $spec->speciality ?></option>
                                 <?php } ?>
@@ -100,13 +100,13 @@ require 'controllers/formsCtl/artistFormController.php';
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="present" class="materialize-textarea" name="present" maxlength="2000"><?= isset($present) ? $present : '' ?></textarea>
+                        <textarea id="present" class="materialize-textarea" name="present" maxlength="2000"><?= isset($artistById->present) ? $artistById->present : '' ?></textarea>
                         <label for="present">Texte de présentation ||  <i>2000 caractères MAX.</i>  <span>  <i>* modifiable ultèrieurement</i></span></label>
                         <p class="text-danger"><?= isset($formError['present']) ? $formError['present'] : ''; ?></p>
                     </div>
                 </div>
                 <div class="row">
-                    <button class="validateButton btn waves-effect waves-light" type="submit" name="submit">S'inscrire
+                    <button class="userchoicebutton btn waves-effect waves-light" type="submit" name="submit">S'inscrire
                     </button>
                 </div>
             </form>

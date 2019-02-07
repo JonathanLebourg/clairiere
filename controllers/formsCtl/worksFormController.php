@@ -7,7 +7,6 @@ $listWorkStyles = $workStyle->listStyles();
 
 $artWork = new artWork();
 
-
 //Déclaration des regex
 //Déclaration regex nom
 $regexText = '/^[A-zà-Ÿ -\'\!,;.:?]+$/';
@@ -139,7 +138,8 @@ if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name'])) {
             $artWork->picture = $file['basename'];
             $artWork->idUser = $_GET['id'];
             $artWork->idWorkStyle = $workStyle;
-                     
+            $artWork->idModality = $modality;
+            
             $exist = $artWork->alreadyExist();
             
             if ($exist == TRUE) {

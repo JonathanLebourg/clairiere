@@ -18,16 +18,33 @@ $(document).ready(function () {
         } else
             $('.card-action a').addClass("disabled")
     })
-    $('.tabs').tabs();
-//    
-//    var tables = $('.datatable').DataTable();
-// 
-//tables.page( 'next' ).draw( false );
-//    $('#datatable').DataTable();
-//    $('#datatable2').DataTable();
-$("table[id^='datatable']").DataTable();
 
+     function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#output').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#fileToUpload").change(function () {
+        readURL(this);
+    });
 });
+
+
+
+
+
+
+
+
+
 
 //**-------carousel--------**
 //$(document).ready(function () {

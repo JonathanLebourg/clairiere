@@ -16,7 +16,6 @@ body{
     flex-direction: column;
     font-size: 3vh;
 }
-
 main {
     flex: 1 0 auto;
 }
@@ -35,6 +34,9 @@ hr {
     background-image: -moz-linear-gradient(left, #f0f0f0, #31d019, #f0f0f0);
     background-image: -ms-linear-gradient(left, #f0f0f0, #31d019, #f0f0f0);
     background-image: -o-linear-gradient(left, #f0f0f0, #31d019, #f0f0f0); 
+}
+#output{
+    max-height: 150px;
 }
 /*boutons d envois ou de validations*/
 .validateButton{
@@ -55,13 +57,11 @@ hr {
     border: solid rgb(49,208,25) 0.3vh;
     margin-bottom: 2vh;
     background-color: rgba(49,208,25,5%);
-    
 }
 .borderArtist{
     border: solid rgba(49,208,25,50%) 0.5vh;
     margin: 3vh;
     background-color: rgba(49,208,25,15%);
-    
 }
 /*------------------
 --------NAVBAR------
@@ -128,7 +128,6 @@ nav .dropdown-content li a:hover {
 .inscription:hover{
     color: rgb(49,208,25);
 }
-
 /*-------------------
 ------FOOTER--------
 -------------------*/
@@ -141,10 +140,8 @@ nav .dropdown-content li a:hover {
 .accueilText{
     margin-bottom: 3vh;
 }
-
-
-
-
+/*---------------------------------------------*/
+/*A TRIER*/
 .basic{
     min-height: 60vh;   
 }
@@ -153,12 +150,7 @@ nav .dropdown-content li a:hover {
     float: left;
 }
 
-
-/*h1, h2{
-    text-align: center;  
-    margin: 25px;
-}/*
-*/.cardProfil{
+.cardProfil{
     height: 40vh;
 }
 .content1{
@@ -208,3 +200,35 @@ nav .dropdown-content li a:hover {
     font-size:14px;
     font-weight: bold;
 }*/
+/*-----------------------------------------------*/
+
+/*-------------------
+------PERSONNALISATION DES INPUTS MATERIALIZE--------
+-------------------*/
+  /* label color */
+   .input-field label {
+     color: #000;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #000;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #000;
+   }
