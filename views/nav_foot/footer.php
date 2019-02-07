@@ -13,7 +13,13 @@
     <!-- Modal Structure -->
     <div id="modal2" class="modal modal-fixed-footer">
         <div class="modal-content black-text">
-            <h4>Conditions Générales</h4>
+            <hr>
+            <h1>Conditions Générales</h1>
+            <hr>
+            <p>Toutes les images présentes sur ce site sont protégées par le droit de la propriété intellectuelle ou artistique. </p>
+            
+            
+            
             <p>Les conditions générales de vente entre professionnels (ou B2B) doivent obligatoirement mentionner :
 
                 les conditions de vente ;

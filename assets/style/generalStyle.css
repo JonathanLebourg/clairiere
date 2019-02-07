@@ -26,6 +26,7 @@ h1{
 }
 p{
     text-align: center;
+    font-size: 3vh;
 }
 hr { 
     border: 0; 
@@ -43,6 +44,24 @@ hr {
 }
 .validateButton:hover{
     background-color: rgb(49,208,25);
+}
+.mention{
+    color: rgb(49,208,25);
+}
+.mention:hover{
+    color: rgba(49,208,25, 0.6);
+}
+.border{
+    border: solid rgb(49,208,25) 0.3vh;
+    margin-bottom: 2vh;
+    background-color: rgba(49,208,25,5%);
+    
+}
+.borderArtist{
+    border: solid rgba(49,208,25,50%) 0.5vh;
+    margin: 3vh;
+    background-color: rgba(49,208,25,15%);
+    
 }
 /*------------------
 --------NAVBAR------

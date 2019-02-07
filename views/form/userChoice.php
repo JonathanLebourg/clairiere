@@ -5,14 +5,16 @@
         <hr>
     </div>
 
-    <div class="col s12 m6 center-align conditionCheck">
-        <h5>IMPORTANT</h5>
-        <form method="POST" action="#">  
-            <label>
-                <input name="chekbox" type="checkbox" />
-                <span>Veuillez confimer avoir bien pris connaissance des <a class="modal-trigger" href="#modal2">conditions générales</a></span>   
-            </label>
-        </form>
+    <div class="col s12 m6 offset-m3">
+
+        <div class="border container"><h5>IMPORTANT</h5>
+            <form method="POST" action="#">  
+                <label>
+                    <input name="checkbox" type="checkbox" />
+                    <span>Veuillez confimer avoir bien pris connaissance des <a class="mention modal-trigger" href="#modal2">conditions générales</a></span>   
+                </label>
+            </form>
+        </div>
     </div>
 </div>
 <div class="container">
@@ -25,7 +27,7 @@
                         <br />Créez votre page de profil et envoyer ensuite vos visuels de vos oeuvres afin de les mettre en vente ou à estimer par les autres internautes.</p>
                 </div>
                 <div class="card-action">
-                    <a class="disabled btn userchoicebutton waves-effect waves-light btn" name="button" href="index.php?page=artistForm" >S'inscrire en tant qu'artiste</a>
+                    <a class="disabled validateButton waves-effect waves-light btn" name="button" href="index.php?page=artistForm" >S'inscrire en tant qu'artiste</a>
                 </div>
             </div>
         </div>
@@ -37,7 +39,7 @@
                         <br />Inscrivez-vous et découvrez les artistes !</p>
                 </div>
                 <div class="card-action">
-                    <a class="disabled btn userchoicebutton waves-effect waves-light btn" name="button" href="index.php?page=clientForm" >S'inscrire en tant que client</a>
+                    <a class="disabled btn validateButton waves-effect waves-light btn" name="button" href="index.php?page=clientForm" >S'inscrire en tant que client</a>
                 </div>
             </div>
         </div>

@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="row">
-                <button class="userchoicebutton btn waves-effect waves-light" type="submit" name="submit">Envoyer</button>
+                <button class="validateButton btn waves-effect waves-light" type="submit" name="submitContact">Envoyer</button>
             </div>
         </form>
     </div>

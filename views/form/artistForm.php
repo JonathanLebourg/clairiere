@@ -4,7 +4,9 @@ require 'controllers/formsCtl/artistFormController.php';
 <div class="container-fluid">
     <div class="col s12 m8">
         <div class="col s12 m9">
+            <hr>
             <h1>Vous vous apprêtez à vous inscrire sur le site en tant qu'artiste</h1>
+            <hr>
             <p>Suivez les instuctions et renseignez chaque champ</p>
         </div>
         <?php if ($addOK === FALSE) { ?>
@@ -56,7 +58,7 @@ require 'controllers/formsCtl/artistFormController.php';
                         <div class="file-field input-field">
                             <div class="userchoicebutton btn">
                                 <span>Photo de profil</span>
-                                <input  type="file" name="fileToUpload" id="fileToUpload">
+                                <input  class="validateButton" type="file" name="fileToUpload" id="fileToUpload">
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="jpg, jpeg ou png || 2Mo MAX">
@@ -104,7 +106,7 @@ require 'controllers/formsCtl/artistFormController.php';
                     </div>
                 </div>
                 <div class="row">
-                    <button class="userchoicebutton btn waves-effect waves-light" type="submit" name="submit">S'inscrire
+                    <button class="validateButton btn waves-effect waves-light" type="submit" name="submit">S'inscrire
                     </button>
                 </div>
             </form>

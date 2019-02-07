@@ -18,7 +18,7 @@ include './controllers/accueilCtl.php';
                 <div class="card-content black-text">
                     <div class="row">
                         <a onclick="window.open(this.href, '_blank');return false;" href="<?= $chem_img; ?>/<?= $listef[$random_img]; ?>" onclick="window.open(this.href, '_blank');return false;">
-                            <img style="border:none; width: <?= $width; ?>px ; height: <?= $height; ?>px " src="<?= $chem_img; ?>/<?= $listef[$random_img]; ?>" alt="<?= $listef[$random_img]; ?>" />
+                            <img  oncontextmenu="return false" style="border:none; width: <?= $width; ?>px ; height: <?= $height; ?>px " src="<?= $chem_img; ?>/<?= $listef[$random_img]; ?>" alt="<?= $listef[$random_img]; ?>" />
                         </a>
                     </div>                   
                 </div>

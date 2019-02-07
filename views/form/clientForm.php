@@ -2,7 +2,9 @@
 <div class="container-fluid">
     <div class="col s12 m8">
         <div class="col s12 m9">
+            <hr>
             <h1>Vous vous apprêtez à vous inscrire sur le site en tant que client</h1>
+            <hr>
             <p>Suivez les instuctions et renseignez chaque champ</p>
         </div>
         <?php if ($addOK === FALSE) { ?>
@@ -48,7 +50,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button class="userchoicebutton btn waves-effect waves-light" type="submit" name="submit">S'inscrire
+                    <button class="validateButton btn waves-effect waves-light" type="submit" name="submit">S'inscrire
                     </button>
                 </div>
             </form>
