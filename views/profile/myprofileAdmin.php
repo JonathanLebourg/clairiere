@@ -1,5 +1,6 @@
 <?php
 require 'controllers/adminCtl.php';
+
 ?>
 
 <div class="container-fluid">
@@ -10,7 +11,7 @@ require 'controllers/adminCtl.php';
     </div>
     <div class="row">
         <div class="col s12 m2">
-            <div class="row"><p><b><?= $countUsers ?></b> INSCRITS sur le site</p></div>
+            <div class="row"><p><b><?= $countUsers - 1?></b> INSCRITS sur le site</p></div>
             <div class="row"><p>dont :</p></div>
             <div class="row"><p><b><?= $countArtists ?></b> ARTISTES</p></div>
             <div class="row"><p><b><?= $countClients ?></b> CLIENTS</p></div>
@@ -33,9 +34,9 @@ require 'controllers/adminCtl.php';
                             <li class="tab col s3 m3"><a href="#worksList">Liste complète des oeuvres</a></li>
                         </ul>
                     </div>          
-<!--                    <div id="numbers" class="col s12" >
-                        <p><?= $countUsers ?> inscrits sur le site</p>
-                    </div>-->
+                    <!--                    <div id="numbers" class="col s12" >
+                                            <p><?= $countUsers ?> inscrits sur le site</p>
+                                        </div>-->
                     <div id="usersList" class="col s12" >
                         <div class="row">
                             <table id="datatable" class="display centered responsive-table">
@@ -93,10 +94,10 @@ require 'controllers/adminCtl.php';
                                             <div class="container">
                                                 <p>ATTENTION, action irreversible !!!</p>
                                                 <form method="POST" action="index.php?page=admin&user=<?= $user->userId; ?>" id="formIdDeleteUser<?= $user->userId; ?>">
-                                                    <input  form="formIdDeleteUser<?= $user->userId; ?>" class="modal-action btn waves-effect waves-light choicebutton delete" type="submit" value="EFFACER ARTISTE" name="deleteUser" />
+                                                    <input  form="formIdDeleteUser<?= $user->userId; ?>" class="modal-action btn waves-effect waves-light validateButton" type="submit" value="EFFACER ARTISTE" name="deleteUser" />
                                                 </form>
                                                 <div class="row">
-                                                    <a class="modal-close waves-effect waves-light choicebutton delete">ANNULER</a>
+                                                    <a class="modal-close waves-effect waves-light">ANNULER</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -113,8 +114,8 @@ require 'controllers/adminCtl.php';
                                     <tr>
                                         <th><b>Titre</b></th>
                                         <th><b>date</b></th>
-                                        <th><b>technique</b></th>
-                                        <th><b>description</b></th>
+                                        <th><b>Description technique</b></th>
+                                        <th><b>Description optionnelle</b></th>
                                         <th><b>Style</b></th>
                                         <th><b>nom du fichier</b></th>
                                         <th><b>Détail</b></th>
@@ -128,11 +129,10 @@ require 'controllers/adminCtl.php';
                                         <tr>
                                             <td><?= $work->title ?></td>
                                             <td><?= $work->date ?></td>
-                                            <td><?= $work->technic ?></td>
-                                            <td><?= $work->description ?></td>
+                                            <td><?= $work->technicalDescription ?></td>
+                                            <td><?= $work->optionalDescription ?></td>
                                             <td> <?= $work->workStyle ?> </td> 
-
-
+                                            <td> <?= $work->picture ?> </td>
 
                                             <td> <a href="index.php?page=ArtWork&id=<?= $work->idArtWork; ?>">
                                                     <i class="tiny material-icons">person</i>

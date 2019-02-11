@@ -3,6 +3,7 @@
 require_once 'connectBDD.php';
 
 class user extends BDD {
+
 //déclaration des attributs identiques à la table `users`
     public $idUser;
     public $nickName;
@@ -29,6 +30,7 @@ class user extends BDD {
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
     }
+
 //     fonction pour ajouter un utilisateur de type client ou artiste
 //     (pour l artiste aller voir aussi la fonction addBio() dans le model biographies)
 //    FONCTION AJOUT
@@ -49,6 +51,7 @@ class user extends BDD {
         $addUser->bindValue(':idUserType', $this->idUserType, PDO::PARAM_INT);
         return $addUser->execute();
     }
+
 //    FONCTION UPDATE USER
     public function updateUser() {
         $query = 'UPDATE clair_users '
@@ -69,6 +72,7 @@ class user extends BDD {
         $updateUser->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUser->execute();
     }
+
 //    FONCTION EFFACER
     public function deleteUser() {
         $query = 'DELETE FROM `clair_users` '
@@ -77,6 +81,7 @@ class user extends BDD {
         $deleteUser->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $deleteUser->execute();
     }
+
 //fonction pour vérifier si un utilisateur existe déjà en cherchant avec le pseudo ET le mail
     public function alreadyExist() {
         $query = 'SELECT * FROM `clair_users` '
@@ -95,6 +100,7 @@ class user extends BDD {
 //        alors le user existe déjà
         return $count;
     }
+
 //    fonctionne pour cibler un utilisateur selon son id
     public function userById() {
         $query = 'SELECT *, `clair_users`.`idUser` AS `userId` FROM `clair_users` '
@@ -105,12 +111,13 @@ class user extends BDD {
                 . 'LEFT JOIN `clair_specialities` AS `t3` '
                 . 'ON `t3`.`idSpeciality` = `t2`.`idSpeciality` '
                 . 'WHERE `clair_users`.`idUser` = :idUser';
-             $result = $this->BDD->prepare($query);
-             $result->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
-             $result->execute();
+        $result = $this->BDD->prepare($query);
+        $result->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        $result->execute();
         $data = $result->fetch(PDO::FETCH_OBJ);
         return $data;
     }
+
 //-----------------
 //PARTIE ARTISTES
 //-----------------
@@ -129,6 +136,7 @@ class user extends BDD {
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
     }
+
 //    fonction qui liste les artistes selon leur speciality 
 //    grace à une boucle dans le controller listArtistCtl ou un foraech détemine le $searchOrder     
     public function listArtistsBySpeciality($searchOrder) {
@@ -145,6 +153,7 @@ class user extends BDD {
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
     }
+
 //    la fonction qui retrouve le dernier inscrit permet d'ajouter ensuite la biographie
     public function lastUser() {
 //        on utilise la fonction SQL MAX() qui permet de retrouver le plus grand id et donc le dernier
@@ -152,7 +161,8 @@ class user extends BDD {
         $result = $this->BDD->query($query);
         $data = $result->fetch(PDO::FETCH_OBJ);
         return $data;
-    }    
+    }
+
 //----------------
 //PARTIE STATS
 //-----------------
@@ -164,6 +174,7 @@ class user extends BDD {
         $usersCount = $result->rowCount();
         return $usersCount;
     }
+
 //    fonction pour compter le nombre de clients avec la fonction rowcount()
     public function clientsCount() {
         $query = 'SELECT * FROM `clair_users` WHERE `idUserType` = 3 ';
@@ -172,6 +183,7 @@ class user extends BDD {
         $usersCount = $result->rowCount();
         return $usersCount;
     }
+
 //    fonction pour compter le nombre d'artistes avec la fonction rowcount()
     public function artistsCount() {
         $query = 'SELECT * FROM `clair_users` WHERE `idUserType` = 2 ';
@@ -179,5 +191,47 @@ class user extends BDD {
         $result->execute();
         $usersCount = $result->rowCount();
         return $usersCount;
+    }
+
+//    FONCTIONS UPDATE CLIENT PAR ATTRIBUT
+//       pour le pseudo
+    public function updateUserNickName() {
+        $query = 'UPDATE clair_users '
+                . 'SET `nickName`= :nickName '
+                . 'WHERE `idUser` = :idUser ';
+        $updateUserNickName = $this->BDD->prepare($query);
+        $updateUserNickName->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
+        $updateUserNickName->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        return $updateUserNickName->execute();
+    }
+    //       pour le pseudo
+    public function updateUserLastName() {
+        $query = 'UPDATE clair_users '
+                . 'SET `lastName`= :lastName '
+                . 'WHERE `idUser` = :idUser ';
+        $updateUserLastName = $this->BDD->prepare($query);
+        $updateUserLastName->bindValue(':lastName', $this->lastName, PDO::PARAM_STR);
+        $updateUserLastName->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        return $updateUserLastName->execute();
+    }
+//       pour le pseudo
+    public function updateUserFirstName() {
+        $query = 'UPDATE clair_users '
+                . 'SET `firstName`= :firstName '
+                . 'WHERE `idUser`= :idUser ';
+        $updateUserFirstName = $this->BDD->prepare($query);
+        $updateUserFirstName->bindValue(':firstName', $this->firstName, PDO::PARAM_STR);
+        $updateUserFirstName->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        return $updateUserFirstName->execute();
+    }
+    //       pour le pseudo
+    public function updateUserMail() {
+        $query = 'UPDATE clair_users '
+                . 'SET `mail`= :mail '
+                . 'WHERE `idUser` = :idUser ';
+        $updateUserMail = $this->BDD->prepare($query);
+        $updateUserMail->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+        $updateUserMail->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        return $updateUserMail->execute();
     }
 }

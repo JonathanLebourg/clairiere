@@ -11,9 +11,9 @@ require 'controllers/formsCtl/artistFormController.php';
         </div>
         <?php if ($addOK === FALSE) { ?>
             <div class="col s9 m6">VOUS EXISTEZ DÉJÀ !!</div>
-            </div>
-        <?php } else { ?>
-        
+        </div>
+    <?php } else { ?>
+
         <div class="container">           
             <form class="col s12" method="POST" action="" enctype="multipart/form-data">
                 <div class="row">
@@ -56,19 +56,26 @@ require 'controllers/formsCtl/artistFormController.php';
                 <div class="row">
                     <div class="input-field col s12">
                         <div class="file-field input-field">
-                            <div class="userchoicebutton btn">
-                                <span>Photo de profil</span>
-                                <input  type="file" name="fileToUpload" id="fileToUpload">
+                            <div class="file-field input-field col s6 m6">
+                                <div class="validateButton btn">
+                                    <span>Image</span>
+                                    <input  type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="jpg, jpeg ou png || 2Mo MAX">
+                                </div>
                             </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" value="<?= isset($artistById->profilePicture) ? $artistById->profilePicture : '' ?>" placeholder="jpg, jpeg ou png || 2Mo MAX">
+                            <div class="col s6 m6">
+                                <img src="" id="output" class="responsive-img" alt="aperçu de l'image" />
                             </div>
-                            <p class="text-danger"><?= isset($formError['fileToUpload']) ? $formError['fileToUpload'] : ''; ?></p>
-                            <p class="text-danger"><?= isset($uploadError['NaImage']) ? $uploadError['NaImage'] : ''; ?></p>
-                            <p class="text-danger"><?= isset($uploadError['exist']) ? $uploadError['exist'] : ''; ?></p>
-                            <p class="text-danger"><?= isset($uploadError['size']) ? $uploadError['size'] : ''; ?></p>
-                            <p class="text-danger"><?= isset($uploadError['type']) ? $uploadError['type'] : ''; ?></p>                    
-                            <p class="text-danger"><?= isset($uploadError['uploadNotOK']) ? $uploadError['uploadNotOK'] : ''; ?></p>
+                            <div class="error">
+                                <p class="text-danger"><?= isset($formError['fileToUpload']) ? $formError['fileToUpload'] : ''; ?></p>
+                                <p class="text-danger"><?= isset($uploadError['NaImage']) ? $uploadError['NaImage'] : ''; ?></p>
+                                <p class="text-danger"><?= isset($uploadError['exist']) ? $uploadError['exist'] : ''; ?></p>
+                                <p class="text-danger"><?= isset($uploadError['size']) ? $uploadError['size'] : ''; ?></p>
+                                <p class="text-danger"><?= isset($uploadError['type']) ? $uploadError['type'] : ''; ?></p>                    
+                                <p class="text-danger"><?= isset($uploadError['uploadNotOK']) ? $uploadError['uploadNotOK'] : ''; ?></p>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -106,7 +113,7 @@ require 'controllers/formsCtl/artistFormController.php';
                     </div>
                 </div>
                 <div class="row">
-                    <button class="userchoicebutton btn waves-effect waves-light" type="submit" name="submit">S'inscrire
+                    <button class="validateButton btn waves-effect waves-light" type="submit" name="submit">S'inscrire
                     </button>
                 </div>
             </form>

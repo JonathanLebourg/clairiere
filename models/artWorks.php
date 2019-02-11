@@ -48,10 +48,11 @@ class artWork extends BDD {
                 . '      `technicalDescription`= :technicalDescription,'
                 . '      `date`= :date,'
                 . '      `optionalDescription`= :optionalDescription,'
-                . '      `picture`=:picture, '
-                . '      `price`=:price, '
+                . '      `picture`= :picture, '
+                . '      `price`= :price, '
                 . '      `idUser`= :idUser,'
-                . '      `idWorkStyle`= :idWorkStyle ';
+                . '      `idWorkStyle`= :idWorkStyle, '
+                . '      `idModality`= :idModality ';
         $addArtWork = $this->BDD->prepare($query);
         $addArtWork->bindValue(':title', $this->title, PDO::PARAM_STR);
         $addArtWork->bindValue(':technicalDescription', $this->technicalDescription, PDO::PARAM_STR);

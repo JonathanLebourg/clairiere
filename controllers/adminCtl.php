@@ -26,8 +26,6 @@ if (isset($_POST['deleteUser'])) {
 
     $userById = $user->userById();
     $userById->idUser = $userById->userId;
-//    $userById->idUser = $userById->userId;
-    var_dump($userById);
 
     if ($userById->idUserType == 1) {
         echo 'IMPOSSIBLE D EFFACER L ADMINISTRATEUR';

@@ -2,7 +2,6 @@ $(document).ready(function () {
 //**-------dropdown-------**
     $('.dropdown-trigger').dropdown();
     $('.materialboxed').materialbox();
-//**-----------modal connexion----------**
     $('.modal').modal();
     //**-----navbar responsive----**
     $('.sidenav').sidenav({edge: 'right'});
@@ -10,6 +9,8 @@ $(document).ready(function () {
     $(document).ready(function () {
         $('select').formSelect();
     });
+    $('.tabs').tabs();
+    $('#datatable').DataTable();
 //**-----fction jquery pour activer les boutons ds userChoice quand on checked les conditions générales------**
     $('[name="checkbox"]').change(function () {
         if ($(this).is(':checked')) {
@@ -18,8 +19,27 @@ $(document).ready(function () {
         } else
             $('.card-action a').addClass("disabled")
     })
+    
+    
+    $('[name="submitNickName"]').click(function () {
+        $('.modifDivNickName').toggle(500);
+    });
+    $('[name="submitLastName"]').click(function () {
+        $('.modifDivLastName').toggle(500);
+    });
+    $('[name="submitFirstName"]').click(function () {
+        $('.modifDivFirstName').toggle(500);
+    });
+    $('[name="submitMail"]').click(function () {
+        $('.modifDivMail').toggle(500);
+    });
+    $('[name="submitPassword"]').click(function () {
+        $('.modifDivPassword').toggle(500);
+    });
 
-     function readURL(input) {
+
+//fction pour afficher l aperçu des images dans les formulaires
+    function readURL(input) {
 
         if (input.files && input.files[0]) {
             var reader = new FileReader();

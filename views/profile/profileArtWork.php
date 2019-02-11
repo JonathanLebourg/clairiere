@@ -27,9 +27,10 @@ require 'controllers/profileCtl/profileArtWorkCtl.php';
                             <span class="card-title left-align"><b><?= $workById->title ?></b></span>
                             <span class="card-title left-align">
                                 <a href="index.php?page=myprofileArtist&id=<?= $workById->idUser; ?>"><?= $workById->nickName ?></a></span>
-                            <span class="card-title left-align"><?= $workById->description ?></span>
+                            <span class="card-title left-align"><?= $workById->technicalDescription ?></span>
+                            <span class="card-title left-align"><i><?= $workById->optionalDescription ?></i></span>
                             <span class="card-title left-align"><i><?= $workById->date ?></i></span>
-
+                            <span class="card-title left-align"><b><?= $workById->price ?> €</b></span>
                         </div>
                     </div>
                 </div>

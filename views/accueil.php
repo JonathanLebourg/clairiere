@@ -4,7 +4,7 @@ include './controllers/accueilCtl.php';
 <div class="container-fluid presentation">
     <div class="row">
         <hr> 
-        <img class="responsive-img" src="./img/clairiere_logoTEST1.png" alt="logo" width="30%" />
+        <img class="responsive-img" src="./img/clairiere_logoTEST1.png" alt="logo" width="40%" />
         <hr>
         <div class="row">
             <p><b>"Penser, c'est chercher des clairières dans une forêt."</b>   <i>Jules Renard</i></p>

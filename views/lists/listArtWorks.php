@@ -9,30 +9,13 @@ require 'controllers/listsCtl/listArtWorksCtl.php';
 <div class="container">
     <?php foreach ($listArtWorks as $work) { ?>
         <div class="row">
-            <!--            <div class="col s6 m4">
-                            <a href="index.php?page=artWork&id=<?= $work->idArtWork ?>">
-                                <img src="./img/artWorks/<?= $work->picture ?>" width=200px/>                    
-                            </a>
-                        </div>
-                        <div class="col s6 m6 offset-m2">
-                            <div><?= $work->title ?></div>
-                            <div>
-                                <a href="index.php?page=myprofileArtist&id=<?= $work->idUser ?>">
-            <?= $work->nickName ?>
-                                </a>
-                            </div>
-                            <div><?= $work->workStyle ?></div>
-                            <div><?= $work->technic ?></div>
-                            <div><?= $work->date ?></div>
-                            <div><?= $work->description ?></div>
-                        </div>-->
-            <div class="row borderArtist">
-                <div class="col s6 m4">
+            <div class="row borderPreAlert3">
+                <div class="col s12 m4">
                     <a href="index.php?page=artWork&id=<?= $work->idArtWork ?>">
-                        <img src="./img/artWorks/<?= $work->picture ?>" width=200px/>
+                        <img class="responsive-img" src="./img/artWorks/<?= $work->picture ?>" width=200px/>
                     </a>                    
                 </div>
-                <div class="col s6 m8">
+                <div class="col s12 m8">
                     <div><h1><b><?= $work->title ?></b></h1></div>
                     <hr>
                     <div>
@@ -41,8 +24,9 @@ require 'controllers/listsCtl/listArtWorksCtl.php';
                         </a>
                     </div>
                     <div><b><?= $work->date ?></b></div>
-                    <div><b><?= $work->description ?></b></div>
-                    <div><?= $work->technic ?></div>   
+                    <div><b><?= $work->technicalDescription ?></b></div>
+                    <div><?= $work->optionalDescription ?></div>   
+                    <div><?= $work->price ?></div> 
                 </div>
             </div>
         </div>

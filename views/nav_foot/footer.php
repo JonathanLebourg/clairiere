@@ -16,9 +16,15 @@
             <hr>
             <h1>Conditions Générales</h1>
             <hr>
-            <p>Toutes les images présentes sur ce site sont protégées par le droit de la propriété intellectuelle ou artistique. </p>
+            <p><b>LA CLAIRIERE</b> est une création amateure à but totalement non lucratif dans le respect des droits fondamentaux
+            , droits à la personne et sa propriété intellectuelle.</p>
+            <p>Toutes les images présentes sur <b>LA CLAIRIERE</b> sont protégées par principe par le droit de la propriété intellectuelle ou artistique. </p>
             
+            <p><b>LA CLAIRIERE</b> previent tout utilisateur que <b>LA CLAIRIERE</b> n'est en possibilité 
+                technique de fournir pleinement la garantie de la sécurité des données partagées sur <b>LA CLAIRIERE</b> 
+                et plus particulèrement celles des fichiers images sur lesquelles on ne peut promettre aucune sureté entière.</p>
             
+            <p><b>LA CLAIRIERE</b> se defait de toute responsabilité resultant de la mise en contact des 2 parties.</p>
             
             <p>Les conditions générales de vente entre professionnels (ou B2B) doivent obligatoirement mentionner :
 
