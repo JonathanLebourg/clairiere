@@ -1,5 +1,6 @@
 <?php
 require 'controllers/navCtl.php';
+require 'controllers/formsCtl/connectCtl.php';
 ?>
 <!----------------------------
 ----------NAVBAR----------
@@ -13,7 +14,7 @@ require 'controllers/navCtl.php';
                 <li><a href="index.php?page=listArtists&speciality=tout">Tout</a></li>
                 <li class="divider"></li>
                 <?php foreach ($listSpecialities as $speciality) { ?>
-                    <li><a href="index.php?page=list&speciality=<?= $speciality->speciality ?>"><?= $speciality->speciality ?></a></li>
+                    <li><a href="index.php?page=listArtists&speciality=<?= $speciality->speciality ?>"><?= $speciality->speciality ?></a></li>
                 <?php } ?>
             </ul>
             <!-- Dropdown Structure ArtWorks-->
@@ -43,16 +44,21 @@ require 'controllers/navCtl.php';
                     <li><a href="index.php?page=admin"><b>Admin</b></a></li>
                 </ul>
             </div>
-            <div class="connectButtons row">                
-                <a  class="inscription" href="index.php?page=inscription">S'inscrire</a>
-                <button data-target="modal1" class="btn modal-trigger connect waves-effect waves-light" type="button" name="button">Se connecter</button>
+            <div class="connectButtons row"> 
+                <?php if (!isset($_SESSION['user'])) { ?>
+                    <a  class="inscription" href="index.php?page=inscription">S'inscrire</a>
+                    <button data-target="modalConnect" class="btn modal-trigger validateButton" type="button" name="button">Se connecter</button>
+                <?php } else { ?>             
+                    <a  class="inscription modal-trigger" href="#modalDeconnect">Se déconnecter</a>
+                    <a class="btn validateButton " href="index.php?page=myprofileClient&id=<?= $_SESSION['user']->idUser ?>">Mon profil</a>
+                    <?php } ?>   
             </div>
         </nav>
     </div>
 </div>
 
-<!-- Modal Structure -->
-<div id="modal1" class="modal">
+<!-- Modal Connexion -->
+<div id="modalConnect" class="modal">
     <div class="modal-content">
         <div class="container">
             <h1><b>Connexion</b></h1>
@@ -63,19 +69,19 @@ require 'controllers/navCtl.php';
                 <div class="row">  
                     <div class="input-field col s12 m12">  
                         <i class="material-icons prefix">account_circle</i>  
-                        <input id="pseudo" name="pseudo" type="text" required value="<?= isset($pseudo) ? $pseudo : '' ?>" />  
-                        <label class="label" for="pseudo">Pseudo de connexion</label> 
-                        <p class="text-danger"><?= isset($formError['pseudo']) ? $formError['pseudo'] : ''; ?></p>
+                        <input id="mail" name="mail" type="text" required value="" />  
+                        <label class="label" for="mail">Mail</label> 
+                        <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
                     </div>
                     <div class="input-field col s12 m12">  
                         <i class="material-icons prefix">https</i>  
-                        <input id="password" name="password" type="text" required value="<?= isset($password) ? $password : '' ?>"/>  
+                        <input id="password" name="password" type="text" required value=""/>  
                         <label class="label" for="password">Mot de passe</label>  
                         <p class="text-danger"><?= isset($formError['password']) ? $formError['password'] : ''; ?></p>
                     </div>
                 </div>
                 <div class="row">
-                    <button class="validateButton waves-effect waves-light btn-large" type="submit" >Se connecter</button>
+                    <button class="validateButton waves-effect waves-light btn-large" name="submitConnect" type="submit">Se connecter</button>
                 </div>
                 <div class="row">
                     <button class="validateButton modal-close waves-effect waves-light btn-small" onclick="window.location.href = 'index.php?page=inscription'">S'inscrire pour la première fois</button>
@@ -86,3 +92,4 @@ require 'controllers/navCtl.php';
     </div>
 </div>
 
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>

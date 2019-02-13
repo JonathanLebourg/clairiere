@@ -1,7 +1,7 @@
 <?php
 include './controllers/accueilCtl.php';
 ?>
-<div class="container-fluid presentation">
+<div class="container-fluid">
     <div class="row">
         <hr> 
         <img class="responsive-img" src="./img/clairiere_logoTEST1.png" alt="logo" width="40%" />
@@ -14,18 +14,18 @@ include './controllers/accueilCtl.php';
 <div class="container-fluid">
     <div class="row">
         <div class="col s12 m4">
-            <div class="card white darken-1 hoverable picturecard2">
+            <div class="card white darken-1 hoverable accueilCard">
                 <div class="card-content black-text">
                     <div class="row">
                         <a onclick="window.open(this.href, '_blank');return false;" href="<?= $chem_img; ?>/<?= $listef[$random_img]; ?>" onclick="window.open(this.href, '_blank');return false;">
-                            <img  oncontextmenu="return false" style="border:none; width: <?= $width; ?>px ; height: <?= $height; ?>px " src="<?= $chem_img; ?>/<?= $listef[$random_img]; ?>" alt="<?= $listef[$random_img]; ?>" />
+                            <img class="responsive-img" oncontextmenu="return false" style="border:none; width: <?= $width; ?>px ; height: <?= $height; ?>px " src="<?= $chem_img; ?>/<?= $listef[$random_img]; ?>" alt="<?= $listef[$random_img]; ?>" />
                         </a>
                     </div>                   
                 </div>
             </div>
         </div>
         <div class="col s12 m8">
-            <div class="card white darken-1 hoverable picturecard">
+            <div class="card white darken-1 hoverable accueilCard">
                 <div class="card-content black-text">
                     <div class="accueilText">
                         <p><i>« Une clairière est un lieu ouvert dans une zone boisée où la lumière du soleil arrive jusqu'au sol. Elle est un élément de l'écosystème forestier et peut être une source de produits forestiers autres que le bois. »

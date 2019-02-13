@@ -7,20 +7,27 @@ require 'controllers/listsCtl/listArtistsCtl.php';
     <hr>
 </div>
 <div class="container">
-    <?php foreach ($listArtist as $artist) { ?>
-        <a class="black-text" href="index.php?page=myprofileArtist&id=<?= $artist->idUser ?>">
-            <div class="row borderPreAlert2">
-                <div class="col s10 offset-s1 m4">
-                    <img class="profilePicture responsive-img" src="./img/profilePicture/<?= $artist->profilePicture ?>" width=200px/>                    
-                </div>
-                <div class="col s10 offset-s1 m8">
-                    <div><h1><b><?= $artist->nickName ?></b></h1></div>
-                    <hr>
-                    <div><b><?= $artist->speciality ?></b></div>
-                    <div><?= $artist->present ?></div>   
-                </div>
-            </div>
-        </a>
-    <?php } ?>
+    <div class="row">
+        <div class="col s6 m2 borderArtist">
+            <p><b>trier par...</b></p>
+        </div>
+        <div class="col s6 m9">
+            <?php foreach ($listArtist as $artist) { ?>
+                <a class="black-text" href="index.php?page=myprofileArtist&id=<?= $artist->idUser ?>">
+                    <div class="row border hoverable">
+                        <div class="col s10 offset-s1 m4">
+                            <img class="responsive-img" src="./img/profilePicture/<?= $artist->profilePicture ?>"/>                    
+                        </div>
+                        <div class="col s10 offset-s1 m8">
+                            <hr>
+                            <div><h1><b><?= $artist->nickName ?></b></h1></div>
+                            <hr>
+                            <div><b><?= $artist->speciality ?></b></div>
+                            <div><?= $artist->present ?></div>  
+                        </div>
+                    </div>
+                </a>
+            <?php } ?>
+        </div>
+    </div>
 </div>
-

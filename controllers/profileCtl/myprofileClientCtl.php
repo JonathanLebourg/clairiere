@@ -1,6 +1,6 @@
 <?php
 
-require 'models/users.php';
+require_once 'models/users.php';
 
 if (isset($_GET['id'])) {
 

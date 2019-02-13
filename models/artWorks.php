@@ -23,7 +23,9 @@ class artWork extends BDD {
                 . 'LEFT JOIN `clair_users` AS `t1` '
                 . 'ON `clair_artWorks`.`idUser` = `t1`.`idUser` '
                 . 'INNER JOIN `clair_workStyles` AS `t2` '
-                . 'ON `clair_artWorks`.`idWorkStyle` = `t2`.`idWorkStyle` ';
+                . 'ON `clair_artWorks`.`idWorkStyle` = `t2`.`idWorkStyle` '
+                . 'INNER JOIN `clair_modalities` AS `t3` '
+                . 'ON `clair_artWorks`.`idModality` = `t3`.`idModality`';
         $list = $this->BDD->query($query);
         $listArtWorks = $list->fetchAll(PDO::FETCH_OBJ);
         return $listArtWorks;
@@ -36,7 +38,9 @@ class artWork extends BDD {
                 . 'ON `clair_artWorks`.`idUser` = `t1`.`idUser` '
                 . 'INNER JOIN `clair_workStyles` AS `t2` '
                 . 'ON `clair_artWorks`.`idWorkStyle` = `t2`.`idWorkStyle` '
-                . 'WHERE `t2`.`idWorkStyle` LIKE $searchOrder';
+                . 'INNER JOIN `clair_modalities` AS `t3` '
+                . 'ON `clair_artWorks`.`idModality` = `t3`.`idModality` '
+                . 'WHERE `t2`.`idWorkStyle` LIKE ' . $searchOrder;
         $list = $this->BDD->query($query);
         $listArtWorksByStyle = $list->fetchAll(PDO::FETCH_OBJ);
         return $listArtWorksByStyle;
@@ -120,6 +124,8 @@ class artWork extends BDD {
                 . 'ON `clair_artWorks`.`idUser` = `clair_users`.`idUser` '
                 . 'INNER JOIN `clair_workStyles` '
                 . 'ON `clair_artWorks`.`idWorkStyle` = `clair_workStyles`.`idWorkStyle` '
+                . 'INNER JOIN `clair_modalities` AS `t3` '
+                . 'ON `clair_artWorks`.`idModality` = `t3`.`idModality` '
                 . 'WHERE `clair_artWorks`.`idUser` = :idUser';
         $listByArtist = $this->BDD->prepare($query);
         $listByArtist->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
@@ -134,6 +140,8 @@ class artWork extends BDD {
                 . 'ON `clair_artWorks`.`idUser` = `clair_users`.`idUser` '
                 . 'INNER JOIN `clair_workStyles` '
                 . 'ON `clair_artWorks`.`idWorkStyle` = `clair_workStyles`.`idWorkStyle` '
+                . 'INNER JOIN `clair_modalities` AS `t3` '
+                . 'ON `clair_artWorks`.`idModality` = `t3`.`idModality` '
                 . 'WHERE `clair_artWorks`.`idArtWork` = :idArtWork';
         $artWork = $this->BDD->prepare($query);
         $artWork->bindValue(':idArtWork', $this->idArtWork, PDO::PARAM_INT);
@@ -151,5 +159,13 @@ class artWork extends BDD {
         $result->execute();
         $artWorksCount = $result->rowCount();
         return $artWorksCount;
+    }
+    
+    public function artWorksCountByArtist() {
+        $query = 'SELECT * FROM `clair_artWorks` WHERE `clair_artWorks`.`idUser` = :idUser';
+        $result = $this->BDD->query($query);
+        $result->execute();
+        $artWorksCountByArtist = $result->rowCount();
+        return $artWorksCountByArtist;
     }
 }

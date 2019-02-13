@@ -1,8 +1,8 @@
 <?php
 
-require 'models/users.php';
-require 'models/biography.php';
-require 'models/artWorks.php';
+require_once 'models/users.php';
+require_once 'models/biography.php';
+require_once 'models/artWorks.php';
 //ON CREE NOS OBJETS
 $user = new user();
 $bio = new biography();

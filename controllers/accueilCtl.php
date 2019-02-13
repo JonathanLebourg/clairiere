@@ -14,15 +14,15 @@ $random_img = rand(0, count($listef) - 1); //permet de prendre une image totalem
 //On calcule la largeur et la hauteur de l'image aléatoire
 $size = getimagesize($chem_img . "/" . $listef[$random_img]);
 //Largeur maximale de l'image pour la création des miniatures
-$largeur_maxi = 320;
+$hauteur_maxi = 260;
 //Si la largeur dépasse la limite autorisée...
-if ($size[0] > $largeur_maxi) {
+if ($size[1] > $hauteur_maxi) {
     //...la nouvelle largeur est égale à la limite à ne pas dépasser
-    $width = $largeur_maxi;
+    $height = $hauteur_maxi;
     //La largeur d'origine divisée par la largeur limitée (on obtient un chiffre qui sert à faire la même proportion pour la hauteur)
-    $theight = ($size[0] / $largeur_maxi);
+    $theight = ($size[1] / $hauteur_maxi);
     //La hauteur originale est divisée par le chiffre obtenu précédemment afin que l'image conserve les mêmes proportions que l'originale (mais en mode vignette)
-    $height = ($size[1] / $theight);
+    $width = ($size[0] / $theight);
 } else {
     //Sinon on garde la taille originale
     $width = $size[0];

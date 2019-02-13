@@ -1,7 +1,7 @@
 <?php
 
-require 'controllers/clientFormController.php';
-require 'controllers/artistFormController.php';
+require_once 'controllers/clientFormController.php';
+require_once 'controllers/artistFormController.php';
 
 $user = new user();
 $validUser = $user->lastUser();

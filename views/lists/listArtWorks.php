@@ -7,28 +7,25 @@ require 'controllers/listsCtl/listArtWorksCtl.php';
     <hr>
 </div>
 <div class="container">
-    <?php foreach ($listArtWorks as $work) { ?>
-        <div class="row">
-            <div class="row borderPreAlert3">
-                <div class="col s12 m4">
+    <div class="row">
+        <?php foreach ($listArtWorks as $work) { ?>
+            <div class="col s12 m4 border hoverable">
+                <div class="row imgArtWorkDiv">
                     <a href="index.php?page=artWork&id=<?= $work->idArtWork ?>">
-                        <img class="responsive-img" src="./img/artWorks/<?= $work->picture ?>" width=200px/>
+                        <img class="responsive-img imgArtWork" src="./img/artWorks/<?= $work->picture ?>"/>
                     </a>                    
                 </div>
-                <div class="col s12 m8">
-                    <div><h1><b><?= $work->title ?></b></h1></div>
+                <div class="row">
                     <hr>
-                    <div>
-                        <a href="index.php?page=myprofileArtist&id=<?= $work->idUser ?>">
-                            <b><?= $work->nickName ?></b>
-                        </a>
+                    <div><h2><b><?= $work->title ?></b></h2></div>
+                    <hr>
+                    <div><p>réalisé par : <a href="index.php?page=myprofileArtist&id=<?= $work->idUser ?>">
+                                <b><?= $work->nickName ?></b>
+                            </a></p>                                
                     </div>
-                    <div><b><?= $work->date ?></b></div>
-                    <div><b><?= $work->technicalDescription ?></b></div>
-                    <div><?= $work->optionalDescription ?></div>   
-                    <div><?= $work->price ?></div> 
+                    <div><a href="" class="btn validateButton">+ de détails</a></div>
                 </div>
             </div>
-        </div>
-    <?php } ?>
+        <?php } ?>
+    </div>
 </div>

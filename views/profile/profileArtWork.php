@@ -2,39 +2,50 @@
 require 'controllers/profileCtl/profileArtWorkCtl.php';
 ?>
 
-<div class="container-fluid">
-
-    <div class="container">
-        <div class="row profilenav">
-            <div class="col s12 m4">
-                <a class="userchoicebutton" name="profileModif" href="./index.php?page=modifProfile&id=<?= $workById->idUser ?>">Modifier votre profil</a>
-            </div>
-            <div class="col s12 m4">
-                <a class="btn connect waves-effect waves-light" name="addWork" href="./index.php?page=ajoutOeuvre&id=<?= $workById->idUser ?>">Ajouter une œuvre</a>
-            </div>
-        </div>
-    </div>
-
+<div class="container">
     <div class="row">
-        <div class="col s12 m8 offset-m2">
-            <div class="card white darken-1 hoverable cardProfil">
-                <div class="card-content black-text">
-                    <div class="col s6 m4">
-                        <img src="./img/artWorks/<?= $workById->picture ?>" width=65%/>                    
+        <div class="col s4 m4">
+            <div class="card white darken-1">
+                <div class="card white darken-1">
+                    <hr>
+                    <h1><b><?= $workById->title ?></b></h1>
+                    <hr>
+                </div>
+                <div class="card white darken-1">
+                    <p>Artiste : 
+                        <a class="black-text" href="index.php?page=myprofileArtist&id=<?= $workById->idUser; ?>"><?= $workById->nickName ?>
+                        </a>
+                    </p>
+                </div>
+                <div class="card white darken-1 center-align">
+                    <div class="row">
+                        <p><?= $workById->technicalDescription ?></p> 
                     </div>
-                    <div class="col s6 m8">
-                        <div class="col s6 m4 offset-m1">
-                            <span class="card-title left-align"><b><?= $workById->title ?></b></span>
-                            <span class="card-title left-align">
-                                <a href="index.php?page=myprofileArtist&id=<?= $workById->idUser; ?>"><?= $workById->nickName ?></a></span>
-                            <span class="card-title left-align"><?= $workById->technicalDescription ?></span>
-                            <span class="card-title left-align"><i><?= $workById->optionalDescription ?></i></span>
-                            <span class="card-title left-align"><i><?= $workById->date ?></i></span>
-                            <span class="card-title left-align"><b><?= $workById->price ?> €</b></span>
-                        </div>
+                    <div class="row">
+                        <p><i><?= $workById->optionalDescription ?></i></p>
                     </div>
+                    <div class="row">
+                        <p>Date : <i><?= $workById->date ?></i></p>
+                    </div>
+                </div>
+                <div class="card white darken-1">                    
+                    <p> Prix : <b><?= $workById->price ?> €</b></p>
+                </div>
+                <div class="card white darken-1">                    
+                    <button data-target="" class="btn modal-trigger validateButton" type="button" name="button">Je suis interessé</button>
+                </div>
+                <div class="card white darken-1">                    
+                    <button class="btn modal-trigger validateButton" type="button" name="button">Modifier</button>
+                    <button class="btn modal-trigger validateButton" type="button" name="button">Supprimer</button>
                 </div>
             </div>
         </div>
+        <div class="col s4 m8">
+            <div class="card white darken-1 hoverable">
+                <img src="./img/artWorks/<?= $workById->picture ?>" class="responsive-img" alt="artWork"/>                    
+            </div>
+        </div>
     </div>
+</div>
+
 

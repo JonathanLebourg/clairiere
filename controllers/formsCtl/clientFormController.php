@@ -1,6 +1,6 @@
 <?php
 
-require 'models/users.php';
+require_once 'models/users.php';
 
 $client = new user();
 $client->idUserType = 3;

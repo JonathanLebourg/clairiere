@@ -148,7 +148,7 @@ class user extends BDD {
                 . 'LEFT JOIN `clair_specialities` '
                 . 'ON `clair_specialities`.`idSpeciality` = `clair_biographies`.`idSpeciality` '
                 . 'WHERE `clair_users`.`idUserType` = 2 '
-                . 'AND `clair_biographies`.`idSpeciality` LIKE $searchOrder';
+                . 'AND `clair_biographies`.`idSpeciality` LIKE ' . $searchOrder;
         $result = $this->BDD->query($query);
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
@@ -204,7 +204,8 @@ class user extends BDD {
         $updateUserNickName->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUserNickName->execute();
     }
-    //       pour le pseudo
+
+    //       pour le nom
     public function updateUserLastName() {
         $query = 'UPDATE clair_users '
                 . 'SET `lastName`= :lastName '
@@ -214,7 +215,8 @@ class user extends BDD {
         $updateUserLastName->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUserLastName->execute();
     }
-//       pour le pseudo
+
+//       pour le prénom
     public function updateUserFirstName() {
         $query = 'UPDATE clair_users '
                 . 'SET `firstName`= :firstName '
@@ -224,9 +226,10 @@ class user extends BDD {
         $updateUserFirstName->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUserFirstName->execute();
     }
-    //       pour le pseudo
+
+    //       pour le mail
     public function updateUserMail() {
-        $query = 'UPDATE clair_users '
+        $query = 'UPDATE `clair_users` '
                 . 'SET `mail`= :mail '
                 . 'WHERE `idUser` = :idUser ';
         $updateUserMail = $this->BDD->prepare($query);
@@ -234,4 +237,14 @@ class user extends BDD {
         $updateUserMail->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUserMail->execute();
     }
+
+//    fonction pour rechercher l existence du mail pour la connexion
+    public function existMailConnexion() {
+        $query = 'SELECT * FROM `clair_users` WHERE `mail` LIKE :mail';
+        $existMailConnexion = $this->BDD->prepare($query);
+        $existMailConnexion->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+        $existMailConnexion->execute();
+        return $existMailConnexion->fetch(PDO::FETCH_OBJ);
+    }
+
 }

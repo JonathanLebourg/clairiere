@@ -21,73 +21,6 @@ $regexPrice = '/^[0-9]+$/';
 $formError = [];
 $addOK = TRUE;
 
-//if (isset($_POST['title'])) {
-//    //déclarion de la variable pseudo avec le htmlspecialchar 
-//    $title = htmlspecialchars($_POST['title']);
-//    //test de la regex si elle est invalide
-//    if (!preg_match($regexTextAndNumber, $title)) {
-//        //stocker dans le tableau le rapport d'erreur
-//        $formError['title'] = 'Saisie invalide';
-//    }
-//    // verifie si le champs de nom et vide
-//    if (empty($title)) {
-//        //stocker dans le tableau le rapport d'érreur
-//        $formError['title'] = 'Champ obligatoire';
-//    }
-//}
-//
-//if (isset($_POST['technicalDescription'])) {
-//    //déclarion de la variable pseudo avec le htmlspecialchar 
-//    $technicalDescription = htmlspecialchars($_POST['technicalDescription']);
-//    //test de la regex si elle est invalide
-//    if (!preg_match($regexTextAndNumber, $_POST['technicalDescription'])) {
-//        //stocker dans le tableau le rapport d'erreur
-//        $formError['technicalDescription'] = 'Saisie invalide';
-//    }
-//    // verifie si le champs de nom et vide
-//    if (empty($_POST['technicalDescription'])) {
-//        //stocker dans le tableau le rapport d'érreur
-//        $formError['technicalDescription'] = 'Champ obligatoire';
-//    }
-//}
-//if (isset($_POST['date'])) {
-//    //déclarion de la variable password avec le htmlspecialchar 
-//    $date = htmlspecialchars($_POST['date']);
-//    //test de la regex si elle est invalide
-//    if (!preg_match($regexDate, $date)) {
-//        //stocker dans le tableau le rapport d'erreur
-//        $formError['date'] = 'date incorrect';
-//    }
-//    // verifie si le champs de nom et vide
-//    if (empty($_POST['date'])) {
-//        //stocker dans le tableau le rapport d'érreur
-//        $formError['date'] = 'Champ obligatoire';
-//    }
-//}
-//
-//
-//if (isset($_POST['workStyle'])) {
-//    //déclarion de la variable town avec le htmlspecialchar 
-//    $workStyle = htmlspecialchars($_POST['workStyle']);
-//} else {
-//    $formError['workStyle'] = 'Choix obligatoire';
-//}
-//
-//if (isset($_POST['optionalDescription'])) {
-//    //déclarion de la variable town avec le htmlspecialchar 
-//    $optionalDescription = htmlspecialchars($_POST['optionalDescription']);
-//    //test de la regex si elle est invalide
-//    if (strlen($optionalDescription) > 2000) {
-//        //stocker dans le tableau le rapport d'erreur
-//        $formError['optionalDescription'] = '2 000 caractères maximum';
-//    }
-//    if (empty($_POST['optionalDescription'])) {
-//        //stocker dans le tableau le rapport d'érreur
-//        $formError['optionalDescription'] = 'Champ obligatoire';
-//    }
-//}
-
-
 
 if (isset($_POST['title'])) {
 //déclarion de la variable titre avec le htmlspecialchar 
@@ -168,7 +101,7 @@ if (isset($_POST['submitArtWork']) && !empty($_FILES['fileToUpload']['name'])) {
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     
     // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
+    if ($_FILES["fileToUpload"]["size"] > 2000000) {
         $uploadError['size'] = 'Fichier trop lourd';
         $uploadOk = 0;
     }

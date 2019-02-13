@@ -9,7 +9,7 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
 <div class="container">
     <div class="row border">
         <div class="col s12 m3">
-            <p><b><?= $clientById->nickName ?></b></p>
+            <p><b><?= $_SESSION['user']->nickName ?></b></p>
             <p>
                 <a class="waves-effect waves-light btn modal-trigger validateButton" href="#modalModifClient">Modifier mon profil</a>
             </p>
@@ -18,7 +18,7 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
             <p>faidrait que je trouve un truc a mettre là</p>
         </div>
         <div class="col s12 m3">
-            <p>$count le nombre d oeuvres qui m interesse</p>
+            <p>$count le nombre d oeuvres qui m interessent</p>
             <p>$count messages</p>
             <p><a href="">mes messages</a></p>
         </div>
@@ -38,7 +38,7 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
             <form method="POST" action="">
                 <div class="row">
                     <div class="col s6 m3"><b>Pseudo :</b></div>
-                    <div class="col s6 m6"><?= $clientById->nickName ?></div>
+                    <div class="col s6 m6"><?= $_SESSION['user']->nickName ?></div>
                     <div class="col s12 m3">
                         <a class="btn validateButton" name="submitNickName">
                             <i class="tiny material-icons">mode_edit</i>
@@ -53,7 +53,7 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
 
                 <div class="row">
                     <div class="col s6 m3"><b>Nom :</b></div>
-                    <div class="col s6 m6"><?= $clientById->lastName ?></div>
+                    <div class="col s6 m6"><?= $_SESSION['user']->lastName ?></div>
                     <div class="col s12 m3">
                         <a class="btn validateButton" name="submitLastName">
                             <i class="tiny material-icons">mode_edit</i>
@@ -69,7 +69,7 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
 
                 <div class="row">
                     <div class="col s6 m3"><b>Prénom :</b></div>
-                    <div class="col s6 m6"><?= $clientById->firstName ?></div>
+                    <div class="col s6 m6"><?= $_SESSION['user']->firstName ?></div>
                     <div class="col s12 m3">
                         <a class="btn validateButton" name="submitFirstName">
                             <i class="tiny material-icons">mode_edit</i>
@@ -84,7 +84,7 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
 
                 <div class="row">
                     <div class="col s6 m3"><b>Mail :</b></div>
-                    <div class="col s6 m6"><?= $clientById->mail ?></div>
+                    <div class="col s6 m6"><?= $_SESSION['user']->mail ?></div>
                     <div class="col s12 m3">
                         <a class="btn validateButton" name="submitMail">
                             <i class="tiny material-icons">mode_edit</i>
@@ -99,7 +99,7 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
 
                 <div class="row">
                     <div class="col s6 m3"><b>mot de passe :</b></div>
-                    <div class="col s6 m6"><?= $clientById->password ?></div>
+                    <div class="col s6 m6"><?= $_SESSION['user']->password ?></div>
                     <div class="col s12 m3">
                         <a class="btn validateButton" name="submitPassword">
                             <i class="tiny material-icons">mode_edit</i>

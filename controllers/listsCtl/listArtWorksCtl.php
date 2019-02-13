@@ -1,6 +1,6 @@
 <?php
 
-require 'models/artWorks.php';
+require_once 'models/artWorks.php';
 
 $artWork1 = new artWork();
 
