@@ -29,8 +29,28 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
             </div>
         </div>
         <div class="row">
-            <h2>les oeuvres qui m interesse</h2>
             <hr>
+            <h2><b>Les oeuvres qui m'intéressent</b></h2>
+            <hr>
+            <div class="row">
+                <?php
+                foreach ($listInterest as $interestWork) {
+                    ?>
+                    <div class="col s12 m6 border hoverable">
+                        <div class="col s12 m6">
+                            <div class="imgProfileClientDiv">
+                                <a href="index.php?page=artWork&id=<?= $interestWork->idArtWork; ?>">
+                                    <img src="./img/artWorks/<?= $interestWork->picture ?>" class="imgProfileClient responsive-img" alt="artWork"/>                    
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col s12 m6">
+                            <h1><b><?= $interestWork->title ?></b></h1>
+                            <p>Prix : <b><?= $interestWork->price ?> €</b></p>
+                        </div>                        
+                    </div>
+                <?php } ?>
+            </div>
         </div>
     <?php } ?>
 </div>

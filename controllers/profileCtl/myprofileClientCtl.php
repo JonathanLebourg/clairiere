@@ -1,6 +1,7 @@
 <?php
 
 require_once 'models/users.php';
+require_once 'models/artWorkInterest.php';
 
 $_SESSION['falseClientId'] = '<p>Vous rencontrez une erreur de connexion ou n\'êtes pas enregistré sur le site<p>';
 
@@ -8,7 +9,11 @@ if (isset($_SESSION['user'])) {
 
     $client = new user();
     $client = $_SESSION['user'];
-
+    
+    $interest = new artWorkInterest();
+    $interest->idUser = $_SESSION['user']->idUser;
+    $listInterest = $interest->ListArtWorkInterestByClient();
+    
     if (isset($_POST['submitClientModif'])) {
 
         if (isset($_POST['nickName']) && !empty($_POST['nickName'])) {

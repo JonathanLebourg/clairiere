@@ -33,7 +33,7 @@ require 'controllers/profileCtl/profileArtWorkCtl.php';
                 </div>
                 <div class="card white darken-1">                    
                     <form method="POST" action="">
-                        <input class="btn validateButton" type="submit" name="submitWorkInterest" value="je suis interessé" />
+                        <input class="btn validateButton" type="submit" name="submitArtWorkInterest" value="je suis interessé" />
                     </form>
                 </div>
                 <?php if (isset($_SESSION['user']) && ($_SESSION['user']->idUserType == 2)) { ?>

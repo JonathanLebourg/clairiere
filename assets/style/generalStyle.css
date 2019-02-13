@@ -111,6 +111,13 @@ hr {
     max-height: 44vh;
     padding: 2vh;
 }
+.imgProfileClientDiv{
+    height: 20vh;
+}
+.imgProfileClient{
+    max-height: 20vh;
+    padding: 2vh;
+}
 /*------------------
 --------NAVBAR------
 -------------------*/
