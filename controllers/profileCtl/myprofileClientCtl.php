@@ -4,12 +4,10 @@ require_once 'models/users.php';
 
 $_SESSION['falseClientId'] = '<p>Vous rencontrez une erreur de connexion ou n\'êtes pas enregistré sur le site<p>';
 
-
 if (isset($_SESSION['user'])) {
 
     $client = new user();
     $client = $_SESSION['user'];
-    var_dump($client);
 
     if (isset($_POST['submitClientModif'])) {
 
@@ -35,7 +33,6 @@ if (isset($_SESSION['user'])) {
         }
         $modifiedClient = $client->userById();
         $_SESSION['user'] = $modifiedClient;
-        var_dump($modifiedClient);
     }
 }
     

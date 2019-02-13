@@ -1,6 +1,11 @@
 <?php
 require 'controllers/profileCtl/myprofileArtistCtl.php';
 ?>
+<div class="container-fluid">
+    <hr>
+    <h1><?= $artistById->nickName ?></h1>
+    <hr>
+</div>
 <div class="container">
     <div class="row border">
         <div class="col s4 m4">
@@ -11,25 +16,21 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
         <div class="col s4 m8 center-align">
             <div class="card white darken-1">
                 <hr>
-                <h1 class="card-title"><b><?= $artistById->nickName ?></b></h1>
-                <?php if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 3){ ?>
-                <h1 class="card-title"><b><?= $_SESSION['user']->nickName ?></b></h1>
-                <?php } ?>
-                <hr>
-                <p class="justified"><?= $artistById->present ?></p> 
+                <p class="justified"><b><?= $artistById->present ?></b></p> 
+                <hr>    
             </div>
             <div class="card white darken-1">                    
                 <p class="card-title"><i>Artiste <?= $artistById->speciality ?></i></p>  
             </div>
-            <?php if(isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $_SESSION['user']->idUser == $_GET['id']){ ?>
-            <div class="card white darken-1">  
-                <div class="col s12 m6">
-                    <a class="btn validateButton" name="profileModif" href="./index.php?page=modifProfile&id=<?= $artistById->idUser ?>">Modifier votre profil</a>
+            <?php if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $_SESSION['user']->idUser == $_GET['id']) { ?>
+                <div class="card white darken-1">  
+                    <div class="col s12 m6">
+                        <a class="btn validateButton" name="profileModif" href="./index.php?page=modifProfile&id=<?= $artistById->idUser ?>">Modifier votre profil</a>
+                    </div>
+                    <div class="col s12 m6">
+                        <a class="btn validateButton waves-effect waves-light" name="addWork" href="./index.php?page=ajoutOeuvre&id=<?= $artistById->idUser ?>">Ajouter une œuvre</a>
+                    </div>
                 </div>
-                <div class="col s12 m6">
-                    <a class="btn validateButton waves-effect waves-light" name="addWork" href="./index.php?page=ajoutOeuvre&id=<?= $artistById->idUser ?>">Ajouter une œuvre</a>
-                </div>
-            </div>
             <?php } ?>
         </div>
     </div>
@@ -37,7 +38,7 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
 <div class="container">
     <div class="row">
         <?php foreach ($ListArtWorkByArtist as $work) { ?>
-            <div class="col s12 m5 border hoverable">
+            <div class="col s12 m4 border hoverable">
                 <div class="row center-align">
                     <h2><?= $work->title ?></h2>
                     <hr>
@@ -58,16 +59,18 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                     </div>
                     <hr>
                 </div>
-                <div class="row">
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $_SESSION['user']->idUser == $_GET['id']) { ?>
                     <div class="row">
-                        <a href="" data-target="modalDelete<?= $work->idArtWork; ?>" class="modal-trigger btn connect waves-effect waves-light">
-                            <i class="tiny material-icons">delete</i>EFFACER</a>
+                        <div class="col s12 m6">
+                            <a href="" data-target="modalModif<?= $work->idArtWork; ?>" class="modal-trigger btn validateButton">
+                                <i class="tiny material-icons">mode_edit</i>MODIFIER</a>
+                        </div>
+                        <div class="col s12 m6">
+                            <a href="" data-target="modalDelete<?= $work->idArtWork; ?>" class="modal-trigger btn validateButton">
+                                <i class="tiny material-icons">delete</i>EFFACER</a>
+                        </div>                        
                     </div>
-                    <div class="row">
-                        <a href="" data-target="modalModif<?= $work->idArtWork; ?>" class="modal-trigger btn connect waves-effect waves-light">
-                            <i class="tiny material-icons">mode_edit</i>MODIFIER</a>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
             <div id="modalDelete<?= $work->idArtWork; ?>" class="modal">
                 <div class="modal-content">

@@ -32,12 +32,16 @@ require 'controllers/profileCtl/profileArtWorkCtl.php';
                     <p> Prix : <b><?= $workById->price ?> €</b></p>
                 </div>
                 <div class="card white darken-1">                    
-                    <button data-target="" class="btn modal-trigger validateButton" type="button" name="button">Je suis interessé</button>
+                    <form method="POST" action="">
+                        <input class="btn validateButton" type="submit" name="submitWorkInterest" value="je suis interessé" />
+                    </form>
                 </div>
-                <div class="card white darken-1">                    
-                    <button class="btn modal-trigger validateButton" type="button" name="button">Modifier</button>
-                    <button class="btn modal-trigger validateButton" type="button" name="button">Supprimer</button>
-                </div>
+                <?php if (isset($_SESSION['user']) && ($_SESSION['user']->idUserType == 2)) { ?>
+                    <div class="card white darken-1">                    
+                        <button class="btn modal-trigger validateButton" type="button" name="button">Modifier</button>
+                        <button class="btn modal-trigger validateButton" type="button" name="button">Supprimer</button>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <div class="col s4 m8">
