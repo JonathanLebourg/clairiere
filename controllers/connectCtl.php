@@ -45,9 +45,17 @@ if (count($formError) == 0 && isset($_POST['submitConnect'])) {
     $existingMail = $connectingUser->existMailConnexion();
     if ($existingMail && $existingMail->password === $password) {
         $_SESSION['user'] = $existingMail;
-//            header('location:index.php?page=accueil');
+       //            header('location:index.php?page=accueil');
     }
 }
 
-    
+
+ if (isset($_POST['submitDeconnect'])) {
+     session_unset();
+     session_destroy();
+     session_start();
+     $_SESSION['deconnectOK']= '<p> Vous êtes bien déconnecté <p>' ;
+     header('location:index.php?page=validate');
+     exit();
+ }
 

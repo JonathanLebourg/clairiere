@@ -7,29 +7,35 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
     <hr>
 </div>
 <div class="container">
-    <div class="row border">
-        <div class="col s12 m3">
-            <p><b><?= $_SESSION['user']->nickName ?></b></p>
-            <p>
-                <a class="waves-effect waves-light btn modal-trigger validateButton" href="#modalModifClient">Modifier mon profil</a>
-            </p>
+    <?php if (!isset($_SESSION['user']) || $_SESSION['user']->idUserType != 3) { ?>
+        <div class="row center-align">
+            <?= $_SESSION['falseClientId'] ?>
         </div>
-        <div class="col s12 m6">
-            <p>faidrait que je trouve un truc a mettre là</p>
+    <?php } else { ?>
+        <div class="row border">
+            <div class="col s12 m3">
+                <p><b><?= $_SESSION['user']->nickName ?></b></p>
+                <p>
+                    <a class="waves-effect waves-light btn modal-trigger validateButton" href="#modalModifClient">Modifier mon profil</a>
+                </p>
+            </div>
+            <div class="col s12 m6">
+                <p>faudrait que je trouve un truc à mettre là</p>
+            </div>
+            <div class="col s12 m3">
+                <p>$count le nombre d oeuvres qui m interessent</p>
+                <p>$count messages</p>
+                <p><a href="">mes messages</a></p>
+            </div>
         </div>
-        <div class="col s12 m3">
-            <p>$count le nombre d oeuvres qui m interessent</p>
-            <p>$count messages</p>
-            <p><a href="">mes messages</a></p>
+        <div class="row">
+            <h2>les oeuvres qui m interesse</h2>
+            <hr>
         </div>
-    </div>
-    <div class="row">
-        <h2>les oeuvres qui m interesse</h2>
-        <hr>
-    </div>
+    <?php } ?>
 </div>
 
-<!-- Modal Structure -->
+<!-- Modal MODIFICATION PROFIL-->
 <div id="modalModifClient" class="modal">
     <div class="modal-content">
         <h1>Modifier les informations de mon compte</h1>
@@ -96,21 +102,6 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
                         <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col s6 m3"><b>mot de passe :</b></div>
-                    <div class="col s6 m6"><?= $_SESSION['user']->password ?></div>
-                    <div class="col s12 m3">
-                        <a class="btn validateButton" name="submitPassword">
-                            <i class="tiny material-icons">mode_edit</i>
-                        </a>
-                    </div>
-                    <div class="modifDivPassword input-field col s12 m8 offset-m2">
-                        <input name="password" id="password" type="text" class="validate" value="" />
-                        <label for="password">Mot de passe</label>
-                        <p class="text-danger"><?= isset($formError['password']) ? $formError['password'] : ''; ?></p>
-                    </div>
-                </div>
                 <div class="col s12 m12">
                     <button class="validateButton btn" type="submit" name="submitClientModif">
                         MODIFIER
@@ -118,9 +109,9 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
                 </div>
             </form>
         </div>
-
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fermer</a>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">ANNULER</a>
+        </div>
     </div>
 </div>
+

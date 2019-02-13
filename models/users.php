@@ -196,7 +196,7 @@ class user extends BDD {
 //    FONCTIONS UPDATE CLIENT PAR ATTRIBUT
 //       pour le pseudo
     public function updateUserNickName() {
-        $query = 'UPDATE clair_users '
+        $query = 'UPDATE `clair_users` '
                 . 'SET `nickName`= :nickName '
                 . 'WHERE `idUser` = :idUser ';
         $updateUserNickName = $this->BDD->prepare($query);
@@ -240,7 +240,14 @@ class user extends BDD {
 
 //    fonction pour rechercher l existence du mail pour la connexion
     public function existMailConnexion() {
-        $query = 'SELECT * FROM `clair_users` WHERE `mail` LIKE :mail';
+        $query = 'SELECT *, `clair_users`.`idUser` AS idUser FROM `clair_users` '
+                . 'INNER JOIN `clair_userTypes`  AS `t1` '
+                . 'ON `t1`.`idUserType` = `clair_users`.`idUserType` '
+                . 'LEFT JOIN `clair_biographies` AS `t2` '
+                . 'ON `t2`.`idUser` = `clair_users`.`idUser` '
+                . 'LEFT JOIN `clair_specialities` AS `t3` '
+                . 'ON `t3`.`idSpeciality` = `t2`.`idSpeciality` '
+                . 'WHERE `mail` LIKE :mail';
         $existMailConnexion = $this->BDD->prepare($query);
         $existMailConnexion->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         $existMailConnexion->execute();

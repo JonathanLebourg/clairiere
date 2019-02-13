@@ -1,6 +1,6 @@
 <?php
 require 'controllers/navCtl.php';
-require 'controllers/formsCtl/connectCtl.php';
+require 'controllers/connectCtl.php';
 ?>
 <!----------------------------
 ----------NAVBAR----------
@@ -50,8 +50,13 @@ require 'controllers/formsCtl/connectCtl.php';
                     <button data-target="modalConnect" class="btn modal-trigger validateButton" type="button" name="button">Se connecter</button>
                 <?php } else { ?>             
                     <a  class="inscription modal-trigger" href="#modalDeconnect">Se déconnecter</a>
-                    <a class="btn validateButton " href="index.php?page=myprofileClient&id=<?= $_SESSION['user']->idUser ?>">Mon profil</a>
+                    <?php if ($_SESSION['user']->idUserType == 2) { ?>
+                        <a class="btn validateButton " href="index.php?page=myprofileArtist&id=<?= $_SESSION['user']->idUser ?>">Mon profil</a>
+                    <?php } ?>  
+                    <?php if ($_SESSION['user']->idUserType == 3) { ?>
+                        <a class="btn validateButton " href="index.php?page=myprofileClient&id=<?= $_SESSION['user']->idUser ?>">Mon profil</a>
                     <?php } ?>   
+                <?php } ?>
             </div>
         </nav>
     </div>
@@ -75,16 +80,16 @@ require 'controllers/formsCtl/connectCtl.php';
                     </div>
                     <div class="input-field col s12 m12">  
                         <i class="material-icons prefix">https</i>  
-                        <input id="password" name="password" type="text" required value=""/>  
+                        <input id="password" name="password" type="text" required />  
                         <label class="label" for="password">Mot de passe</label>  
                         <p class="text-danger"><?= isset($formError['password']) ? $formError['password'] : ''; ?></p>
                     </div>
                 </div>
                 <div class="row">
-                    <button class="validateButton waves-effect waves-light btn-large" name="submitConnect" type="submit">Se connecter</button>
+                    <button class="btn validateButton" name="submitConnect" type="submit">Se connecter</button>
                 </div>
                 <div class="row">
-                    <button class="validateButton modal-close waves-effect waves-light btn-small" onclick="window.location.href = 'index.php?page=inscription'">S'inscrire pour la première fois</button>
+                    <button class="btn validateButton modal-close" onclick="window.location.href = 'index.php?page=inscription'">S'inscrire pour la première fois</button>
                 </div>
             </form>
 
@@ -92,4 +97,21 @@ require 'controllers/formsCtl/connectCtl.php';
     </div>
 </div>
 
-<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+<!-- Modal Connexion -->
+<div id="modalDeconnect" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <h1><b>Connexion</b></h1>
+            <hr>
+            <p>êtes-vous bien sur de voulir vous déconnecter ?</p>
+        </div>
+        <div class="row">  
+            <form method="POST" action="">
+                <button class="btn validateButton" name="submitDeconnect" type="submit">Se déconnecter</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">ANNULER</a>
+        </div>
+    </div>
+</div>
