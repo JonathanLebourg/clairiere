@@ -21,7 +21,8 @@ require 'controllers/connectCtl.php';
             <ul id="dropdownArtWorks" class="dropdown-content">
                 <li><a href="index.php?page=listArtWorks&style=tout">Tout</a></li>
                 <li class="divider"></li>
-                <?php foreach ($listStyles as $style) { ?>
+                <?php
+                foreach ($listStyles as $style) { ?>
                     <li><a href="index.php?page=listArtWorks&style=<?= $style->workStyle ?>"><?= $style->workStyle ?></a></li>
                 <?php } ?>
             </ul>
@@ -54,7 +55,7 @@ require 'controllers/connectCtl.php';
                         <a class="btn validateButton " href="index.php?page=myprofileArtist&id=<?= $_SESSION['user']->idUser ?>">Mon profil</a>
                     <?php } ?>  
                     <?php if ($_SESSION['user']->idUserType == 3) { ?>
-                        <a class="btn validateButton " href="index.php?page=myprofileClient&id=<?= $_SESSION['user']->idUser ?>">Mon profil</a>
+                        <a class="btn validateButton " href="index.php?page=myprofileClient">Mon profil</a>
                     <?php } ?>   
                 <?php } ?>
             </div>

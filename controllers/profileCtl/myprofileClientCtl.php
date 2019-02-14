@@ -9,11 +9,11 @@ if (isset($_SESSION['user'])) {
 
     $client = new user();
     $client = $_SESSION['user'];
-    
+
     $interest = new artWorkInterest();
     $interest->idUser = $_SESSION['user']->idUser;
     $listInterest = $interest->ListArtWorkInterestByClient();
-    
+
     if (isset($_POST['submitClientModif'])) {
 
         if (isset($_POST['nickName']) && !empty($_POST['nickName'])) {
@@ -38,6 +38,13 @@ if (isset($_SESSION['user'])) {
         }
         $modifiedClient = $client->userById();
         $_SESSION['user'] = $modifiedClient;
+        
+    }
+
+    if (isset($_POST['submitDeleteInterest'])) {
+        $interestToDelete = new artWorkInterest();
+        $interestToDelete->idArtWorkInterest = htmlspecialchars($_GET['delete']);
+        $interestToDelete->deleteArtWorkInterest();
     }
 }
     

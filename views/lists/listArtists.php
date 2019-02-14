@@ -8,26 +8,24 @@ require 'controllers/listsCtl/listArtistsCtl.php';
 </div>
 <div class="container">
     <div class="row">
-        <div class="col s6 m2 borderArtist">
-            <p><b>trier par...</b></p>
-        </div>
-        <div class="col s6 m9">
-            <?php foreach ($listArtist as $artist) { ?>
-                <a class="black-text" href="index.php?page=myprofileArtist&id=<?= $artist->idUser ?>">
-                    <div class="row border hoverable">
-                        <div class="col s10 offset-s1 m4">
-                            <img class="responsive-img" src="./img/profilePicture/<?= $artist->profilePicture ?>"/>                    
-                        </div>
-                        <div class="col s10 offset-s1 m8">
-                            <hr>
-                            <div><h1><b><?= $artist->nickName ?></b></h1></div>
-                            <hr>
-                            <div><b><?= $artist->speciality ?></b></div>
-                            <div><?= $artist->present ?></div>  
-                        </div>
+        <?php foreach ($listArtist as $artist) { ?>  
+            <div class="col s12 m4 border hoverable">
+                <div class="row imgArtWorkDiv">
+                        <img class="responsive-img imgArtWork" src="./img/profilePicture/<?= $artist->profilePicture ?>"/>
+                                    
+                </div>
+                <div class="row">
+                    <hr>
+                    <div><h2><b><?= $artist->nickName ?></b></h2></div>
+                    <hr>
+                    <div class="center-align black-text"><p><a href="index.php?page=listArtists&speciality=<?= $artist->speciality ?>">
+                                <b><?= $artist->speciality ?></b>
+                            </a></p>                                
                     </div>
-                </a>
-            <?php } ?>
-        </div>
+                    <div><a href="index.php?page=myprofileArtist&id=<?= $artist->idUser ?>" class="btn validateButton">+ de détails</a></div>
+                </div>
+            </div>
+        <?php } ?>
     </div>
 </div>
+

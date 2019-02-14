@@ -15,6 +15,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <link rel="stylesheet" href="assets/style/generalStyle.css" /> 
     </head>
     <body>
+        
         <?php
         if (!isset($_GET['page'])) {
             include('views/pageZERO.php');
@@ -82,6 +83,10 @@ if (session_status() == PHP_SESSION_NONE) {
                         include('views/lists/listArtWorks.php');
                         break;
 
+                    
+                    case 'validateInscription':
+                        include('views/validate/validateInscription.php');
+                        break;
                     case 'validateDelete':
                         include('views/validate/validateDelete.php');
                         break;

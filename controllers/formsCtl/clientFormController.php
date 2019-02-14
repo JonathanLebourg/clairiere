@@ -118,11 +118,12 @@ if (count($formError) == 0 && isset($_POST['submit'])) {
     } else {
         $addOK = TRUE;
         $client->addUser();
- ?>
-<SCRIPT LANGUAGE="JavaScript">
-document.location.href="index.php?page=validateUser"
-</SCRIPT>
-        <!--header('location:index.php?page=validateUser');-->
-   <?php }
+        ?> 
+        <script>window.location = "http://clairiere/index.php?page=validateInscription";</script>
+        <?php
+
+    }
 }
 ?>
+   
+

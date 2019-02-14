@@ -18,6 +18,28 @@ class artWorkInterest extends BDD {
         $newArtWorkInterest->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $newArtWorkInterest->execute();
     }
+    
+    public function deleteArtWorkInterest() {
+        $query = 'DELETE FROM `clair_artWorkInterest` '
+                . '      WHERE `idArtWorkInterest`= :idArtWorkInterest';
+        $deleteArtWorkInterest = $this->BDD->prepare($query);
+        $deleteArtWorkInterest->bindValue(':idArtWorkInterest', $this->idArtWorkInterest, PDO::PARAM_INT);
+        return $deleteArtWorkInterest->execute();
+    }
+    
+    public function alreadyExistArtWorkInterest() {
+        $query = 'SELECT * FROM `clair_artWorkInterest` '
+                . '      WHERE `idArtWork`= :idArtWork '
+                . '      AND `idUser`= :idUser';
+        $alreadyExistArtWorkInterest = $this->BDD->prepare($query);
+        $alreadyExistArtWorkInterest->bindValue(':idArtWork', $this->idArtWork, PDO::PARAM_INT);
+        $alreadyExistArtWorkInterest->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        $alreadyExistArtWorkInterest->execute();
+        $data = $alreadyExistArtWorkInterest->fetch(PDO::FETCH_OBJ);
+        return $data;
+    }
+    
+    
 
     public function ListArtWorkInterestByClient() {
         $query = 'SELECT * FROM `clair_artWorkInterest` '

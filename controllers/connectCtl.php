@@ -55,7 +55,7 @@ if (count($formError) == 0 && isset($_POST['submitConnect'])) {
      session_destroy();
      session_start();
      $_SESSION['deconnectOK']= '<p> Vous êtes bien déconnecté <p>' ;
-     header('location:index.php?page=validate');
+     header('location:index.php?page=deconnect');
      exit();
  }
 

@@ -48,10 +48,10 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                         <img src="img/artWorks/<?= $work->picture ?>" class="responsive-img imgArtWork"/></a>                    
                 </div>
                 <div class="row">
-                    <div class="card-title centeralign">Oeuvre datant de : <?= $work->date ?></div>
-                    <div class="card-title centeralign"><i><?= $work->workStyle ?></i></div>
+                    <div class="card-title centeralign"><p>Oeuvre datant de : <?= $work->date ?></p></div>
+                    <div class="card-title centeralign"><p><i><?= $work->workStyle ?></i></p></div>
                     <div class="card-title centeralign">
-                        <a href="" class="black-text">+ de détails</a>
+                        <a href="index.php?page=artWork&id=<?= $work->idArtWork ?>" class="btn validateButton">+ de détails</a>
                     </div>
                     <hr>
                     <div class="card-title center-align">
