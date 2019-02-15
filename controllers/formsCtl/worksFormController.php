@@ -75,7 +75,7 @@ if (isset($_POST['optionalDescription'])) {
         //stocker dans le tableau le rapport d'erreur
         $formError['optionalDescription'] = '2 000 caractères maximum';
     }
- }
+}
 if (isset($_POST['date'])) {
     //déclarion de la variable password avec le htmlspecialchar 
     $date = htmlspecialchars($_POST['date']);
@@ -97,24 +97,24 @@ if (isset($_POST['submitArtWork']) && !empty($_FILES['fileToUpload']['name'])) {
     $target_dir = "./img/artWorks/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
-    
+
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    
+
     // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 2000000) {
+    if ($_FILES["fileToUpload"]["size"] > 5000000) {
         $uploadError['size'] = 'Fichier trop lourd';
         $uploadOk = 0;
     }
-      if (!isset($uploadError)){
+    if (!isset($uploadError)) {
 // Check if image file is a actual image or fake image
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 
-    if ($check !== false) {
-        $uploadOk = 1;
-    } else {
-        $uploadError['NaImage'] = 'Le fichier n\'est pas une image';
-        $uploadOk = 0;
-    }
+        if ($check !== false) {
+            $uploadOk = 1;
+        } else {
+            $uploadError['NaImage'] = 'Le fichier n\'est pas une image';
+            $uploadOk = 0;
+        }
     }
 // Check if file already exists
     if (file_exists($target_file)) {
@@ -137,7 +137,7 @@ if (isset($_POST['submitArtWork']) && !empty($_FILES['fileToUpload']['name'])) {
 // if everything is ok, try to upload file
     } else {
         if (count($uploadError) == 0 && count($formError) == 0) {
-            
+
             $artWork->idUser = $_GET['id'];
             $artWork->title = $title;
             $artWork->idWorkStyle = $workStyle;
@@ -147,7 +147,7 @@ if (isset($_POST['submitArtWork']) && !empty($_FILES['fileToUpload']['name'])) {
             $artWork->price = $price;
             $artWork->date = $date;
             $artWork->picture = $file['basename'];
-     
+
             $exist = $artWork->alreadyExist();
 
             if ($exist == TRUE) {
@@ -156,6 +156,10 @@ if (isset($_POST['submitArtWork']) && !empty($_FILES['fileToUpload']['name'])) {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                     $addOK = TRUE;
                     $artWork->addArtWork();
+                    ?> 
+                    <script>window.location = "http://clairiere/index.php?page=myprofileArtist&id=<?= $_SESSION['user']->idUser  ?>";</script>
+                    <?php
+
                 } else {
                     echo "Désolé, une erreur a eu lieu lors du téléchargement";
                 }

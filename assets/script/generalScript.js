@@ -20,6 +20,14 @@ $(document).ready(function () {
             $('.card-action a').addClass("disabled")
     })
     
+    $('[name="checkboxDelete"]').change(function () {
+        if ($(this).is(':checked')) {
+            // Do something...
+            $('.card-action button').removeAttr("disabled")
+        } else
+            $('.card-action button').addAttr("disabled")
+    })
+    
     
     $('[name="submitNickName"]').click(function () {
         $('.modifDivNickName').toggle(500);

@@ -18,12 +18,12 @@ require 'controllers/formsCtl/artistFormController.php';
             <form class="col s12" method="POST" action="" enctype="multipart/form-data">
                 <div class="row">
                     <div class="input-field col s12 m6">
-                        <input name="lastName" id="lastName" type="text" class="validate" value="<?= isset($artistById->lastName) ? $artistById->lastName : '' ?>" />
+                        <input name="lastName" id="lastName" type="text" class="validate" value="<?= isset($artist->lastName) ? $artist->lastName : '' ?>" />
                         <label for="lastName">Nom</label>
                         <p class="text-danger"><?= isset($formError['lastName']) ? $formError['lastName'] : ''; ?></p>
                     </div>
                     <div class="input-field col s12 m6">
-                        <input name="firstName" id="firstName" type="text" class="validate" value="<?= isset($artistById->firstName) ? $artistById->firstName : '' ?>" />
+                        <input name="firstName" id="firstName" type="text" class="validate" value="<?= isset($artist->firstName) ? $artist->firstName : '' ?>" />
                         <label for="firstName">Prénom</label>
                         <p class="text-danger"><?= isset($formError['firstName']) ? $formError['firstName'] : ''; ?></p>
                     </div>
@@ -31,19 +31,19 @@ require 'controllers/formsCtl/artistFormController.php';
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <span></span>
-                        <input name="pseudo" id="pseudo" type="text" class="validate" value="<?= isset($artistById->nickName) ? $artistById->nickName : '' ?>" />
+                        <input name="pseudo" id="pseudo" type="text" class="validate" value="<?= isset($artist->nickName) ? $artist->nickName : '' ?>" />
                         <label for="pseudo">Nom d'artiste | sera aussi votre pseudo de connexion </label>
                         <p class="text-danger"><?= isset($formError['pseudo']) ? $formError['pseudo'] : ''; ?></p>
                     </div>
                     <div class="input-field col s12 m6">
-                        <input name="mail" id="mail" type="text" class="validate" value="<?= isset($artistById->mail) ? $artistById->mail : '' ?>" />
+                        <input name="mail" id="mail" type="text" class="validate" value="<?= isset($artist->mail) ? $artist->mail : '' ?>" />
                         <label for="mail">Mail</label>
                         <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6">
-                        <input name="password" id="password" type="password" class="validate" value="<?= isset($artistById->password) ? $artistById->password : '' ?>" />
+                        <input name="password" id="password" type="password" class="validate" value="<?= isset($artist->password) ? $artist->password : '' ?>" />
                         <label for="password">Mot de passe | 8 à 12 caractères (minuscules, MAJUSCULES, chiffres UNIQUEMENT)</label>
                         <p class="text-danger"><?= isset($formError['password']) ? $formError['password'] : ''; ?></p>
                     </div>
@@ -82,7 +82,7 @@ require 'controllers/formsCtl/artistFormController.php';
                         <div class="col s12 m3"></div>
                         <div class="input-field col s12 m6">
                             <select name="specialities">
-                                <option value="<?= isset($artistById->speciality) ? $artistById->speciality : '' ?>" disabled selected>choisir une spécialité</option>
+                                <option value="<?= isset($artist->speciality) ? $artist->speciality : '' ?>" disabled selected>choisir une spécialité</option>
                                 <?php foreach ($listSpeciality as $spec) { ?>
                                     <option value="<?= $spec->idSpeciality ?>"><?= $spec->speciality ?></option>
                                 <?php } ?>
@@ -107,7 +107,7 @@ require 'controllers/formsCtl/artistFormController.php';
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="present" class="materialize-textarea" name="present" maxlength="2000"><?= isset($artistById->present) ? $artistById->present : '' ?></textarea>
+                        <textarea id="present" class="materialize-textarea" name="present" maxlength="2000"><?= isset($artist->present) ? $artist->present : '' ?></textarea>
                         <label for="present">Texte de présentation ||  <i>2000 caractères MAX.</i>  <span>  <i>* modifiable ultèrieurement</i></span></label>
                         <p class="text-danger"><?= isset($formError['present']) ? $formError['present'] : ''; ?></p>
                     </div>

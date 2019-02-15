@@ -7,7 +7,8 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
     <hr>
 </div>
 <div class="container">
-    <?php if (!isset($_SESSION['user']) || $_SESSION['user']->idUserType != 3) { ?>
+    <?php 
+    if (!isset($_SESSION['user']) || $_SESSION['user']->idUserType != 3) { ?>
         <div class="col s12 m8 offset-m2 center-align border">
             <p>Vous rencontrez une erreur de connexion ou n'êtes pas enregistré sur le site<p>
         </div>
@@ -20,6 +21,9 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
                 </p>
                 <p>
                     <a class="btn modal-trigger validateButton" href="#modalModifPassword">Modifier mot de passe</a>
+                </p>
+                <p>
+                    <a class="btn modal-trigger validateButton" href="#modalDeleteProfil">Supprimer mon profil</a>
                 </p>
             </div>
             <div class="col s12 m6">
@@ -137,7 +141,7 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
         </div>
     </div>
 
-    <!-- Modal MODIFICATION PROFIL-->
+    <!-- Modal MODIFICATION PASSWORD-->
     <div id="modalModifPassword" class="modal">
         <div class="modal-content">
             <h1>Modifier mon mot de passe</h1>
@@ -145,28 +149,28 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
             <div class="modal-content">
                 <form method="POST" action="">
                     <div class="row">
-                        <p><b>tapez votre mot de passe actuel</b></p>
+                        <p><b>tapez votre mot de passe ACTUEL</b></p>
                         <input name="password" id="password" type="password" class="validate" value="" />
                         <label for="password"></label>
                         <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
                     </div>
 
                     <div class="row">
-                        <p><b>tapez votre NOUVEAU mot de passe actuel</b></p>
-                        <input name="password" id="password" type="password" class="validate" value="" />
-                        <label for="password"></label>
+                        <p><b>tapez votre NOUVEAU mot de passe</b></p>
+                        <input name="passwordNew" id="passwordNew" type="password" class="validate" value="" />
+                        <label for="passwordNew"></label>
                         <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
                     </div>
 
                     <div class="row">
-                        <p><b>retapez votre NOUVEAU mot de passe actuel</b></p>
-                        <input name="password" id="password" type="password" class="validate" value="" />
-                        <label for="password"></label>
+                        <p><b>retapez votre NOUVEAU mot de passe</b></p>
+                        <input name="passwordCheck" id="passwordCheck" type="password" class="validate" value="" />
+                        <label for="passwordCheck"></label>
                         <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
                     </div>
 
                     <div class="col s12 m12">
-                        <button class="validateButton btn" type="submit" name="submitClientModif">
+                        <button class="validateButton btn" type="submit" name="submitClientPasswordModif">
                             MODIFIER
                         </button>
                     </div>
@@ -175,6 +179,43 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">ANNULER</a>
+        </div>
+    </div>
+
+    <!-- Modal SUPPRIMER PROFIL-->
+    <div id="modalDeleteProfil" class="modal">
+        <div class="modal-content">
+            <h1>Supprimer mon profil</h1>
+            <hr>
+            <p>êtes-vous sur de vouloir supprimer définitivement votre profil ?<p>
+            <div class="modal-content">
+                <form method="POST" action="">
+                    <div class="row">
+                        <div class="col s12 m8 offset-m2 border">
+                            <h2>ATTENTION</h2>
+                            <p>cette action est irréversible</p>
+                            <!--                        <label>
+                                                        <input name="checkboxDelete" type="checkbox" />
+                                                        <span>JE SUIS SUR</span>   
+                                                    </label>-->
+                        </div>
+                        <div class="col s12 m8 offset-m2">
+                            <p>tapez votre mot de passe</p>
+                            <input name="password" id="password" type="password" class="validate" value="" />
+                            <label for="password"></label>
+                            <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
+                        </div>
+                        <div class="col s12 m12 card-action">
+                            <button class="validateButton btn" type="submit" name="submitDeleteProfile">
+                                SUPPRIMER
+                            </button>
+                        </div>
+                    </div>
+                </form>            
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">ANNULER</a>
+            </div>
         </div>
     </div>
 

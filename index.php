@@ -87,6 +87,9 @@ if (session_status() == PHP_SESSION_NONE) {
                     case 'validateInscription':
                         include('views/validate/validateInscription.php');
                         break;
+                    case 'validateDeconnexion':
+                        include('views/validate/validateDeconnexion.php');
+                        break;
                     case 'validateDelete':
                         include('views/validate/validateDelete.php');
                         break;

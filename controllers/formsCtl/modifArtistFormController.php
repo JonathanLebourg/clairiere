@@ -160,7 +160,7 @@ if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name']) && isset(
         $uploadOk = 0;
     }
 // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
+    if ($_FILES["fileToUpload"]["size"] > 2000000) {
         $uploadError['size'] = 'Fichier trop lourd';
         $uploadOk = 0;
     }
@@ -216,7 +216,9 @@ if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name']) && isset(
 
                 $bio->idUser = $lastArtistId->lastId;
                 $bio->updateBio();
-//                    header('location:index.php?page=validate');
+                ?> 
+                <script>window.location = "http://clairiere/index.php?page=myprofileArtist";</script>
+                <?php
             } else {
                 echo "Désolé, une erreur a eu lieu lors du téléchargement";
             }

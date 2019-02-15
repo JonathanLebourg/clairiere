@@ -144,7 +144,7 @@ if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name'])) {
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 500000 || $_FILES["fileToUpload"]["size"] == 0) {
+    if ($_FILES["fileToUpload"]["size"] > 2000000 || $_FILES["fileToUpload"]["size"] == 0) {
         $uploadError['size'] = 'Fichier trop lourd';
         $uploadOk = 0;
     }

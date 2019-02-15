@@ -45,7 +45,9 @@ if (count($formError) == 0 && isset($_POST['submitConnect'])) {
     $existingMail = $connectingUser->existMailConnexion();
     if ($existingMail && $existingMail->password === $password) {
         $_SESSION['user'] = $existingMail;
-       //            header('location:index.php?page=accueil');
+        ?>
+    <script>window.location = "http://clairiere/index.php?page=accueil";</script>
+    <?php
     }
 }
 
@@ -55,7 +57,7 @@ if (count($formError) == 0 && isset($_POST['submitConnect'])) {
      session_destroy();
      session_start();
      $_SESSION['deconnectOK']= '<p> Vous êtes bien déconnecté <p>' ;
-     header('location:index.php?page=deconnect');
+     header('location:index.php?page=validateDeconnexion');
      exit();
  }
 

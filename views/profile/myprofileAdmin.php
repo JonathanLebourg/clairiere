@@ -9,12 +9,7 @@ require 'controllers/adminCtl.php';
         <hr>
     </div>
     <div class="row">
-        <?php if((!isset($_SESSION['user'])) || (isset($_SESSION['user']) && $_SESSION['user']->idUserType != 1)){ ?>
-        <div class="col s12 m8 offset-m2 border">
-            <h2>ACCÈS NON AUTORISÉ</h2>
-            <p>Vous devez posséder les droits administrateurs pour accéder à cette page</p>
-        </div>
-        <?php }else { ?>
+        <?php if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 1) { ?>
             <div class="col s12 m2">
                 <div class="row"><p><b><?= $countUsers - 1 ?></b> INSCRITS sur le site</p></div>
                 <div class="row"><p>dont :</p></div>
@@ -140,6 +135,11 @@ require 'controllers/adminCtl.php';
                         <p>plein de count</p>
                     </div>
                 </div>
+            </div>
+        <?php } else { ?>                   
+            <div class="col s12 m8 offset-m2 border">
+                <h2>ACCÈS NON AUTORISÉ</h2>
+                <p>Vous devez posséder les droits administrateurs pour accéder à cette page</p>
             </div>
         <?php } ?>
     </div>

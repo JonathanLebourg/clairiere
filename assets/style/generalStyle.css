@@ -140,6 +140,9 @@ hr {
 nav{
     height: 0vh;
 }
+.white {
+    background-color: white;
+}
 /*couleur du text des titres de la nav*/
 .nav-wrapper a{
     color: black;

@@ -45,7 +45,7 @@ require 'controllers/formsCtl/worksFormController.php';
                                 <input  type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
                             </div>
                             <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text" placeholder="jpg, jpeg ou png || 2Mo MAX">
+                                <input class="file-path validate" type="text" placeholder="jpg, jpeg ou png || 5Mo MAX">
                             </div>
                         </div>
                         <div class="col s6 m6">

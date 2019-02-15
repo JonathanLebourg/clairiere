@@ -58,7 +58,6 @@ class user extends BDD {
                 . 'SET `lastName`= :lastName, '
                 . '`firstName`= :firstName, '
                 . '`nickName`= :nickName, '
-                . '`password`= :password, '
                 . '`idUserType`= :idUserType, '
                 . '`mail`= :mail '
                 . 'WHERE `idUser` LIKE :idUser ';
@@ -66,13 +65,12 @@ class user extends BDD {
         $updateUser->bindValue(':lastName', $this->lastName, PDO::PARAM_STR);
         $updateUser->bindValue(':firstName', $this->firstName, PDO::PARAM_STR);
         $updateUser->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
-        $updateUser->bindValue(':password', $this->password, PDO::PARAM_STR);
         $updateUser->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         $updateUser->bindValue(':idUserType', $this->idUserType, PDO::PARAM_INT);
         $updateUser->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUser->execute();
     }
-
+    
 //    FONCTION EFFACER
     public function deleteUser() {
         $query = 'DELETE FROM `clair_users` '
@@ -103,7 +101,7 @@ class user extends BDD {
 
 //    fonctionne pour cibler un utilisateur selon son id
     public function userById() {
-        $query = 'SELECT *, `clair_users`.`idUser` AS `userId` FROM `clair_users` '
+        $query = 'SELECT *, `clair_users`.`idUser` AS `idUser` FROM `clair_users` '
                 . 'INNER JOIN `clair_userTypes`  AS `t1` '
                 . 'ON `t1`.`idUserType` = `clair_users`.`idUserType` '
                 . 'LEFT JOIN `clair_biographies` AS `t2` '
@@ -114,8 +112,8 @@ class user extends BDD {
         $result = $this->BDD->prepare($query);
         $result->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         $result->execute();
-        $data = $result->fetch(PDO::FETCH_OBJ);
-        return $data;
+        return $result->fetch(PDO::FETCH_OBJ);
+       
     }
 
 //-----------------
@@ -197,7 +195,7 @@ class user extends BDD {
 //       pour le pseudo
     public function updateUserNickName() {
         $query = 'UPDATE `clair_users` '
-                . 'SET `nickName`= :nickName '
+                . 'SET `nickName` = :nickName '
                 . 'WHERE `idUser` = :idUser ';
         $updateUserNickName = $this->BDD->prepare($query);
         $updateUserNickName->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
@@ -237,6 +235,15 @@ class user extends BDD {
         $updateUserMail->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUserMail->execute();
     }
+    public function updateUserPassword() {
+        $query = 'UPDATE clair_users '
+                . 'SET `password`= :password '
+                . 'WHERE `idUser` LIKE :idUser ';
+        $updateUser = $this->BDD->prepare($query);
+        $updateUser->bindValue(':password', $this->password, PDO::PARAM_STR);        
+        $updateUser->bindValue(':idUser', $this->idUser, PDO::PARAM_STR);
+        return $updateUser->execute();
+    }  
 
 //    fonction pour rechercher l existence du mail pour la connexion
     public function existMailConnexion() {
