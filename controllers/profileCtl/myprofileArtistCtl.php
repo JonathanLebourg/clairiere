@@ -29,6 +29,9 @@ if (isset($_GET['id'])) {
             $file = './img/artWorks/' . $deletedArtWork->picture;
             unlink($file);
             $artWork2->deleteArtWork();
+            ?>
+        <script>window.location = "http://clairiere/index.php?page=myprofileArtist&id=<?= $_SESSION['user']->idUser ?>";</script>
+        <?php
 //        header('Location:./index.php?page=validateDelete');
         }
 //Déclaration des regex

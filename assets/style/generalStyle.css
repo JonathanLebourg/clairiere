@@ -1,6 +1,10 @@
-.modifDivNickName, .modifDivFirstName, .modifDivLastName, .modifDivMail, .modifDivPassword{
+.modifDivNickName, .modifDivFirstName,
+.modifDivLastName, .modifDivMail,
+.modifDivPassword, .modifDivProfileImg,
+.modifDivSpeciality, .modifDivPresent{
     display: none;
 }
+
 /*------------------------
 -------PENSE-BETE-------
 ------------------------
@@ -140,7 +144,7 @@ hr {
 nav{
     height: 0vh;
 }
-.white {
+.white, .navbar-fixed {
     background-color: white;
 }
 /*couleur du text des titres de la nav*/

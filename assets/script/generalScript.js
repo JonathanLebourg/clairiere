@@ -44,6 +44,15 @@ $(document).ready(function () {
     $('[name="submitPassword"]').click(function () {
         $('.modifDivPassword').toggle(500);
     });
+    $('[name="submitProfileImg"]').click(function () {
+        $('.modifDivProfileImg').toggle(500);
+    });
+    $('[name="submitSpeciality"]').click(function () {
+        $('.modifDivSpeciality').toggle(500);
+    });
+    $('[name="submitPresent"]').click(function () {
+        $('.modifDivPresent').toggle(500);
+    });
 
 
 //fction pour afficher l aperçu des images dans les formulaires

@@ -27,6 +27,35 @@ $formError = [];
 $modifOK = TRUE;
 
 
+if(isset($_SESSION['user'])){
+    if (isset($_POST['submitArtistModif'])) {
+        $artistToModif = new user();
+        $artistToModif->idUser = $_SESSION['user']->idUser;
+        if (isset($_POST['nickName']) && !empty($_POST['nickName'])) {
+            $artistToModif->nickName = $_POST['nickName'];
+            $artistToModif->updateUserNickName();
+        }
+        if (isset($_POST['lastName']) && !empty($_POST['lastName'])) {
+            $artistToModif->lastName = $_POST['lastName'];
+            $artistToModif->updateUserLastName();
+        }
+        if (isset($_POST['firstName']) && !empty($_POST['firstName'])) {
+            $artistToModif->firstName = $_POST['firstName'];
+            $artistToModif->updateUserFirstName();
+        }
+        if (isset($_POST['mail']) && !empty($_POST['mail'])) {
+            $artistToModif->mail = $_POST['mail'];
+            $artistToModif->updateUserMail();
+        }
+        $modifiedArtist = $artistToModif->userById();
+        $_SESSION['user'] = $modifiedArtist;
+        ?> 
+        <!--<script>window.location = "http://clairiere/index.php?page=myprofileClient";</script>-->
+        <?php
+    }
+}
+
+
 //Si LastName existe , la passer au test regex , sinon c'est vide donc rien
 if (isset($_POST['lastName'])) {
     //déclarion de la variable pseudo avec le htmlspecialchar 
