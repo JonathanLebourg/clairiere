@@ -1,5 +1,4 @@
 <?php
-
 require_once 'models/users.php';
 require_once 'models/biography.php';
 //require 'models/specialities.php';
@@ -8,8 +7,6 @@ $artist = new user();
 $artist->idUserType = 2;
 $artist->idUser = $_GET['id'];
 $artistById = $artist->userById();
-
-
 
 $speciality = new speciality();
 $listSpeciality = $speciality->listSpec();
@@ -27,10 +24,14 @@ $formError = [];
 $modifOK = TRUE;
 
 
-if(isset($_SESSION['user'])){
+if (isset($_SESSION['user'])) {
     if (isset($_POST['submitArtistModif'])) {
         $artistToModif = new user();
         $artistToModif->idUser = $_SESSION['user']->idUser;
+        
+        $bioToModif = new biography();
+        $bioToModif->idUser = $_SESSION['user']->idUser;
+        
         if (isset($_POST['nickName']) && !empty($_POST['nickName'])) {
             $artistToModif->nickName = $_POST['nickName'];
             $artistToModif->updateUserNickName();
@@ -47,10 +48,20 @@ if(isset($_SESSION['user'])){
             $artistToModif->mail = $_POST['mail'];
             $artistToModif->updateUserMail();
         }
+
+        if (isset($_POST['present']) && !empty($_POST['present'])) {
+            $bioToModif->present = $_POST['present'];
+            $bioToModif->updatePresent();
+        }
+        if (isset($_POST['speciality']) && !empty($_POST['speciality'])) {
+            $bioToModif->idSpeciality = $_POST['speciality'];
+            $bioToModif->updateSpeciality();
+        }
+
         $modifiedArtist = $artistToModif->userById();
         $_SESSION['user'] = $modifiedArtist;
         ?> 
-        <!--<script>window.location = "http://clairiere/index.php?page=myprofileClient";</script>-->
+        <script>window.location = "http://clairiere/index.php?page=myprofileArtist&id=<?= $_SESSION['user']->idUser?>";</script>
         <?php
     }
 }

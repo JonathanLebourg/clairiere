@@ -92,8 +92,6 @@ require 'controllers/connectCtl.php';
     </li>
     <li><a class="subheader">Menu</a></li>
     <li><div class="divider"></div></li>
-    <!-- Dropdown Trigger -->
-    <li><a data-target="slide-out2" class="sidenav-trigger">test</a></li>
     <li><a class="dropdown-trigger" href="index.php?page=listArtists" data-target="dropdownArtistsResponsive">Artistes<i class="material-icons right">arrow_drop_down</i></a></li>
     <li><a class="dropdown-trigger" href="index.php?page=listArtWorks" data-target="dropdownArtWorksResponsive">Oeuvres<i class="material-icons right">arrow_drop_down</i></a></li>
 

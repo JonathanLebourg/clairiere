@@ -65,4 +65,26 @@ class biography extends BDD {
         $bioByUser->execute();
         return $bioByUser->fetch(PDO::FETCH_OBJ);
     }
+    
+    //       pour la prresentation
+    public function updatePresent() {
+        $query = 'UPDATE clair_biographies '
+                . 'SET `present`= :present '
+                . 'WHERE `idUser` = :idUser ';
+        $updatePresent = $this->BDD->prepare($query);
+        $updatePresent->bindValue(':present', $this->present, PDO::PARAM_STR);
+        $updatePresent->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        return $updatePresent->execute();
+    }
+    
+     //       pour la prresentation
+    public function updateSpeciality() {
+        $query = 'UPDATE clair_biographies '
+                . 'SET `idSpeciality` = :idSpeciality '
+                . 'WHERE `idUser` = :idUser ';
+        $updateSpeciality = $this->BDD->prepare($query);
+        $updateSpeciality->bindValue(':idSpeciality', $this->idSpeciality, PDO::PARAM_INT);
+        $updateSpeciality->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        return $updateSpeciality->execute();
+    }
 }

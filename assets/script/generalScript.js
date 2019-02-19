@@ -19,7 +19,7 @@ $(document).ready(function () {
         } else
             $('.card-action a').addClass("disabled")
     })
-    
+
     $('[name="checkboxDelete"]').change(function () {
         if ($(this).is(':checked')) {
             // Do something...
@@ -27,8 +27,8 @@ $(document).ready(function () {
         } else
             $('.card-action button').addAttr("disabled")
     })
-    
-    
+
+
     $('[name="submitNickName"]').click(function () {
         $('.modifDivNickName').toggle(500);
     });
@@ -72,6 +72,7 @@ $(document).ready(function () {
     $("#fileToUpload").change(function () {
         readURL(this);
     });
+
 });
 
 

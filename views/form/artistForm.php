@@ -66,7 +66,7 @@ require 'controllers/formsCtl/artistFormController.php';
                                 </div>
                             </div>
                             <div class="col s6 m6">
-                                <img src="" id="output" class="responsive-img" alt="aperçu de l'image" />
+                                <img src="" id="output" class="responsive-img" alt="coucouc" />
                             </div>
                             <div class="error">
                                 <p class="text-danger"><?= isset($formError['fileToUpload']) ? $formError['fileToUpload'] : ''; ?></p>

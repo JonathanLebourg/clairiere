@@ -6,7 +6,7 @@
             <a class="black-text text-lighten-3 modal-trigger" href="#modal2">Conditions générales</a></p>
     </div>
     <div class="container">
-        <p class="black-text">© 2018 <a class="black-text text-lighten-3" href="https://jonathanlebourg.github.io/monCV.html">JON</a></p>
+        <p class="black-text">© 2019 <a class="black-text text-lighten-3" href="https://jonathanlebourg.github.io/monCV.html">JON</a></p>
     </div>
 
 

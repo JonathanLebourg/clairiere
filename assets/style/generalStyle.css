@@ -55,6 +55,7 @@ hr {
     color: black;
     background-color: white;
     font-size: 2.5vh;
+    margin: 1vh
 }
 .validateButton:hover{
     background-color: rgb(49,208,25);
