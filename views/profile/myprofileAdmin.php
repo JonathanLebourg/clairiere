@@ -181,7 +181,7 @@ foreach ($listArtWorks as $work) {
             <div class="container">
                 <p>ATTENTION, action irreversible !!!</p>
                 <form method="POST" action="index.php?page=admin&id=<?= $work->idArtWork; ?>" id="formWorkId<?= $work->idArtWork; ?>">
-                    <input  form="formWorkId<?= $work->idArtWork; ?>" class="modal-action btn waves-effect waves-light choicebutton delete" type="submit" value="EFFACER OEUVRE" name="deleteWork" />
+                    <input  form="formWorkId<?= $work->idArtWork; ?>" class="modal-action btn validateButton" type="submit" value="EFFACER OEUVRE" name="deleteWork" />
                 </form>
                 <div class="row">
                     <a class="modal-close waves-effect waves-light choicebutton delete">ANNULER</a>

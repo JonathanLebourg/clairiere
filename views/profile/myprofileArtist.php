@@ -47,8 +47,7 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                     <hr>
                 </div>
                 <div class="row imgArtWorkDiv">
-                    <a href="index.php?page=artWork&id=<?= $work->idArtWork; ?>">
-                        <img src="img/artWorks/<?= $work->picture ?>" class="responsive-img imgArtWork"/></a>                    
+                        <img src="img/artWorks/<?= $work->picture ?>" class="responsive-img imgArtWork"/>                 
                 </div>
                 <div class="row">
                     <div class="card-title centeralign"><p>Oeuvre datant de : <?= $work->date ?></p></div>
@@ -74,6 +73,9 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                         </div>                        
                     </div>
                 <?php } ?>
+                <div class="row">
+                    interestcount
+                </div>
             </div>
 
 
@@ -94,7 +96,7 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                 <div class="row "> 
                     <p>ATTENTION, action irreversible !!!</p>
                     <form method="POST" action="index.php?page=myprofileArtist&id=<?= $work->idUser; ?>&delete=<?= $work->idArtWork; ?>" id="formId<?= $work->idArtWork; ?>">
-                        <input  form="formId<?= $work->idArtWork; ?>" class="modal-action btn waves-effect waves-light more" type="submit" value="SUPPRIMER" name="deleteArtWork" />
+                        <input  form="formId<?= $work->idArtWork; ?>" class="modal-action btn validateButton" type="submit" value="SUPPRIMER" name="deleteArtWork" />
                     </form>
                 </div>
                 <div class="row">

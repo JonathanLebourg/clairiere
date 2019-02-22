@@ -11,9 +11,7 @@ require 'controllers/listsCtl/listArtWorksCtl.php';
         <?php foreach ($listArtWorks as $work) { ?>
             <div class="col s12 m4 border hoverable">
                 <div class="row imgArtWorkDiv">
-                    <a href="index.php?page=artWork&id=<?= $work->idArtWork ?>">
-                        <img class="responsive-img imgArtWork" src="./img/artWorks/<?= $work->picture ?>"/>
-                    </a>                    
+                    <img class="responsive-img imgArtWork" src="./img/artWorks/<?= $work->picture ?>"/>
                 </div>
                 <div class="row">
                     <hr>
@@ -23,7 +21,7 @@ require 'controllers/listsCtl/listArtWorksCtl.php';
                                 <b><?= $work->nickName ?></b>
                             </a></p>                                
                     </div>
-                    <div><a href="" class="btn validateButton">+ de détails</a></div>
+                    <div><a href="index.php?page=artWork&id=<?= $work->idArtWork ?>" class="btn validateButton">+ de détails</a></div>
                 </div>
             </div>
         <?php } ?>

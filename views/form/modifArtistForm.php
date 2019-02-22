@@ -15,7 +15,7 @@ require 'controllers/formsCtl/modifArtistFormController.php';
         <?php } else { ?>
             <div class="container">
                 <div class="row border">
-                    <form method="POST" action="">
+                    <form method="POST" action="" enctype="multipart/form-data">
                         <div class="col s12 m4">
                             <div class="card white darken-1 hoverable imgProfileDiv">
                                 <img src="./img/profilePicture/<?= $artistById->profilePicture ?>" class="responsive-img imgProfile" /> 
@@ -144,7 +144,7 @@ require 'controllers/formsCtl/modifArtistFormController.php';
                                 <div class="modifDivMail input-field col s12 m8 offset-m2">
                                     <input name="mail" id="mail" type="text" class="validate" value="" />
                                     <label for="mail">Mail</label>
-                                    <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
+                                    <p class="text-danger"><b><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></b></p>
                                 </div>
                             </div>
                             <div class="col s12 m12">

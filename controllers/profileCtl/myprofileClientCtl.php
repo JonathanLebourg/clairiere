@@ -66,6 +66,9 @@ if (isset($_SESSION['user'])) {
         $interestToDelete = new artWorkInterest();
         $interestToDelete->idArtWorkInterest = htmlspecialchars($_GET['delete']);
         $interestToDelete->deleteArtWorkInterest();
+        ?>
+        <script>window.location = "http://clairiere/index.php?page=myprofileClient&id=<?= $_SESSION['user']->idUser ?>";</script>
+        <?php
     }
 }
     

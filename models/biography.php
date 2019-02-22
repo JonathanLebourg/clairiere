@@ -87,4 +87,14 @@ class biography extends BDD {
         $updateSpeciality->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateSpeciality->execute();
     }
+     //       pour la prresentation
+    public function updateProfilePicture() {
+        $query = 'UPDATE clair_biographies '
+                . 'SET `profilePicture` = :profilePicture '
+                . 'WHERE `idUser` = :idUser ';
+        $updateProfileImage = $this->BDD->prepare($query);
+        $updateProfileImage->bindValue(':profilePicture', $this->profilePicture, PDO::PARAM_INT);
+        $updateProfileImage->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        return $updateProfileImage->execute();
+    }
 }

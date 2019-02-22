@@ -7,24 +7,31 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
     <hr>
 </div>
 <div class="container">
-    <?php 
-    if (!isset($_SESSION['user']) || $_SESSION['user']->idUserType != 3) { ?>
+    <?php if (!isset($_SESSION['user']) || $_SESSION['user']->idUserType != 3) { ?>
         <div class="col s12 m8 offset-m2 center-align border">
             <p>Vous rencontrez une erreur de connexion ou n'êtes pas enregistré sur le site<p>
         </div>
     <?php } else { ?>
         <div class="row border">
-            <div class="col s12 m3">
-                <p><b><?= $_SESSION['user']->nickName ?></b></p>
-                <p>
-                    <a class="btn modal-trigger validateButton" href="#modalModifClient">Modifier mon profil</a>
-                </p>
-                <p>
-                    <a class="btn modal-trigger validateButton" href="#modalModifPassword">Modifier mot de passe</a>
-                </p>
-                <p>
-                    <a class="btn modal-trigger validateButton" href="#modalDeleteProfil">Supprimer mon profil</a>
-                </p>
+            <div class="row">
+                <div class="col s12 m3">
+                    <p><b><?= $_SESSION['user']->nickName ?></b></p>
+                </div>
+                <div class="col s12 m3">
+                    <p>
+                        <a class="btn modal-trigger validateButton" href="#modalModifClient">Modifier mon profil</a>
+                    </p>
+                </div>
+                <div class="col s12 m3">
+                    <p>
+                        <a class="btn modal-trigger validateButton" href="#modalModifPassword">Modifier mot de passe</a>
+                    </p>
+                </div>
+                <div class="col s12 m3">
+                    <p>
+                        <a class="btn modal-trigger validateButton" href="#modalDeleteProfil">Supprimer mon profil</a>
+                    </p>
+                </div>
             </div>
             <div class="col s12 m6">
                 <p>faudrait que je trouve un truc à mettre là</p>
@@ -52,7 +59,7 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
                             </div>
                         </div>
                         <div class="col s12 m6">
-                            <h1><b><?= $interestWork->title ?></b></h1>
+                            <h2><b><?= $interestWork->title ?></b></h2>
                             <p>Prix : <b><?= $interestWork->price ?> €</b></p>
                             <p>
                                 <a class="btn modal-trigger validateButton" href="#modalDeleteInterest<?= $interestWork->idArtWorkInterest ?>">Supprimer</a>

@@ -11,16 +11,19 @@ if (isset($_GET['id'])) {
 //    var_dump($workById->idArtWork);
     $_SESSION['interest'] = $workById;
 //    var_dump($_SESSION);
-    $interest = new artWorkInterest();
-    $interest->idArtWork = $_SESSION['interest']->idArtWork;
+
 
     if (isset($_POST['submitArtWorkInterest']) && isset($_SESSION['user'])) {
+        $interest = new artWorkInterest();
+        $interest->idArtWork = $_SESSION['interest']->idArtWork;
         $interest->idUser = $_SESSION['user']->idUser;
         $exist = $interest->alreadyExistArtWorkInterest();
-        if ($exist = TRUE) {
+        var_dump($exist);
+        if ($exist == FALSE) {
             $interest->newArtWorkInterest();
+            $_SESSION['toast'] = 'intérêt enregistré';
         } else {
-            $_SESSION['interestError'] = 'vous avez déjà cette oeuvre dans votre liste';    
+            $_SESSION['toast'] = 'vous avez déjà cette oeuvre dans votre liste';
         }
     }
 }

@@ -35,11 +35,16 @@ class artWorkInterest extends BDD {
         $alreadyExistArtWorkInterest->bindValue(':idArtWork', $this->idArtWork, PDO::PARAM_INT);
         $alreadyExistArtWorkInterest->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         $alreadyExistArtWorkInterest->execute();
-        $data = $alreadyExistArtWorkInterest->fetch(PDO::FETCH_OBJ);
-        return $data;
-    }
-    
-    
+        if ($alreadyExistArtWorkInterest->rowCount() >= 1) {
+            $count = TRUE;
+        } else {
+            $count = FALSE;
+        }
+//        si le nombre de ligne trouvées avec la fction rowcount() est 1 ou superieur
+//        return TRUE
+//        alors le user existe déjà
+        return $count;
+    }    
 
     public function ListArtWorkInterestByClient() {
         $query = 'SELECT * FROM `clair_artWorkInterest` '
@@ -60,5 +65,17 @@ class artWorkInterest extends BDD {
         return $ListArtWorkInterestByClient->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function ListArtWorkInterestByArtist() {
+        $query = 'SELECT * FROM `clair_artWorkInterest` '
+                . 'INNER JOIN `clair_artWorks` '
+                . 'ON `clair_artWorks`.`idArtWork` = `clair_artWorkInterest`.`idArtWork` '
+                . 'INNER JOIN `clair_user` '
+                . 'ON '
+                . 'WHERE `clair_artWorkInterest`.`idUser` = :idUser';
+        $ListArtWorkInterestByArtist = $this->BDD->prepare($query);
+        $ListArtWorkInterestByArtist->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        $ListArtWorkInterestByArtist->execute();
+        return $ListArtWorkInterestByArtist->fetchAll(PDO::FETCH_OBJ);
+    }
 }
 ?>

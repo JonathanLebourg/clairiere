@@ -129,7 +129,7 @@ require 'controllers/formsCtl/worksFormController.php';
         </div>
         
         <div class="row">
-            <button class="validateButton btn waves-effect waves-light" type="submit" name="submitArtWork">Envoyer</button>
+            <button class="validateButton btn" type="submit" name="submitArtWork">Envoyer</button>
         </div>
         
     </form>

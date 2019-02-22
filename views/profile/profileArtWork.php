@@ -59,13 +59,18 @@ require 'controllers/profileCtl/profileArtWorkCtl.php';
                     <div class="card white darken-1">                    
                         <p> Prix : <b><?= $workById->price ?> €</b></p>
                     </div>
-                    <div class="card white darken-1">                    
-                        <form method="POST" action="">
-                            <input class="btn validateButton" type="submit" name="submitArtWorkInterest" value="je suis interessé" />
-                            <?php if (isset($_SESSION['interestError']))  ?>
-                        </form>
-                    </div>
-                    <?php if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $workById->idUser == $_SESSION['user']->idUser) { ?>
+                    <?php
+                    if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 3) {
+                        ?>
+                        <div class="card white darken-1">                    
+                            <form method="POST" action="">
+                                <input class="btn validateButton" type="submit" name="submitArtWorkInterest" value="je suis interessé" onclick="M.toast({html: '<?= $_SESSION['toast']; ?>', completeCallback: function(){alert('Your toast was dismissed')}})"/>
+                            </form>
+                        </div>
+                        <?php
+                    }
+                    if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $workById->idUser == $_SESSION['user']->idUser) {
+                        ?>
                         <div class="card white darken-1">                    
                             <button class="btn modal-trigger validateButton" type="button" name="button">Modifier</button>
                             <button class="btn modal-trigger validateButton" type="button" name="button">Supprimer</button>
@@ -73,9 +78,6 @@ require 'controllers/profileCtl/profileArtWorkCtl.php';
                     <?php } ?>
                 </div>
             </div>
-
         </div>
     </div>
 <?php } ?>
-
-

@@ -21,7 +21,7 @@
                     <p><?= $valid->lastName ?></p>
                 </div>
                 <div class="card-action">
-                    <a class="disabled btn userchoicebutton waves-effect waves-light btn" name="button" href="index.php?page=artistForm" >S'inscrire en tant qu'artiste</a>
+                    <a class="disabled btn validateButton" name="button" href="index.php?page=artistForm" >S'inscrire en tant qu'artiste</a>
                 </div>
             </div>
         </div>
