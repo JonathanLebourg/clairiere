@@ -39,8 +39,6 @@ require 'controllers/connectCtl.php';
                     <li><a class="dropdown-trigger" href="index.php?page=listArtWorks" data-target="dropdownArtWorks">Oeuvres<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a href="index.php?page=whoIam">Qui sommes-nous ?</a></li>
                     <li><a href="index.php?page=contact">Nous contacter</a></li>
-                    <!---------------------TEMPORAIRE--------------------->
-                    <li><a href="index.php?page=admin"><b>Admin</b></a></li>
                 </ul>
                 <div id="right-nav" class="right hide-on-med-and-down">
                     <div class="connectButtons row"> 
@@ -55,6 +53,9 @@ require 'controllers/connectCtl.php';
                             <?php if ($_SESSION['user']->idUserType == 3) { ?>
                                 <a class="btn validateButton " href="index.php?page=myprofileClient">Mon profil</a>
                             <?php } ?>   
+                                <?php if ($_SESSION['user']->idUserType == 1) { ?>
+                                <a class="btn validateButton " href="index.php?page=myprofileAdmin">Administrateur</a>
+                            <?php } ?>
                         <?php } ?>
                     </div>
                 </div>

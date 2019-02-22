@@ -11,7 +11,7 @@ require 'controllers/formsCtl/worksFormController.php';
 </div>     
 <div class="container">           
     <form class="" method="POST" action="" enctype="multipart/form-data" >
-        <div class="borderPreAlert2 col s8 offset-s2 m8 offset-m2">
+        <div class="border col s8 offset-s2 m8 offset-m2">
             <div class="row">
                 <div class="col s8 offset-s2 m8 offset-m2">
                     <p>Vous êtes invitez à suivre au mieux les recommandations afin de permettre à votre travail
@@ -63,8 +63,8 @@ require 'controllers/formsCtl/worksFormController.php';
                 </div>
             </div>
         </div>
-        
-        <div class="borderPreAlert3 col s8 offset-s2 m8 offset-m2">
+
+        <div class="border col s8 offset-s2 m8 offset-m2">
             <div class="row">
                 <div class="col s8 offset-s2 m8 offset-m2">
                     <h1>Modalités <b>importantes</b> liés à la clairière</h1>
@@ -85,17 +85,17 @@ require 'controllers/formsCtl/worksFormController.php';
                         <label>Faites votre sélection</label>
                         <p class="text-danger"><?= isset($formError['modality']) ? $formError['modality'] : ''; ?></p>
                     </div>
-                    <div class="input-field col s12 m6 offset-m3">
-                        <p>prix en Euros</p>
-                        <input type="text" name="price" id="price" class="validate" value="<?= isset($artWork->price) ? $artWork->price : '' ?>" />
-                        <label>Prix</label>
-                        <p class="text-danger"><?= isset($formError['price']) ? $formError['price'] : ''; ?></p>
-                    </div>
+                        <div class="input-field col s12 m6 offset-m3">
+                            <p>prix en Euros</p>
+                            <input type="text" name="price" id="price" class="validate" value="<?= isset($artWork->price) ? $artWork->price : '' ?>" />
+                            <label>Prix</label>
+                            <p class="text-danger"><?= isset($formError['price']) ? $formError['price'] : ''; ?></p>
+                        </div>
                 </div>
             </div>
         </div>
 
-        <div class="borderPreAlert col s8 offset-s2 m8 offset-m2">
+        <div class="border col s8 offset-s2 m8 offset-m2">
             <div class="row">
                 <div class="col s8 offset-s2 m8 offset-m2">
                     <p>Le reste de ces informations est facultatif 
@@ -127,10 +127,10 @@ require 'controllers/formsCtl/worksFormController.php';
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <button class="validateButton btn" type="submit" name="submitArtWork">Envoyer</button>
         </div>
-        
+
     </form>
 </div>

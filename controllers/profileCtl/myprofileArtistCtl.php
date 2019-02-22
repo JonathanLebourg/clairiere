@@ -1,8 +1,8 @@
 <?php
-
 require_once 'models/users.php';
 require_once 'models/artWorks.php';
 require_once 'models/workStyles.php';
+require_once 'models/artWorkInterest.php';
 
 if (isset($_GET['id'])) {
 
@@ -16,11 +16,21 @@ if (isset($_GET['id'])) {
 
     $workStyle = new workStyle();
     $listWorkStyles = $workStyle->listStyles();
+    
+   
 
     if (isset($_SESSION['user'])) {
-        
+
         $connectingArtist = new user();
         $connectingArtist = $_SESSION['user'];
+               
+
+        foreach ($ListArtWorkByArtist as $work) {
+            $interestCount = new artWorkInterest;
+            $interestCount->idArtWork = $work->idArtWork;
+            $count = $interestCount->ListArtWorkInterestByArtist();
+            var_dump($count);
+        }
 
         if (isset($_POST['deleteArtWork']) && isset($_GET['delete'])) {
             $artWork2 = new artWork();
@@ -30,9 +40,33 @@ if (isset($_GET['id'])) {
             unlink($file);
             $artWork2->deleteArtWork();
             ?>
-        <script>window.location = "http://clairiere/index.php?page=myprofileArtist&id=<?= $_SESSION['user']->idUser ?>";</script>
-        <?php
+            <script>window.location = "http://clairiere/index.php?page=myprofileArtist&id=<?= $_SESSION['user']->idUser ?>";</script>
+            <?php
 //        header('Location:./index.php?page=validateDelete');
+        }
+
+        if (isset($_POST['submitClientPasswordModif'])) {
+            if (isset($_POST['password']) && !empty($_POST['password']) && $_SESSION['user']->password = $_POST['password'] && $_POST['passwordNew'] == $_POST['passwordCheck']) {
+                $artist2 = new user();
+                $artist2->idUser = $_SESSION['user']->idUser;
+                $artist2->password = $_POST['passwordNew'];
+                $artist2->updateUserPassword();
+                $modifiedClient = $artist2->userById();
+                $_SESSION['user'] = $modifiedClient;
+            }
+        }
+
+        if (isset($_POST['submitDeleteProfile'])) {
+            $artist2 = new user();
+            $artist2->idUser = $_SESSION['user']->idUser;
+            $artist2->deleteUser();
+            session_unset();
+            session_destroy();
+            session_start();
+            $_SESSION['deconnectOK'] = '<p> Vous êtes bien déconnecté <p>';
+            ?>
+            <script>window.location = "http://clairiere/index.php?page=validateDeconnexion";</script>
+            <?php
         }
 //Déclaration des regex
 //Déclaration regex nom

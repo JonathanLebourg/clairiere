@@ -62,7 +62,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         include('views/form/validate/validateUser.php');
                         break;
 //                        -----------PROFILS-----------
-                    case 'admin':
+                    case 'myprofileAdmin':
                         include('views/profile/myprofileAdmin.php');
                         break;
                     case 'myprofileArtist':

@@ -33,14 +33,14 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
                     </p>
                 </div>
             </div>
-            <div class="col s12 m6">
+<!--            <div class="col s12 m6">
                 <p>faudrait que je trouve un truc à mettre là</p>
             </div>
             <div class="col s12 m3">
                 <p>$count le nombre d oeuvres qui m interessent</p>
                 <p>$count messages</p>
                 <p><a href="">mes messages</a></p>
-            </div>
+            </div>-->
         </div>
         <div class="row">
             <hr>

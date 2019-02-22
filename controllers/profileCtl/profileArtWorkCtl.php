@@ -18,7 +18,6 @@ if (isset($_GET['id'])) {
         $interest->idArtWork = $_SESSION['interest']->idArtWork;
         $interest->idUser = $_SESSION['user']->idUser;
         $exist = $interest->alreadyExistArtWorkInterest();
-        var_dump($exist);
         if ($exist == FALSE) {
             $interest->newArtWorkInterest();
             $_SESSION['toast'] = 'intérêt enregistré';

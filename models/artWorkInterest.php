@@ -69,13 +69,20 @@ class artWorkInterest extends BDD {
         $query = 'SELECT * FROM `clair_artWorkInterest` '
                 . 'INNER JOIN `clair_artWorks` '
                 . 'ON `clair_artWorks`.`idArtWork` = `clair_artWorkInterest`.`idArtWork` '
-                . 'INNER JOIN `clair_user` '
-                . 'ON '
-                . 'WHERE `clair_artWorkInterest`.`idUser` = :idUser';
+                . 'INNER JOIN `clair_users` '
+                . 'ON `clair_users`.`idUser` = `clair_artWorks`.`idUser` '
+                . 'WHERE `clair_artWorkInterest`.`idArtWork` = :idArtWork';
         $ListArtWorkInterestByArtist = $this->BDD->prepare($query);
-        $ListArtWorkInterestByArtist->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
+        $ListArtWorkInterestByArtist->bindValue(':idArtWork', $this->idArtWork, PDO::PARAM_INT);
         $ListArtWorkInterestByArtist->execute();
-        return $ListArtWorkInterestByArtist->fetchAll(PDO::FETCH_OBJ);
+        $count = $ListArtWorkInterestByArtist->rowCount();
+        return $count;
     }
+    
+//    public function getInterestedByArtWorkId($idArtWork) {
+//        $req = $this->BDD->prepare('SELECT idArtWorlInterest FROM clair_artWorkInterest WHERE idArtWork = ?');
+//        $req = $req->execute([$idArtWork]);
+//        return $req->rowCount();
+//    }
 }
 ?>

@@ -64,7 +64,7 @@ require 'controllers/profileCtl/profileArtWorkCtl.php';
                         ?>
                         <div class="card white darken-1">                    
                             <form method="POST" action="">
-                                <input class="btn validateButton" type="submit" name="submitArtWorkInterest" value="je suis interessé" onclick="M.toast({html: '<?= $_SESSION['toast']; ?>', completeCallback: function(){alert('Your toast was dismissed')}})"/>
+                                <input class="btn validateButton" type="submit" name="submitArtWorkInterest" value="je suis interessé" />
                             </form>
                         </div>
                         <?php

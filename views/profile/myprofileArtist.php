@@ -10,11 +10,17 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
     <?php if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $_SESSION['user']->idUser == $_GET['id']) { ?>
         <div class="row border">
             <div class="card white darken-1">  
-                <div class="col s6 m6">
+                <div class="col s6 m3">
                     <a class="btn validateButton" name="profileModif" href="./index.php?page=modifProfile&id=<?= $artistById->idUser ?>">Modifier votre profil</a>
                 </div>
-                <div class="col s6 m6">
+                <div class="col s6 m3">
                     <a class="btn validateButton" name="addWork" href="./index.php?page=ajoutOeuvre&id=<?= $artistById->idUser ?>">Ajouter une œuvre</a>
+                </div>
+                <div class="col s6 m3">
+                    <a class="btn modal-trigger validateButton" href="#modalModifPassword">Modifier mot de passe</a>
+                </div>
+                <div class="col s6 m3">
+                    <a class="btn modal-trigger validateButton" href="#modalDeleteProfil">Supprimer mon profil</a>
                 </div>
             </div>
         </div>
@@ -47,7 +53,7 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                     <hr>
                 </div>
                 <div class="row imgArtWorkDiv">
-                        <img src="img/artWorks/<?= $work->picture ?>" class="responsive-img imgArtWork"/>                 
+                    <img src="img/artWorks/<?= $work->picture ?>" class="responsive-img imgArtWork"/>                 
                 </div>
                 <div class="row">
                     <div class="card-title centeralign"><p>Oeuvre datant de : <?= $work->date ?></p></div>
@@ -71,17 +77,89 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                             <a href="" data-target="modalDelete<?= $work->idArtWork; ?>" class="modal-trigger btn validateButton">
                                 <i class="tiny material-icons">delete</i>EFFACER</a>
                         </div>                        
-                    </div>
-                <?php } ?>
+                    </div>                
                 <div class="row">
-                    interestcount
-                </div>
+                    <p><b><?= $count; ?></b> personnes interessées</p>
+                </div>                
+                <?php } ?>
             </div>
-
-
         <?php } ?>
     </div>
 </div>
+    <!-- Modal MODIFICATION PASSWORD-->
+    <div id="modalModifPassword" class="modal">
+        <div class="modal-content">
+            <h1>Modifier mon mot de passe</h1>
+            <hr>
+            <div class="modal-content">
+                <form method="POST" action="">
+                    <div class="row">
+                        <p><b>tapez votre mot de passe ACTUEL</b></p>
+                        <input name="password" id="password" type="password" class="validate" value="" />
+                        <label for="password"></label>
+                        <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
+                    </div>
+
+                    <div class="row">
+                        <p><b>tapez votre NOUVEAU mot de passe</b></p>
+                        <input name="passwordNew" id="passwordNew" type="password" class="validate" value="" />
+                        <label for="passwordNew"></label>
+                        <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
+                    </div>
+
+                    <div class="row">
+                        <p><b>retapez votre NOUVEAU mot de passe</b></p>
+                        <input name="passwordCheck" id="passwordCheck" type="password" class="validate" value="" />
+                        <label for="passwordCheck"></label>
+                        <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
+                    </div>
+
+                    <div class="col s12 m12">
+                        <button class="validateButton btn" type="submit" name="submitClientPasswordModif">
+                            MODIFIER
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">ANNULER</a>
+        </div>
+    </div>
+
+    <!-- Modal SUPPRIMER PROFIL-->
+    <div id="modalDeleteProfil" class="modal">
+        <div class="modal-content">
+            <h1>Supprimer mon profil</h1>
+            <hr>
+            <p>êtes-vous sur de vouloir supprimer définitivement votre profil ?<p>
+            <div class="modal-content">
+                <form method="POST" action="">
+                    <div class="row">
+                        <div class="col s12 m8 offset-m2 border">
+                            <h2>ATTENTION</h2>
+                            <p>cette action est irréversible</p>
+                        </div>
+                        <div class="col s12 m8 offset-m2">
+                            <p>tapez votre mot de passe</p>
+                            <input name="password" id="password" type="password" class="validate" value="" />
+                            <label for="password"></label>
+                            <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
+                        </div>
+                        <div class="col s12 m12 card-action">
+                            <button class="validateButton btn" type="submit" name="submitDeleteProfile">
+                                SUPPRIMER
+                            </button>
+                        </div>
+                    </div>
+                </form>            
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">ANNULER</a>
+            </div>
+        </div>
+    </div>
+
 
 <!--BOUCLE POUR LES MODAL-->
 <?php foreach ($ListArtWorkByArtist as $work) { ?>
