@@ -1,10 +1,10 @@
 <?php
-
+//Avec le require_once, on appelle le modèle pour reliés les enfants de la classe BDD
 require_once 'connectBDD.php';
-
+//On crée la classe user étendue à BDD et permettant ainsi d'accéder aux méthodes magiques et donc à la base de données
 class user extends BDD {
 
-//déclaration des attributs identiques à la table `users`
+//  Déclaration des attributs identiques à la table `clair_users`
     public $idUser;
     public $nickName;
     public $lastName;
@@ -16,8 +16,13 @@ class user extends BDD {
 //-----------------
 //PARTIE GENERALE
 //-----------------
-//    fonction qui liste tous les utilisateurs 
-//    avec les jointures avec leurs biographies et leurs specialités
+//  Fonction qui liste tous les utilisateurs 
+//  On utilise un SELECT
+//  On y intègre les jointures avec les tables clair_userTypes, clair_biographies et clair_specialities
+    /**
+     * 
+     * @return type
+     */
     public function listUsers() {
         $query = 'SELECT *,  `clair_users`.`idUser` AS `userId` FROM `clair_users` '
                 . 'INNER JOIN `clair_userTypes` '
@@ -27,13 +32,17 @@ class user extends BDD {
                 . 'LEFT JOIN `clair_specialities` AS t2 '
                 . 'ON `t2`.`idSpeciality` = `t1`.`idSpeciality` ';
         $result = $this->BDD->query($query);
+//      On fait un fetchAll afin de récupérer toutes les colonnes de la requête, on l'instancie dans une variable $data
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
     }
-
-//     fonction pour ajouter un utilisateur de type client ou artiste
-//     (pour l artiste aller voir aussi la fonction addBio() dans le model biographies)
-//    FONCTION AJOUT
+//  Fonction pour ajouter un utilisateur de type client ou artiste
+//  (pour l artiste aller voir aussi la fonction addBio() dans le model biographies)
+//  On utilise INSERT INTO et SET 
+    /**
+     * 
+     * @return type
+     */
     public function addUser() {
         $query = 'INSERT INTO clair_users '
                 . '      SET `lastName`= :lastName, '
@@ -42,17 +51,24 @@ class user extends BDD {
                 . '      `password`= :password,'
                 . '      `idUserType`= :idUserType,'
                 . '      `mail`= :mail';
+//      On prépare la requête et on la stocke dans la variable $addUser
         $addUser = $this->BDD->prepare($query);
+//      Avec la fonction bindValue, on lie les valeurs en utilsant les marqueurs nominatifs pour associer attribut
         $addUser->bindValue(':lastName', $this->lastName, PDO::PARAM_STR);
         $addUser->bindValue(':firstName', $this->firstName, PDO::PARAM_STR);
         $addUser->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
         $addUser->bindValue(':password', $this->password, PDO::PARAM_STR);
         $addUser->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         $addUser->bindValue(':idUserType', $this->idUserType, PDO::PARAM_INT);
+//      Je retourne l'execute() 
         return $addUser->execute();
     }
-
-//    FONCTION UPDATE USER
+//  FONCTION UPDATE USER
+//  On utilise un WHERE pour bien cibler l'user de la table selon son idUser
+    /**
+     * 
+     * @return type
+     */
     public function updateUser() {
         $query = 'UPDATE clair_users '
                 . 'SET `lastName`= :lastName, '
@@ -60,7 +76,7 @@ class user extends BDD {
                 . '`nickName`= :nickName, '
                 . '`idUserType`= :idUserType, '
                 . '`mail`= :mail '
-                . 'WHERE `idUser` LIKE :idUser ';
+                . 'WHERE `idUser` = :idUser ';
         $updateUser = $this->BDD->prepare($query);
         $updateUser->bindValue(':lastName', $this->lastName, PDO::PARAM_STR);
         $updateUser->bindValue(':firstName', $this->firstName, PDO::PARAM_STR);
@@ -69,9 +85,13 @@ class user extends BDD {
         $updateUser->bindValue(':idUserType', $this->idUserType, PDO::PARAM_INT);
         $updateUser->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUser->execute();
-    }
-    
-//    FONCTION EFFACER
+    }    
+//  FONCTION EFFACER
+//  On utilise un DELETE et un WHERE pour bien cibler l'user de la table selon son idUser
+    /**
+     * 
+     * @return type
+     */
     public function deleteUser() {
         $query = 'DELETE FROM `clair_users` '
                 . 'WHERE `idUser` = :idUser';
@@ -79,8 +99,12 @@ class user extends BDD {
         $deleteUser->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $deleteUser->execute();
     }
-
-//fonction pour vérifier si un utilisateur existe déjà en cherchant avec le pseudo ET le mail
+//  Fonction pour vérifier si un utilisateur existe déjà en cherchant avec le pseudo ET le mail
+//  On utilise un WHERE et un AND
+    /**
+     * 
+     * @return boolean
+     */
     public function alreadyExist() {
         $query = 'SELECT * FROM `clair_users` '
                 . '      WHERE `nickName`= :nickName AND `mail`= :mail';
@@ -88,18 +112,23 @@ class user extends BDD {
         $alreadyExist->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
         $alreadyExist->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         $alreadyExist->execute();
+//      On effectue un rowCount et on vérifie si le résultat est égal ou supérieur à 1
         if ($alreadyExist->rowCount() >= 1) {
             $count = TRUE;
         } else {
             $count = FALSE;
         }
-//        si le nombre de ligne trouvées avec la fction rowcount() est 1 ou superieur
-//        return TRUE
-//        alors le user existe déjà
+//      Si le nombre de ligne trouvées avec la fction rowcount() est 1 ou superieur
+//      On retourne TRUE
+//      Alors le user existe déjà
         return $count;
     }
 
-//    fonctionne pour cibler un utilisateur selon son id
+//  Fonction pour cibler un utilisateur selon son id
+    /**
+     * 
+     * @return type
+     */
     public function userById() {
         $query = 'SELECT *, `clair_users`.`idUser` AS `idUser` FROM `clair_users` '
                 . 'INNER JOIN `clair_userTypes`  AS `t1` '
@@ -112,15 +141,18 @@ class user extends BDD {
         $result = $this->BDD->prepare($query);
         $result->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         $result->execute();
-        return $result->fetch(PDO::FETCH_OBJ);
-       
+//      On fait un fetch car la requête ne va retourner qu'une colonne
+        return $result->fetch(PDO::FETCH_OBJ);       
     }
 
 //-----------------
 //PARTIE ARTISTES
 //-----------------
-//    fonction qui liste tous les utilisateurs avec un idUserType = 2 donc les artistes
-//    avec les jointures avec leurs biographies et leurs specialités 
+//  Fonction qui liste tous les utilisateurs avec un idUserType = 2 donc les artistes
+    /**
+     * 
+     * @return type
+     */
     public function listArtists() {
         $query = 'SELECT * FROM `clair_users` '
                 . 'INNER JOIN `clair_userTypes` '
@@ -134,9 +166,13 @@ class user extends BDD {
         $data = $result->fetchAll(PDO::FETCH_OBJ);
         return $data;
     }
-
-//    fonction qui liste les artistes selon leur speciality 
-//    grace à une boucle dans le controller listArtistCtl ou un foraech détemine le $searchOrder     
+//  Fonction qui liste les artistes selon leur speciality 
+//  Dans le controller listArtistCtl.php, une boucle foreach détermine le $searchOrder
+    /**
+     * 
+     * @param type $searchOrder
+     * @return type
+     */
     public function listArtistsBySpeciality($searchOrder) {
         $query = 'SELECT * FROM `clair_users` '
                 . 'INNER JOIN `clair_userTypes` '
@@ -152,28 +188,39 @@ class user extends BDD {
         return $data;
     }
 
-//    la fonction qui retrouve le dernier inscrit permet d'ajouter ensuite la biographie
+//  Fonction qui retrouve le dernier inscrit permettant d'ajouter ensuite la biographie grâce à une autre requête dans le modèle biograohy.php
+    /**
+     * 
+     * @return type
+     */
     public function lastUser() {
-//        on utilise la fonction SQL MAX() qui permet de retrouver le plus grand id et donc le dernier
+//      On utilise la fonction SQL MAX() qui permet de retrouver le plus grand id et donc le dernier
         $query = 'SELECT MAX(`idUser`) AS `lastId` FROM `clair_users`';
         $result = $this->BDD->query($query);
         $data = $result->fetch(PDO::FETCH_OBJ);
         return $data;
     }
-
 //----------------
 //PARTIE STATS
 //-----------------
-//    fonction pour compter le nombre d'utilisateurs avec la fonction rowcount()
+//  Fonction pour compter le nombre d'utilisateurs avec la fonction rowcount()
+    /**
+     * 
+     * @return type
+     */
     public function usersCount() {
         $query = 'SELECT * FROM `clair_users`';
         $result = $this->BDD->query($query);
         $result->execute();
         $usersCount = $result->rowCount();
+//      On retourne la variable $usersCount qui sera un INTEGER avec le rowCount
         return $usersCount;
     }
-
-//    fonction pour compter le nombre de clients avec la fonction rowcount()
+//  Fonction pour compter le nombre de clients (idUserType = 3) avec la fonction rowcount()
+    /**
+     * 
+     * @return type
+     */
     public function clientsCount() {
         $query = 'SELECT * FROM `clair_users` WHERE `idUserType` = 3 ';
         $result = $this->BDD->query($query);
@@ -181,8 +228,11 @@ class user extends BDD {
         $usersCount = $result->rowCount();
         return $usersCount;
     }
-
-//    fonction pour compter le nombre d'artistes avec la fonction rowcount()
+//  Fonction pour compter le nombre d'artistes (idUserType = 2) avec la fonction rowcount()
+    /**
+     * 
+     * @return type
+     */
     public function artistsCount() {
         $query = 'SELECT * FROM `clair_users` WHERE `idUserType` = 2 ';
         $result = $this->BDD->query($query);
@@ -190,9 +240,12 @@ class user extends BDD {
         $usersCount = $result->rowCount();
         return $usersCount;
     }
-
-//    FONCTIONS UPDATE CLIENT PAR ATTRIBUT
-//       pour le pseudo
+//  FONCTIONS UPDATE PAR ATTRIBUT
+//  Pour le nickName
+    /**
+     * 
+     * @return type
+     */
     public function updateUserNickName() {
         $query = 'UPDATE `clair_users` '
                 . 'SET `nickName` = :nickName '
@@ -202,8 +255,11 @@ class user extends BDD {
         $updateUserNickName->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUserNickName->execute();
     }
-
-    //       pour le nom
+//  Pour le lastName
+    /**
+     * 
+     * @return type
+     */
     public function updateUserLastName() {
         $query = 'UPDATE clair_users '
                 . 'SET `lastName`= :lastName '
@@ -213,8 +269,11 @@ class user extends BDD {
         $updateUserLastName->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUserLastName->execute();
     }
-
-//       pour le prénom
+//  Pour le firstName
+    /**
+     * 
+     * @return type
+     */
     public function updateUserFirstName() {
         $query = 'UPDATE clair_users '
                 . 'SET `firstName`= :firstName '
@@ -224,8 +283,11 @@ class user extends BDD {
         $updateUserFirstName->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUserFirstName->execute();
     }
-
-    //       pour le mail
+//  Pour le mail
+    /**
+     * 
+     * @return type
+     */
     public function updateUserMail() {
         $query = 'UPDATE `clair_users` '
                 . 'SET `mail`= :mail '
@@ -235,6 +297,11 @@ class user extends BDD {
         $updateUserMail->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateUserMail->execute();
     }
+//  Pour le password
+    /**
+     * 
+     * @return type
+     */
     public function updateUserPassword() {
         $query = 'UPDATE clair_users '
                 . 'SET `password`= :password '
@@ -244,8 +311,11 @@ class user extends BDD {
         $updateUser->bindValue(':idUser', $this->idUser, PDO::PARAM_STR);
         return $updateUser->execute();
     }  
-
-//    fonction pour rechercher l existence du mail pour la connexion
+//  Fonction pour rechercher l existence du mail pour la connexion et récupérer toutes les informations pour la future session
+    /**
+     * 
+     * @return type
+     */
     public function existMailConnexion() {
         $query = 'SELECT *, `clair_users`.`idUser` AS idUser FROM `clair_users` '
                 . 'INNER JOIN `clair_userTypes`  AS `t1` '
@@ -260,5 +330,4 @@ class user extends BDD {
         $existMailConnexion->execute();
         return $existMailConnexion->fetch(PDO::FETCH_OBJ);
     }
-
 }

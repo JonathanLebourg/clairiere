@@ -3,7 +3,7 @@
 require_once 'connectBDD.php';
 
 class biography extends BDD {
-//déclaration des attributs identiques à la table `biographiess`
+//déclaration des attributs identiques à la table `biographies`
     public $idBiography;
     public $present;
     public $profilePicture;
@@ -12,7 +12,11 @@ class biography extends BDD {
 //-----------------
 //PARTIE GENERALE
 //-----------------
-//fonction pour ajouter la bio à un artiste après avori fait le addUser
+//  Fonction pour ajouter la bio à un artiste après avoir fait le addUser dans le modèle users.php
+    /**
+     * 
+     * @return type
+     */
     public function addBio() {
         $query = 'INSERT INTO `clair_biographies` '
                 . '      SET `present`= :present, '
@@ -27,7 +31,11 @@ class biography extends BDD {
         $addBio->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $addBio->execute();
     }
-//    UPDATE BIO
+//  UPDATE BIO
+    /**
+     * 
+     * @return type
+     */
     public function updateBio() {
         $query = 'UPDATE `clair_biographies` '
                 . '      SET `present`= :present, '
@@ -42,7 +50,11 @@ class biography extends BDD {
         $updateBio->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateBio->execute();
     }
-//    EFFACER BIO
+//  EFFACER BIO
+    /**
+     * 
+     * @return type
+     */
     public function deleteBio() {
         $query = 'DELETE FROM `clair_biographies` '
                 . 'WHERE `idUser` = :idUser';
@@ -50,23 +62,35 @@ class biography extends BDD {
         $deleteBio->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $deleteBio->execute();
     }
-//    fonction qui liste toutes les bio
+//  Fonction qui liste toutes les bio
+    /**
+     * 
+     * @return type
+     */
     public function listBio() {
         $query = 'SELECT * FROM `clair_biographies`';
         $list = $this->BDD->query($query);
         $listBio = $list->fetchAll(PDO::FETCH_OBJ);
         return $listBio;
     }
-//    fonction qui ressort une bio selon l'idUser
+//  Fonction qui ressort une bio selon l'idUser
+    /**
+     * 
+     * @return type
+     */
     public function bioByIdUser() {
         $query = 'SELECT * FROM `clair_biographies` WHERE `idUser` = :idUser';
         $bioByUser = $this->BDD->prepare($query);
         $bioByUser->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         $bioByUser->execute();
         return $bioByUser->fetch(PDO::FETCH_OBJ);
-    }
-    
-    //       pour la prresentation
+    }    
+//  UPDATE PAR ATTRIBUTS
+//  Pour le present
+    /**
+     * 
+     * @return type
+     */
     public function updatePresent() {
         $query = 'UPDATE clair_biographies '
                 . 'SET `present`= :present '
@@ -75,9 +99,12 @@ class biography extends BDD {
         $updatePresent->bindValue(':present', $this->present, PDO::PARAM_STR);
         $updatePresent->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updatePresent->execute();
-    }
-    
-     //       pour la prresentation
+    }    
+//  Pour la speciality
+    /**
+     * 
+     * @return type
+     */
     public function updateSpeciality() {
         $query = 'UPDATE clair_biographies '
                 . 'SET `idSpeciality` = :idSpeciality '
@@ -87,7 +114,11 @@ class biography extends BDD {
         $updateSpeciality->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         return $updateSpeciality->execute();
     }
-     //       pour la prresentation
+//  Pour la profilePicture
+    /**
+     * 
+     * @return type
+     */
     public function updateProfilePicture() {
         $query = 'UPDATE clair_biographies '
                 . 'SET `profilePicture` = :profilePicture '

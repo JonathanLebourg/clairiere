@@ -1,10 +1,8 @@
-.modifDivNickName, .modifDivFirstName,
-.modifDivLastName, .modifDivMail,
-.modifDivPassword, .modifDivProfileImg,
-.modifDivSpeciality, .modifDivPresent{
-    display: none;
-}
 
+.navColor{
+    background-color: green;
+    z-index: 99;
+}
 /*------------------------
 -------PENSE-BETE-------
 ------------------------
@@ -66,12 +64,18 @@ hr {
 .mention:hover{
     color: rgba(49,208,25, 0.6);
 }
-
+/*pour les messages d'erreurs sur les formulaires*/
 .text-danger{
     /*background-color: rgba(242, 38, 19, 0.1);*/
     border-radius: 45px;
     color: red;
-    
+}
+/*les div des formulaires de modification de profil*/
+.modifDivNickName, .modifDivFirstName,
+.modifDivLastName, .modifDivMail,
+.modifDivPassword, .modifDivProfileImg,
+.modifDivSpeciality, .modifDivPresent{
+    display: none;
 }
 /*SERIE DE CLASS POUR BALISES avec fond plus ou moins opaque et differences de border*/
 .border{
@@ -115,7 +119,7 @@ hr {
     background-color: rgba(49,208,25,33%);
     border-radius: 10px;
 }
-
+/*images et leurs div pour contraindre la taille*/
 .imgProfileArtistDiv{
     height: 15vh;
     margin: 2vh;

@@ -3,13 +3,10 @@
 require_once 'connectBDD.php';
 
 class modality extends BDD {
-//déclaration des attributs identiques à la table `specialities`
+//  Déclaration des attributs identiques à la table `modalities`
     public $idModality;
     public $modalityType;
-//-----------------
-//PARTIE GENERALE
-//-----------------
-//    fonction qui liste les specialités pour les select dnas les formulaires
+//  Fonction qui liste les specialités pour les select dans les formulaires
     public function listModalities() {
         $query = 'SELECT * FROM `clair_modalities`';
         $list = $this->BDD->query($query);
