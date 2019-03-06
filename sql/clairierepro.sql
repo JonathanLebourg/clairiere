@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 06 mars 2019 à 08:22
+-- Généré le :  mer. 06 mars 2019 à 11:01
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `clair_artworkinterest` (
   PRIMARY KEY (`idArtWorkInterest`),
   KEY `artWorkInterest_clair_artworks_FK` (`idArtwork`),
   KEY `artWorkInterest_clair_users0_FK` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -60,23 +60,35 @@ CREATE TABLE IF NOT EXISTS `clair_artworks` (
   KEY `clair_artworks_clair_users_FK` (`idUser`),
   KEY `clair_artworks_clair_workStyles0_FK` (`idWorkStyle`),
   KEY `clair_artworks_modalities1_FK` (`idModality`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `clair_artworks`
 --
 
 INSERT INTO `clair_artworks` (`idArtWork`, `title`, `picture`, `technicalDescription`, `optionalDescription`, `date`, `price`, `idUser`, `idWorkStyle`, `idModality`) VALUES
-(3, 'MOMA NYC', 'moma_nyc_angela.jpg', 'c est une photo de 1616px', 'elle a ete prise au moma de new york', 2015, 0, 30, 3, 1),
-(4, 'Happy', 'happy_angela.jpg', 'illustration 21*29,7', '', 2018, 111, 30, 3, 1),
-(9, 'EgoVSÃ©gaux', 'angela_egoVSegaux.jpg', 'Illustration numÃ©rique 25 cm sur 25 cm', '', 2015, 250, 30, 1, 1),
+(7, 'Happy', 'happy_angela.jpg', 'illustration 21*29,7', '', 2018, 111, 30, 6, 1),
+(8, 'MOMA NYC', 'moma_nyc_angela.jpg', 'c est une photo de 1616px', 'elle a ete prise au moma de new york', 2015, 0, 30, 8, 1),
+(9, 'EgoVSÃ©gaux', 'angela_egoVSegaux.jpg', 'Illustration numÃ©rique 25 cm sur 25 cm', '', 2015, 250, 30, 6, 1),
 (14, 'spirale', 'hundertwasserr_pisrale.jpg', 'peinture de quasi 2 mÃ¨tres de long quand meme', 'en tre autres, le liant de la peinture est fait avec du blanc d\'oeuf', 2009, 765, 37, 2, 1),
 (15, 'sans titre', 'hunderwasserUnknown.jpg', 'peinture de quasi 2 mÃ¨tres de long quand meme', '', 2009, 765, 37, 2, 3),
 (16, 'irinaland', 'hunderwasser_irinaland.jpeg', '', '', 1978, 78, 37, 2, 2),
 (17, 'papy good', 'the-old-man-1998604_1280.jpg', 'je vous laiss e deviner la technique', 'je vous laisse decider du pourquoi', 2011, 125, 38, 5, 2),
-(18, 'ollie', 'split-1562275_1920.jpg', 'un arret sur image', '', 2014, 134, 38, 7, 3),
+(18, 'ollie', 'split-1562275_1920.jpg', 'un arret sur image', '', 2014, 134, 38, 5, 3),
 (26, 'Terminus', 'railroad-track-3963706_1920.jpg', 'photo numÃ©rique rÃ©alisÃ©e dans un lieu tenu secret ;)', '', 2012, 0, 55, 8, 1),
-(27, 'Smoking Mountains', 'homberg-1959229_1920.jpg', 'photo rÃ©alisÃ©e durant l\'un de mes nombreux voyages', '', 2017, 200, 55, 8, 3);
+(27, 'Smoking Mountains', 'homberg-1959229_1920.jpg', 'photo rÃ©alisÃ©e durant l\'un de mes nombreux voyages', '', 2017, 200, 55, 8, 3),
+(28, 'Demi-porte ocÃ©ane', '2.jpg', 'dessin au stylo, format A5', 'dessin sÃ©lectionnÃ© pour participer Ã  la compil graphique du festival &quot;We Love LH&quot;', 2012, 0, 27, 3, 1),
+(29, '2 semaines', '3.jpg', 'rotoscopie extraite du film Total Recall', '', 2000, 0, 27, 6, 1),
+(30, 'Attendre le car', '582280_3662652682743_369016826_n.jpg', 'dessin stylo et feutre au format A5', '', 2012, 0, 27, 3, 1),
+(31, 'BoÃ®te optimiste', 'boiteOptimiste.jpg', '', '', 1979, 0, 36, 1, 1),
+(32, 'Animalz', 'animalz.png', '', '', 2019, 0, 57, 3, 1),
+(33, 'The Beast', 'beast.png', '', '', 2019, 0, 57, 3, 1),
+(34, 'Hellboy', 'hellboy.png', '', '', 2019, 0, 57, 3, 1),
+(35, 'Obelix', 'obelix.png', '', '', 2018, 0, 57, 3, 1),
+(36, 'HTF', 'HappyTreeFriends.png', '', '', 2019, 0, 57, 3, 1),
+(37, 'Sadness', 'sadness.png', '', '', 2019, 0, 57, 3, 1),
+(38, 'Taz', 'taz.png', '', '', 2019, 0, 57, 3, 1),
+(39, 'Tembo - the Badass Elephant ', 'tembo.png', '', '', 2019, 0, 57, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -94,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `clair_biographies` (
   PRIMARY KEY (`idBiography`),
   UNIQUE KEY `clair_biographies_clair_users_AK` (`idUser`),
   KEY `clair_biographies_clair_specialities_FK` (`idSpeciality`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `clair_biographies`
@@ -106,7 +118,8 @@ INSERT INTO `clair_biographies` (`idBiography`, `present`, `profilePicture`, `id
 (20, 'artiste multi suupports aux idÃ©es avant gardistes voire utopistes qui mÃªlent reflexion sur la sociÃ©tÃ© du spectacle et ironie du sort.', 'RobertFilliouProfil.jpeg', 1, 36),
 (21, 'peintre, sculpteur, architecte mÃªme, Hunderwasser deverse ses idÃ©es dans tous les champs possibles de la crÃ©ation', 'Hundertwasser_profil.jpg', 2, 37),
 (22, 'du graff, du graff avec aussi un peu de graff !! ;)', 'man-114257_1920.jpg', 6, 38),
-(26, 'Globetrotteuse nocturne', 'night-1927265_1920.jpg', 8, 55);
+(26, 'Globetrotteuse nocturne', 'night-1927265_1920.jpg', 8, 55),
+(27, 'Amateur, apprenant au fur et Ã  mesure...', 'Profile.png', 1, 57);
 
 -- --------------------------------------------------------
 
@@ -192,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `clair_users` (
   `idUserType` int(11) NOT NULL,
   PRIMARY KEY (`idUser`),
   KEY `clair_users_clair_userTypes_FK` (`idUserType`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `clair_users`
@@ -207,7 +220,8 @@ INSERT INTO `clair_users` (`idUser`, `nickName`, `lastName`, `firstName`, `passw
 (38, 'DelBru', 'Delgado', 'Bruno', 'qsdfghjk', 'del.bru@gado.no', 2),
 (53, 'mammy', 'lebourg', 'martine', 'jojeva76', 'martine.lebourg@wanadoo.fr', 3),
 (55, 'Bambi', 'Tann', 'Elodie', 'azertyui', 'bambiTan@elod.ie', 2),
-(56, 'Fab1', 'CÃ´tÃ©', 'Fabien', 'azertyui', 'fabien@fabien.fab', 3);
+(56, 'Fab1', 'CÃ´tÃ©', 'Fabien', 'azertyui', 'fabien@fabien.fab', 3),
+(57, 'N3ffej', 'FaÃ¿', 'Jeffen', 'onepiece08', 'jeffen.fay@gmail.com', 2);
 
 -- --------------------------------------------------------
 
