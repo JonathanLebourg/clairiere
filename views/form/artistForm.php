@@ -66,7 +66,7 @@ require 'controllers/formsCtl/artistFormController.php';
                                 </div>
                             </div>
                             <div class="col s6 m6">
-                                <img src="" id="output" class="responsive-img" alt="coucouc" />
+                                <img src="" id="output" class="responsive-img" alt="" />
                             </div>
                             <div class="error">
                                 <p class="text-danger"><?= isset($formError['fileToUpload']) ? $formError['fileToUpload'] : ''; ?></p>
@@ -82,7 +82,7 @@ require 'controllers/formsCtl/artistFormController.php';
                         <div class="col s12 m3"></div>
                         <div class="input-field col s12 m6">
                             <select name="specialities">
-                                <option value="<?= isset($artist->speciality) ? $artist->speciality : '' ?>" disabled selected>choisir une spécialité</option>
+                                <option  disabled selected>choisir une spécialité</option>
                                 <?php foreach ($listSpeciality as $spec) { ?>
                                     <option value="<?= $spec->idSpeciality ?>"><?= $spec->speciality ?></option>
                                 <?php } ?>

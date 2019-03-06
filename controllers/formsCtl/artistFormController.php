@@ -27,7 +27,7 @@ $addOK = TRUE;
 
 //Si LastName existe , la passer au test regex , sinon c'est vide donc rien
 if (isset($_POST['lastName'])) {
-    //déclarion de la variable pseudo avec le htmlspecialchar 
+    //déclaration de la variable lastName avec le htmlspecialchar 
     $lastName = htmlspecialchars($_POST['lastName']);
     //test de la regex si elle est invalide
     if (!preg_match($regexName, $lastName)) {
@@ -41,7 +41,7 @@ if (isset($_POST['lastName'])) {
     }
 }
 if (isset($_POST['firstName'])) {
-    //déclarion de la variable password avec le htmlspecialchar 
+    //déclaration de la variable firstName avec le htmlspecialchar 
     $firstName = htmlspecialchars($_POST['firstName']);
     //test de la regex si elle est invalide
     if (!preg_match($regexName, $firstName)) {
@@ -55,7 +55,7 @@ if (isset($_POST['firstName'])) {
     }
 }
 if (isset($_POST['pseudo'])) {
-    //déclarion de la variable pseudo avec le htmlspecialchar 
+    //déclaration de la variable pseudo avec le htmlspecialchar 
     $pseudo = htmlspecialchars($_POST['pseudo']);
     //test de la regex si elle est invalide
 //    if (!preg_match($regexPseudo, $_POST['pseudo'])) {
@@ -69,7 +69,7 @@ if (isset($_POST['pseudo'])) {
     }
 }
 if (isset($_POST['mail'])) {
-    //déclarion de la variable password avec le htmlspecialchar 
+    //déclaration de la variable mail avec le htmlspecialchar 
     $mail = htmlspecialchars($_POST['mail']);
     //test de la regex si elle est invalide
     if (!preg_match($regexMail, $mail)) {
@@ -83,7 +83,7 @@ if (isset($_POST['mail'])) {
     }
 }
 if (isset($_POST['password'])) {
-    //déclarion de la variable password avec le htmlspecialchar 
+    //déclaration de la variable password avec le htmlspecialchar 
     $password = htmlspecialchars($_POST['password']);
     //test de la regex si elle est invalide
     if (!preg_match($regexPassword, $password)) {
@@ -97,7 +97,7 @@ if (isset($_POST['password'])) {
     }
 }
 if (isset($_POST['passwordCheck'])) {
-    //déclarion de la variable pseudo avec le htmlspecialchar 
+    //déclaration de la variable passwordCheck avec le htmlspecialchar 
     $passwordCheck = htmlspecialchars($_POST['passwordCheck']);
     //test de la regex si elle est invalide
     if ($passwordCheck != $password) {
@@ -110,8 +110,8 @@ if (isset($_POST['passwordCheck'])) {
         $formError['passwordCheck'] = 'Champ obligatoire';
     }
 }
-if (isset($_POST['specialities'])) {
-    //déclarion de la variable town avec le htmlspecialchar 
+if (!empty($_POST['specialities'])) {
+    //déclaration de la variable town avec le htmlspecialchar 
     $specialities = htmlspecialchars($_POST['specialities']);
 } else {
     $formError['specialities'] = 'Choix obligatoire';

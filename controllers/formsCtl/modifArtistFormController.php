@@ -108,19 +108,18 @@ if (isset($_SESSION['user'])) {
                         $bioToModif->profilePicture = $file['basename'];
                         $bioToModif->updateProfilePicture();
                         ?> 
-                         <?php
+                        <?php
                     } else {
                         echo "Désolé, une erreur a eu lieu lors du téléchargement";
                     }
                 }
             }
         }
-
-
         $modifiedArtist = $artistToModif->userById();
         $_SESSION['user'] = $modifiedArtist;
         ?>
-       <?php
+        <script>window.location = "http://clairiere/index.php?page=myprofileArtist&id=<?= $_SESSION['user']->idUser ?>";</script>
+        <?php
     }
 }
 ?>

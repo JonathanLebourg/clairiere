@@ -206,12 +206,12 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
                                                         <span>JE SUIS SUR</span>   
                                                     </label>-->
                         </div>
-                        <div class="col s12 m8 offset-m2">
+<!--                        <div class="col s12 m8 offset-m2">
                             <p>tapez votre mot de passe</p>
                             <input name="password" id="password" type="password" class="validate" value="" />
                             <label for="password"></label>
                             <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
-                        </div>
+                        </div>-->
                         <div class="col s12 m12 card-action">
                             <button class="validateButton btn" type="submit" name="submitDeleteProfile">
                                 SUPPRIMER

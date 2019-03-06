@@ -3,7 +3,6 @@
 require_once 'connectBDD.php';
 //On crée la classe user étendue à BDD et permettant ainsi d'accéder aux méthodes magiques et donc à la base de données
 class user extends BDD {
-
 //  Déclaration des attributs identiques à la table `clair_users`
     public $idUser;
     public $nickName;
@@ -12,7 +11,6 @@ class user extends BDD {
     public $password;
     public $mail;
     public $idUserType;
-
 //-----------------
 //PARTIE GENERALE
 //-----------------
@@ -53,14 +51,14 @@ class user extends BDD {
                 . '      `mail`= :mail';
 //      On prépare la requête et on la stocke dans la variable $addUser
         $addUser = $this->BDD->prepare($query);
-//      Avec la fonction bindValue, on lie les valeurs en utilsant les marqueurs nominatifs pour associer attribut
+//      Avec la fonction bindValue, on lie les valeurs en utilsant les marqueurs nominatifs pour associer chaque attribut
         $addUser->bindValue(':lastName', $this->lastName, PDO::PARAM_STR);
         $addUser->bindValue(':firstName', $this->firstName, PDO::PARAM_STR);
         $addUser->bindValue(':nickName', $this->nickName, PDO::PARAM_STR);
         $addUser->bindValue(':password', $this->password, PDO::PARAM_STR);
         $addUser->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         $addUser->bindValue(':idUserType', $this->idUserType, PDO::PARAM_INT);
-//      Je retourne l'execute() 
+//      on retourne l'execute() 
         return $addUser->execute();
     }
 //  FONCTION UPDATE USER

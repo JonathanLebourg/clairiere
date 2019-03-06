@@ -2,8 +2,7 @@
 require_once 'models/users.php';
 require_once 'models/artWorkInterest.php';
 
-$_SESSION['falseClientId'] = '<p>Vous rencontrez une erreur de connexion ou n\'êtes pas enregistré sur le site<p>';
-
+//On verifie que la session existe
 if (isset($_SESSION['user'])) {
 
     $interest = new artWorkInterest();
@@ -12,7 +11,7 @@ if (isset($_SESSION['user'])) {
 
     if (isset($_POST['submitClientModif'])) {
         $client = new user();
-        ;
+        
         $client->idUser = $_SESSION['user']->idUser;
         if (isset($_POST['nickName']) && !empty($_POST['nickName'])) {
             $client->nickName = $_POST['nickName'];
@@ -33,7 +32,7 @@ if (isset($_SESSION['user'])) {
         $modifiedClient = $client->userById();
         $_SESSION['user'] = $modifiedClient;
         ?> 
-        <!--<script>window.location = "http://clairiere/index.php?page=myprofileClient";</script>-->
+        <script>window.location = "http://clairiere/index.php?page=myprofileClient";</script>
         <?php
     }
 

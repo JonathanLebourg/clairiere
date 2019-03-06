@@ -1,8 +1,7 @@
 <?php
 require 'controllers/profileCtl/profileArtWorkCtl.php';
-?>
 
-<?php if (!isset($_GET['id'])) { ?>
+if (!isset($_GET['id'])) { ?> 
     <div class="container-fluid">
         <div class="row">
             <div class="col s12 m8 offset-m2 border center-align">
@@ -72,8 +71,7 @@ require 'controllers/profileCtl/profileArtWorkCtl.php';
                     if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $workById->idUser == $_SESSION['user']->idUser) {
                         ?>
                         <div class="card white darken-1">                    
-                            <button class="btn modal-trigger validateButton" type="button" name="button">Modifier</button>
-                            <button class="btn modal-trigger validateButton" type="button" name="button">Supprimer</button>
+                            <a class="btn validateButton" href="http://clairiere/index.php?page=modifWork&id=<?= $workById->idArtWork ?>">Modifier</a>
                         </div>
                     <?php } ?>
                 </div>

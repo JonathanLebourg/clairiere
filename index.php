@@ -62,6 +62,9 @@ if (session_status() == PHP_SESSION_NONE) {
                     case 'validateUser':
                         include('views/form/validate/validateUser.php');
                         break;
+                    case 'modifWork':
+                        include('views/form/modifWorkForm.php');
+                        break;
 //                        -----------PROFILS-----------
                     case 'myprofileAdmin':
                         include('views/profile/myprofileAdmin.php');
@@ -75,6 +78,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     case 'artWork':
                         include('views/profile/profileArtWork.php');
                         break;
+                    
 //                   -----------LISTES----------
                     case 'listArtists':
                         include('views/lists/listArtists.php');
