@@ -26,6 +26,7 @@ if (isset($_GET['id'])) {
             $interestCount = new artWorkInterest;
             $interestCount->idArtWork = $work->idArtWork;
             $count = $interestCount->ListArtWorkInterestByArtist();
+            var_dump($count);
         }
 
         if (isset($_POST['deleteArtWork']) && isset($_GET['delete'])) {
