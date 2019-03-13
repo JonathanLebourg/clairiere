@@ -37,11 +37,10 @@ if (isset($_SESSION['user'])) {
     }
 
     if (isset($_POST['submitClientPasswordModif'])) {
-        if (isset($_POST['password']) && !empty($_POST['password']) && $_SESSION['user']->password = $_POST['password'] && $_POST['passwordNew'] == $_POST['passwordCheck']) {
+        if (isset($_POST['password']) && !empty($_POST['password']) && password_verify($_POST['password'], $_SESSION['user']->password) && $_POST['passwordNew'] == $_POST['passwordCheck']) {
             $client = new user();
-            ;
             $client->idUser = $_SESSION['user']->idUser;
-            $client->password = $_POST['passwordNew'];
+            $client->password = password_hash($_POST['passwordNew'], PASSWORD_DEFAULT);
             $client->updateUserPassword();
             $modifiedClient = $client->userById();
             $_SESSION['user'] = $modifiedClient;

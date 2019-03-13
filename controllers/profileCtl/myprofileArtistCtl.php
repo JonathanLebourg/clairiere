@@ -38,14 +38,13 @@ if (isset($_GET['id'])) {
             ?>
             <script>window.location = "http://clairiere/index.php?page=myprofileArtist&id=<?= $_SESSION['user']->idUser ?>";</script>
             <?php
-//        header('Location:./index.php?page=validateDelete');
         }
 
         if (isset($_POST['submitClientPasswordModif'])) {
-            if (isset($_POST['password']) && !empty($_POST['password']) && $_SESSION['user']->password = $_POST['password'] && $_POST['passwordNew'] == $_POST['passwordCheck']) {
+            if (isset($_POST['password']) && !empty($_POST['password']) && password_verify($_POST['password'], $_SESSION['user']->password) && $_POST['passwordNew'] == $_POST['passwordCheck']) {
                 $artist2 = new user();
                 $artist2->idUser = $_SESSION['user']->idUser;
-                $artist2->password = $_POST['passwordNew'];
+                $artist2->password = password_hash($_POST['passwordNew'], PASSWORD_DEFAULT);
                 $artist2->updateUserPassword();
                 $modifiedClient = $artist2->userById();
                 $_SESSION['user'] = $modifiedClient;
@@ -73,9 +72,9 @@ if (isset($_GET['id'])) {
         $regexDate = '/^[0-9]{4}+$/';
         $formError = [];
         $modifOK = TRUE;
-        
+
         if (isset($_POST['submitModif']) && isset($_GET['modif'])) {
-            
+
             if (isset($_POST['title'])) {
                 //déclarion de la variable pseudo avec le htmlspecialchar 
                 $title = htmlspecialchars($_POST['title']);
@@ -147,9 +146,9 @@ if (isset($_GET['id'])) {
 
             $fileToUpload = $_FILES['fileToUpload'];
             $file = pathinfo($_FILES['fileToUpload']['name']);
-            
+
             var_dump($fileToUpload);
-            
+
             $target_dir = "./img/artWorks/";
             $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
             $uploadOk = 1;

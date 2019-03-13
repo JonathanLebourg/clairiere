@@ -52,6 +52,16 @@ $(document).ready(function () {
     $('[name="submitTitle"]').click(function () {
         $('.modifDivTitle').toggle(500);
     });
+    $('[name="submitTechnicalDescription"]').click(function () {
+        $('.modifDivTechnicalDescription').toggle(500);
+    });
+    $('[name="submitOptionalDescription"]').click(function () {
+        $('.modifDivOptionalDescription').toggle(500);
+    });
+    $('[name="submitPrice"]').click(function () {
+        $('.modifDivPrice').toggle(500);
+    });
+    
 //  Fonction pour afficher l'aperçu des images dans les formulaires
     function readURL(input) {
         if (input.files && input.files[0]) {

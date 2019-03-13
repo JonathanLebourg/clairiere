@@ -109,7 +109,7 @@ if (count($formError) == 0 && isset($_POST['submit'])) {
     $client->lastName = $lastName;
     $client->nickName = $pseudo;
     $client->mail = $mail;
-    $client->password = $password;
+    $client->password = password_hash($password, PASSWORD_DEFAULT);
 
     $exist = $client->alreadyExist();
     if ($exist == TRUE) {

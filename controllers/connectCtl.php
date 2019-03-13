@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 require_once 'models/users.php';
 
@@ -43,14 +43,13 @@ if (isset($_POST['password'])) {
 if (count($formError) == 0 && isset($_POST['submitConnect'])) {
     $connectingUser->mail = $mail;
     $existingMail = $connectingUser->existMailConnexion();
-    if ($existingMail && $existingMail->password === $password) {
+    if ($existingMail && password_verify($password, $existingMail->password)) {
         $_SESSION['user'] = $existingMail;
         ?>
     <script>window.location = "http://clairiere/index.php?page=accueil";</script>
     <?php
     }
 }
-
 
  if (isset($_POST['submitDeconnect'])) {
      session_unset();

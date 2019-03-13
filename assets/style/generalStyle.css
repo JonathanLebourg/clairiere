@@ -75,7 +75,8 @@ hr {
 .modifDivLastName, .modifDivMail,
 .modifDivPassword, .modifDivProfileImg,
 .modifDivSpeciality, .modifDivPresent,
-.modifDivTiltle{
+.modifDivTitle, .modifDivTechnicalDescription,
+.modifDivOptionalDescription, .modifDivPrice {
     display: none;
 }
 /*SERIE DE CLASS POUR BALISES avec fond plus ou moins opaque et differences de border*/

@@ -77,8 +77,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         break;
                     case 'artWork':
                         include('views/profile/profileArtWork.php');
-                        break;
-                    
+                        break;                    
 //                   -----------LISTES----------
                     case 'listArtists':
                         include('views/lists/listArtists.php');

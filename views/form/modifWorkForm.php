@@ -43,20 +43,23 @@ if (!isset($_GET['id'])) {
                 </div>
                 <div class="col s12 m4">
                     <div class="card white darken-1">
-                        <div class="card white darken-1">
-                            <div class="card-content">
+                        <div class="row">
+                            <div class="card-content">                                
                                 <hr>
-                                <h1><b><?= $workById->title ?></b><a class="btn validateButton" name="submitTitle">
-                                        <i class="tiny material-icons">mode_edit</i>
-                                    </a></h1>                            
+                                <div>
+                                    <h1><b><?= $workById->title ?></b><a class="btn validateButton" name="submitTitle">
+                                            <i class="tiny material-icons">mode_edit</i>
+                                        </a></h1>
+                                </div>
                                 <div class="modifDivTitle input-field col s12 m8 offset-m1">
-                                    <input name="title" id="title" type="text" class="validate" value="<?= isset($artWork->title) ? $artWork->title : '' ?>" />
+                                    <input name="title" id="title" type="text" />
                                     <label for="title">Titre de l'oeuvre</label>
                                     <p class="text-danger"><?= isset($formError['title']) ? $formError['title'] : ''; ?></p>
                                 </div>
                                 <hr>    
                             </div>
                         </div>
+
                         <div class="card white darken-1">
                             <p>Artiste : 
                                 <a class="black-text" href="index.php?page=myprofileArtist&id=<?= $workById->idUser; ?>"><?= $workById->nickName ?>
@@ -80,17 +83,19 @@ if (!isset($_GET['id'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col s12 m12">
-                                        <p><i><?= $workById->optionalDescription ?></i><a class="btn validateButton" name="submitOptionalDescription">
-                                                <i class="tiny material-icons">mode_edit</i>
-                                            </a></p>
-                                    </div>
-                                    <div class="modifDivOptionalDescription input-field">
-                                        <div class="input-field col s10 offset-s1 m10 offset-m1">
-                                            <textarea id="optionalDescription" class="materialize-textarea" name="optionalDescription" maxlength="2000" /></textarea>
-                                            <label for="optionalDescription">Informations complémentaires de votre choix ||  <i>2000 caractères MAX.</i></label>
-                                            <p class="text-danger"><?= isset($formError['optionalDescription']) ? $formError['optionalDescription'] : ''; ?></p>
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <p><i><?= $workById->optionalDescription ?></i><a class="btn validateButton" name="submitOptionalDescription">
+                                                    <i class="tiny material-icons">mode_edit</i>
+                                                </a></p>
+                                            <div class="modifDivOptionalDescription input-field">
+                                                <div class="input-field col s10 offset-s1 m10 offset-m1">
+                                                    <textarea id="optionalDescription" class="materialize-textarea" name="optionalDescription" maxlength="2000" /></textarea>
+                                                    <label for="optionalDescription">Informations complémentaires de votre choix ||  <i>2000 caractères MAX.</i></label>
+                                                    <p class="text-danger"><?= isset($formError['optionalDescription']) ? $formError['optionalDescription'] : ''; ?></p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -100,15 +105,21 @@ if (!isset($_GET['id'])) {
                             </div>
                         </div>
                         <div class="card white darken-1">
-                            <p> Prix : <b><?= $workById->price ?> €</b>
-                                <a class="btn validateButton" name="submitPrice">
-                                    <i class="tiny material-icons">mode_edit</i>
-                                </a></p>
-                        </div>
-                        <div class="modifDivPrice input-field">
-                            <textarea id="present" class="materialize-textarea" name="present" maxlength="1000"><?= isset($artist->present) ? $artist->present : '' ?></textarea>
-                            <label for="present">Texte de présentation ||  <i>1000 caractères MAX.</i>  <span>  <i>* modifiable ultèrieurement</i></span></label>
-                            <p class="text-danger"><?= isset($formError['present']) ? $formError['present'] : ''; ?></p>
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="col s12 m12">
+                                        <p> Prix : <b><?= $workById->price ?> €</b>
+                                            <a class="btn validateButton" name="submitPrice">
+                                                <i class="tiny material-icons">mode_edit</i>
+                                            </a></p>
+                                        <div class="modifDivPrice input-field">
+                                            <input id="price" type="text" name="price" />
+                                            <label for="price">Prix</label>
+                                            <p class="text-danger"><?= isset($formError['price']) ? $formError['price'] : ''; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <?php
                     }

@@ -185,7 +185,7 @@ if (isset($_POST['submit']) && !empty($_FILES['fileToUpload']['name'])) {
             $artist->firstName = $firstName;
             $artist->nickName = $pseudo;
             $artist->mail = $mail;
-            $artist->password = $password;
+            $artist->password = password_hash($password, PASSWORD_DEFAULT);
 
             $bio->profilePicture = $file['basename'];
             $bio->idSpeciality = $specialities;

@@ -8,7 +8,7 @@ class BDD {
 //    Dans le try, on essaie en crée un nouvel objet PDO avec les informations de connexion
 //    On y ajoute aussi le tableau d'erreur pour nous aider leur développement
       try {
-           $this->BDD = new PDO('mysql:host=localhost;dbname=clairierePRO','jonathan','admin', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));  
+           $this->BDD = new PDO('mysql:host=localhost;dbname=clairierePRO;charset=utf8','jonathan','admin', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));  
 //    En cas d'erreur, le catch permet de stocker l'exeption dans une variable $error
       } catch (Exception $error) {         
 //        On arrête le script via un die et on affiche l'eereur grace à la méthode getMessage()
