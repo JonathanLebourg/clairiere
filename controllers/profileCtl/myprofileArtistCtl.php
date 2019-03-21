@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     $artWork1 = new artWork();
     $artWork1->idUser = $_GET['id'];
     $ListArtWorkByArtist = $artWork1->artWorkByArtist();
-
+    
     $workStyle = new workStyle();
     $listWorkStyles = $workStyle->listStyles();
 
@@ -26,7 +26,6 @@ if (isset($_GET['id'])) {
             $interestCount = new artWorkInterest;
             $interestCount->idArtWork = $work->idArtWork;
             $count = $interestCount->ListArtWorkInterestByArtist();
-            var_dump($count);
         }
 
         if (isset($_POST['deleteArtWork']) && isset($_GET['delete'])) {

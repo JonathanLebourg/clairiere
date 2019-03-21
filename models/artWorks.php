@@ -94,40 +94,49 @@ class artWork extends BDD {
      * @return type
      */
     public function updateArtWorkTitle() {
-        $query = 'UPDATE `clair_artWorks` '
+        $query = 'UPDATE `clair_artworks` '
                 . '      SET `title`= :title '
-                . '      WHERE `clair_artWorks`.`idArtWork` = :idArtWork';
+                . '      WHERE `clair_artworks`.`idArtWork` = :idArtWork';
         $updateArtWorkTitle = $this->BDD->prepare($query);
         $updateArtWorkTitle->bindValue(':title', $this->title, PDO::PARAM_STR);
         $updateArtWorkTitle->bindValue(':idArtWork', $this->idArtWork, PDO::PARAM_INT);
         return $updateArtWorkTitle->execute();
     }
     public function updateArtWorkTechnicalDescription() {
-        $query = 'UPDATE `clair_artWorks` '
+        $query = 'UPDATE `clair_artworks` '
                 . '      SET `technicalDescription`= :technicalDescription '
-                . '      WHERE `clair_artWorks`.`idArtWork` = :idArtWork';
+                . '      WHERE `clair_artworks`.`idArtWork` = :idArtWork';
         $updateArtWorkTechnicalDescription = $this->BDD->prepare($query);
         $updateArtWorkTechnicalDescription->bindValue(':technicalDescription', $this->technicalDescription, PDO::PARAM_STR);
         $updateArtWorkTechnicalDescription->bindValue(':idArtWork', $this->idArtWork, PDO::PARAM_INT);
         return $updateArtWorkTechnicalDescription->execute();
     }
     public function updateArtWorkOptionalDescription() {
-        $query = 'UPDATE `clair_artWorks` '
+        $query = 'UPDATE `clair_artworks` '
                 . '      SET `optionalDescription`= :optionalDescription '
-                . '      WHERE `clair_artWorks`.`idArtWork` = :idArtWork';
+                . '      WHERE `clair_artworks`.`idArtWork` = :idArtWork';
         $updateArtWorkOptionalDescription = $this->BDD->prepare($query);
         $updateArtWorkOptionalDescription->bindValue(':optionalDescription', $this->optionalDescription, PDO::PARAM_STR);
         $updateArtWorkOptionalDescription->bindValue(':idArtWork', $this->idArtWork, PDO::PARAM_INT);
         return $updateArtWorkOptionalDescription->execute();
     }
         public function updateArtWorkPrice() {
-        $query = 'UPDATE `clair_artWorks` '
+        $query = 'UPDATE `clair_artworks` '
                 . '      SET `price`= :price '
-                . '      WHERE `clair_artWorks`.`idArtWork` = :idArtWork';
+                . '      WHERE `clair_artworks`.`idArtWork` = :idArtWork';
         $updateArtWorkPrice = $this->BDD->prepare($query);
         $updateArtWorkPrice->bindValue(':price', $this->price, PDO::PARAM_STR);
         $updateArtWorkPrice->bindValue(':idArtWork', $this->idArtWork, PDO::PARAM_INT);
         return $updateArtWorkPrice->execute();
+    }
+            public function updateArtWorkDate() {
+        $query = 'UPDATE `clair_artworks` '
+                . '      SET `date`= :date '
+                . '      WHERE `clair_artworks`.`idArtWork` = :idArtWork';
+        $updateArtWorkDate = $this->BDD->prepare($query);
+        $updateArtWorkDate->bindValue(':date', $this->date, PDO::PARAM_STR);
+        $updateArtWorkDate->bindValue(':idArtWork', $this->idArtWork, PDO::PARAM_INT);
+        return $updateArtWorkDate->execute();
     }
 
     
@@ -198,20 +207,20 @@ class artWork extends BDD {
      * @return type
      */
     public function artWorkByArtist() {
-        $query = 'SELECT * FROM `clair_artWorks` '
-                . 'INNER JOIN `clair_users` '
-                . 'ON `clair_artWorks`.`idUser` = `clair_users`.`idUser` '
+        $query = 'SELECT * FROM `clair_artworks` '
+                . 'INNER JOIN `clair_users` ON `clair_artworks`.`idUser` = `clair_users`.`idUser` '
                 . 'INNER JOIN `clair_workStyles` '
                 . 'ON `clair_artWorks`.`idWorkStyle` = `clair_workStyles`.`idWorkStyle` '
-                . 'INNER JOIN `clair_modalities` AS `t3` '
-                . 'ON `clair_artWorks`.`idModality` = `t3`.`idModality` '
-                . 'WHERE `clair_artWorks`.`idUser` = :idUser';
+                . 'LEFT JOIN (SELECT  idArtwork AS new_id, COUNT(*) AS interets '
+                . 'FROM `clair_artWorkInterest` GROUP BY new_id) AS new_tab '
+                . 'ON `clair_artworks`.`idArtwork` = `new_tab`.`new_id` '
+                . 'WHERE `clair_artworks`.`idUser` = :idUser ';
         $listByArtist = $this->BDD->prepare($query);
         $listByArtist->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
         $listByArtist->execute();
         $artWorkByArtist = $listByArtist->fetchAll(PDO::FETCH_OBJ);
         return $artWorkByArtist;
-    }
+    }      
 
 //   Fonction pour acceder aux attributs d'une oeuvre selon son idArtWork
     /**

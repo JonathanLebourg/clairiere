@@ -25,7 +25,7 @@ if (session_status() == PHP_SESSION_NONE) {
         } else {
             ?>
             <!--------------NAVBAR----------->        
-            <div class="container-fluid">
+            <div class="container-fluid white">
                 <?php
                 include 'views/nav_foot/navbar.php';
                 ?>

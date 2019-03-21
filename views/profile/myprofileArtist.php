@@ -1,6 +1,5 @@
 <?php
 require 'controllers/profileCtl/myprofileArtistCtl.php';
-var_dump($count);
 ?>
 <div class="container-fluid">
     <hr>
@@ -70,12 +69,7 @@ var_dump($count);
                 </div>
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $_SESSION['user']->idUser == $_GET['id']) { ?>
                     <div class="row">
-                        <p><b><?php
-                                $interestCount = new artWorkInterest;
-                                $interestCount->idArtWork = $work->idArtWork;
-                                $count = $interestCount->ListArtWorkInterestByArtist();
-                                ?>
-                                <?= $count; ?></b> personnes interessées</p>
+                        <p><b> <?= $work->interets; ?></b> personnes interessées</p>
                     </div>     
                     <div class="row">
                         <a href="" data-target="modalDelete<?= $work->idArtWork; ?>" class="modal-trigger btn validateButton">

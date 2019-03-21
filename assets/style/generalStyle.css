@@ -1,7 +1,5 @@
-
-.navColor{
-    background-color: green;
-    z-index: 99;
+.white{
+    background-color: white;
 }
 /*------------------------
 -------PENSE-BETE-------
@@ -76,7 +74,7 @@ hr {
 .modifDivPassword, .modifDivProfileImg,
 .modifDivSpeciality, .modifDivPresent,
 .modifDivTitle, .modifDivTechnicalDescription,
-.modifDivOptionalDescription, .modifDivPrice {
+.modifDivOptionalDescription, .modifDivPrice, .modifDivDate {
     display: none;
 }
 /*SERIE DE CLASS POUR BALISES avec fond plus ou moins opaque et differences de border*/
@@ -156,11 +154,10 @@ hr {
 -------------------*/
 /*pour la marge en haut du nav-fixed*/
 nav{
-    height: 0vh;
-}
-.white, .navbar-fixed {
+    height: 50vh;
     background-color: white;
 }
+
 /*couleur du text des titres de la nav*/
 .nav-wrapper a{
     color: black;

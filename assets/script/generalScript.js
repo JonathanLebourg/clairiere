@@ -61,6 +61,9 @@ $(document).ready(function () {
     $('[name="submitPrice"]').click(function () {
         $('.modifDivPrice').toggle(500);
     });
+        $('[name="submitDate"]').click(function () {
+        $('.modifDivDate').toggle(500);
+    });
     
 //  Fonction pour afficher l'aperçu des images dans les formulaires
     function readURL(input) {

@@ -18,12 +18,12 @@ require 'controllers/formsCtl/artistFormController.php';
             <form class="col s12" method="POST" action="" enctype="multipart/form-data">
                 <div class="row">
                     <div class="input-field col s12 m6">
-                        <input name="lastName" id="lastName" type="text" class="validate" value="<?= isset($artist->lastName) ? $artist->lastName : '' ?>" />
+                        <input name="lastName" id="lastName" type="text" class="validate" value="<?= isset($lastName) ? $lastName : '' ?>" />
                         <label for="lastName">Nom</label>
                         <p class="text-danger"><?= isset($formError['lastName']) ? $formError['lastName'] : ''; ?></p>
                     </div>
                     <div class="input-field col s12 m6">
-                        <input name="firstName" id="firstName" type="text" class="validate" value="<?= isset($artist->firstName) ? $artist->firstName : '' ?>" />
+                        <input name="firstName" id="firstName" type="text" class="validate" value="<?= isset($firstName) ? $firstName : '' ?>" />
                         <label for="firstName">Prénom</label>
                         <p class="text-danger"><?= isset($formError['firstName']) ? $formError['firstName'] : ''; ?></p>
                     </div>
@@ -31,19 +31,19 @@ require 'controllers/formsCtl/artistFormController.php';
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <span></span>
-                        <input name="pseudo" id="pseudo" type="text" class="validate" value="<?= isset($artist->nickName) ? $artist->nickName : '' ?>" />
+                        <input name="pseudo" id="pseudo" type="text" class="validate" value="<?= isset($pseudo) ? $pseudo : '' ?>" />
                         <label for="pseudo">Nom d'artiste | sera aussi votre pseudo de connexion </label>
                         <p class="text-danger"><?= isset($formError['pseudo']) ? $formError['pseudo'] : ''; ?></p>
                     </div>
                     <div class="input-field col s12 m6">
-                        <input name="mail" id="mail" type="text" class="validate" value="<?= isset($artist->mail) ? $artist->mail : '' ?>" />
+                        <input name="mail" id="mail" type="text" class="validate" value="<?= isset($mail) ? $mail : '' ?>" />
                         <label for="mail">Mail</label>
                         <p class="text-danger"><?= isset($formError['mail']) ? $formError['mail'] : ''; ?></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6">
-                        <input name="password" id="password" type="password" class="validate" value="<?= isset($artist->password) ? $artist->password : '' ?>" />
+                        <input name="password" id="password" type="password" class="validate" value="<?= isset($password) ? $password : '' ?>" />
                         <label for="password">Mot de passe | 8 à 12 caractères (minuscules, MAJUSCULES, chiffres UNIQUEMENT)</label>
                         <p class="text-danger"><?= isset($formError['password']) ? $formError['password'] : ''; ?></p>
                     </div>
@@ -91,19 +91,6 @@ require 'controllers/formsCtl/artistFormController.php';
                             <p class="text-danger"><?= isset($formError['specialities']) ? $formError['specialities'] : ''; ?></p>
                         </div>
                     </div>
-                    <!--            <div class="row">
-                                    <div class="input-field col s12">
-                                        <input id="ville" name="town" id="town" type="text" class="validate" value="<?= isset($town) ? $town : '' ?>">
-                                        <ul>
-                                            <li data-vicopo="#ville">
-                                                <a id="town" href="" onclick="townChoice()"><strong data-vicopo-code-postal></strong>
-                                                <span data-vicopo-ville></span></a>
-                                            </li>
-                                        </ul>
-                                        <label for="town">Ville ||  <i>Entrez un code postal ou une ville</i></label>
-                                        <p class="text-danger"><?= isset($formError['town']) ? $formError['town'] : ''; ?></p>
-                                    </div>
-                                </div>-->
                 </div>
                 <div class="row">
                     <div class="input-field col s12">

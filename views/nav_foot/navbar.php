@@ -2,14 +2,14 @@
 require 'controllers/navCtl.php';
 require 'controllers/connectCtl.php';
 ?>
-<!----------------------------
+<!------------------------
 ----------NAVBAR----------
----------------------------->
-<div class="row">
-    <!--navbar-->
-    <div class="navbar-fixed">
-        <nav class="white ">
-            <div class="nav-wrapper sticky-nav">
+------------------------->
+<!--navbar-->
+<div class="navbar-fixed">
+    <nav>
+        <div class="white">
+            <div class="nav-wrapper">
                 <!-- Dropdown Structure Artists-->
                 <ul id="dropdownArtists" class="dropdown-content">
                     <li><a href="index.php?page=listArtists&speciality=tout">Tout</a></li>
@@ -53,7 +53,7 @@ require 'controllers/connectCtl.php';
                             <?php if ($_SESSION['user']->idUserType == 3) { ?>
                                 <a class="btn validateButton " href="index.php?page=myprofileClient">Mon profil</a>
                             <?php } ?>   
-                                <?php if ($_SESSION['user']->idUserType == 1) { ?>
+                            <?php if ($_SESSION['user']->idUserType == 1) { ?>
                                 <a class="btn validateButton " href="index.php?page=myprofileAdmin">Administrateur</a>
                             <?php } ?>
                         <?php } ?>
@@ -63,8 +63,8 @@ require 'controllers/connectCtl.php';
                     <li><a data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li>
                 </ul>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 </div>
 
 <!--NAVBAR RESPONSIVE-->
