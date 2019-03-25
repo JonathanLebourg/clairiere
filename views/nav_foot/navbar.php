@@ -6,9 +6,9 @@ require 'controllers/connectCtl.php';
 ----------NAVBAR----------
 ------------------------->
 <!--navbar-->
-<div class="navbar-fixed">
-    <nav>
-        <div class="white">
+<div class="navbar-fixed" style="width:100%;background-color:white;">
+    <nav class="">
+        <div>
             <div class="nav-wrapper">
                 <!-- Dropdown Structure Artists-->
                 <ul id="dropdownArtists" class="dropdown-content">
@@ -158,7 +158,7 @@ require 'controllers/connectCtl.php';
                     <button class="btn validateButton" name="submitConnect" type="submit">Se connecter</button>
                 </div>
                 <div class="row">
-                    <button class="btn validateButton modal-close" onclick="window.location.href = 'index.php?page=inscription'">S'inscrire pour la première fois</button>
+                    <a class="btn validateButton modal-close" href ="index.php?page=inscription">S'inscrire pour la première fois</a>
                 </div>
             </form>
 

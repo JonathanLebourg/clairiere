@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <input name="pseudo" id="pseudo" type="text" class="validate" value="<?= isset($pseudo) ? $pseudo : '' ?>" />
-                        <label for="pseudo">Pseudo de connexion</label>
+                        <label for="pseudo">Pseudo</label>
                         <p class="text-danger"><?= isset($formError['pseudo']) ? $formError['pseudo'] : ''; ?></p>
                     </div>
                     <div class="input-field col s12 m6">

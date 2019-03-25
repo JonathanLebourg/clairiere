@@ -154,14 +154,15 @@ hr {
 -------------------*/
 /*pour la marge en haut du nav-fixed*/
 nav{
-    height: 50vh;
     background-color: white;
+    box-shadow: inherit;
 }
 
 /*couleur du text des titres de la nav*/
 .nav-wrapper a{
     color: black;
 }
+
 /*fonds et border avec et sans hover*/
 nav ul li a{
     font-size: 2.5vh;
@@ -192,7 +193,6 @@ nav .dropdown-content li a:hover {
 /*la div pour les boutons a droite*/
 .connectButtons {
     background-color: white;
-    height: 9.8vh;
     float: right;
 }
 /* -- le bouton connecter et "s'inscrire" */

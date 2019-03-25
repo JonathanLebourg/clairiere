@@ -67,18 +67,27 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                     </div>
                     <hr>
                 </div>
-                <?php if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $_SESSION['user']->idUser == $_GET['id']) { ?>
-                    <div class="row">
-                        <p><b> <?= $work->interets; ?></b> personnes interessées</p>
-                    </div>     
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $_SESSION['user']->idUser == $_GET['id']) {
+                    if ($work->interets == NULL) {
+                        ?>
+                        <div class="row">
+                            <p>-</p>
+                        </div>     
+                        <?php } else {
+                        ?>
+                        <div class="row">
+                            <p><b> <?= $work->interets; ?></b> personnes interessées</p>
+                        </div>     
+                        <?php }
+                    ?>
+
                     <div class="row">
                         <a href="" data-target="modalDelete<?= $work->idArtWork; ?>" class="modal-trigger btn validateButton">
                             <i class="tiny material-icons">delete</i>EFFACER</a>                           
-                    </div>                
-
-                <?php } ?>
+                    </div>
+            <?php } ?>
             </div>
-        <?php } ?>
+<?php } ?>
     </div>
 </div>
 <!-- Modal MODIFICATION PASSWORD-->

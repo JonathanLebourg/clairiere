@@ -32,7 +32,7 @@ require 'controllers/formsCtl/artistFormController.php';
                     <div class="input-field col s12 m6">
                         <span></span>
                         <input name="pseudo" id="pseudo" type="text" class="validate" value="<?= isset($pseudo) ? $pseudo : '' ?>" />
-                        <label for="pseudo">Nom d'artiste | sera aussi votre pseudo de connexion </label>
+                        <label for="pseudo">Nom d'artiste</label>
                         <p class="text-danger"><?= isset($formError['pseudo']) ? $formError['pseudo'] : ''; ?></p>
                     </div>
                     <div class="input-field col s12 m6">
@@ -94,7 +94,7 @@ require 'controllers/formsCtl/artistFormController.php';
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="present" class="materialize-textarea" name="present" maxlength="2000"><?= isset($artist->present) ? $artist->present : '' ?></textarea>
+                        <textarea id="present" class="materialize-textarea" name="present" maxlength="2000"><?= isset($present) ? $present : '' ?></textarea>
                         <label for="present">Texte de présentation ||  <i>2000 caractères MAX.</i>  <span>  <i>* modifiable ultèrieurement</i></span></label>
                         <p class="text-danger"><?= isset($formError['present']) ? $formError['present'] : ''; ?></p>
                     </div>
