@@ -1,7 +1,8 @@
 <?php
 require 'controllers/profileCtl/profileArtWorkCtl.php';
 
-if (!isset($_GET['id'])) { ?> 
+if (!isset($_GET['id'])) {
+    ?> 
     <div class="container-fluid">
         <div class="row">
             <div class="col s12 m8 offset-m2 border center-align">
@@ -59,6 +60,13 @@ if (!isset($_GET['id'])) { ?>
                         <p> Prix : <b><?= $workById->price ?> €</b></p>
                     </div>
                     <?php
+                    if (!isset($_SESSION['user'])) {
+                        ?>
+                        <div class="card white darken-1">
+                            <button data-target="modalConnectByInterest" class="btn modal-trigger validateButton" type="button" name="button">Je suis interessé</button>
+                        </div>
+                        <?php
+                    }
                     if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 3) {
                         ?>
                         <div class="card white darken-1">                    
@@ -68,6 +76,13 @@ if (!isset($_GET['id'])) { ?>
                         </div>
                         <?php
                     }
+//                    if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 3) {
+                        ?>
+                    <!--                        <div class="card white darken-1">
+                                                    <p><b>J'aime déjà</b></p>                           
+                                                </div>-->
+                        <?php
+//                    }
                     if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $workById->idUser == $_SESSION['user']->idUser) {
                         ?>
                         <div class="card white darken-1">                    
@@ -79,3 +94,22 @@ if (!isset($_GET['id'])) { ?>
         </div>
     </div>
 <?php } ?>
+
+<!-- Modal Connexion -->
+<div id="modalConnectByInterest" class="modal">
+    <div class="modal-content">
+        <div class="container">
+            <h1><b>VOUS DEVEZ ÊTRE INSCRIT</b></h1>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <a class="btn validateButton modal-close" href ="index.php?page=inscription"><b>S'inscrire pour la première fois</b></a>
+            </div>         
+            <div class="row">
+                <p><b><i>Déjà inscrit ? :</i></b></p>
+                <button data-target="modalConnect" class="btn validateButton modal-trigger modal-close">Se connecter</button>
+            </div>
+        </div>
+    </div>
+</div>

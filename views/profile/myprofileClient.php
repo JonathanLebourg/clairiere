@@ -14,20 +14,20 @@ require 'controllers/profileCtl/myprofileClientCtl.php';
     <?php } else { ?>
         <div class="row border">
             <div class="row">
-                <div class="col s12 m3">
+                <div class="col s12 m6 l3">
                     <p><b><?= $_SESSION['user']->nickName ?></b></p>
                 </div>
-                <div class="col s12 m3">
+                <div class="col s12 m6 l3">
                     <p>
                         <a class="btn modal-trigger validateButton" href="#modalModifClient">Modifier mon profil</a>
                     </p>
                 </div>
-                <div class="col s12 m3">
+                <div class="col s12 m6 l3">
                     <p>
                         <a class="btn modal-trigger validateButton" href="#modalModifPassword">Modifier mot de passe</a>
                     </p>
                 </div>
-                <div class="col s12 m3">
+                <div class="col s12 m6 l3">
                     <p>
                         <a class="btn modal-trigger validateButton" href="#modalDeleteProfil">Supprimer mon profil</a>
                     </p>

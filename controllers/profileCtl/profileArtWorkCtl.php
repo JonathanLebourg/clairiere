@@ -8,10 +8,11 @@ if (isset($_GET['id'])) {
     $work = new artWork();
     $work->idArtWork = $_GET['id'];
     $workById = $work->SeeArtWork();
-//    var_dump($workById->idArtWork);
     $_SESSION['interest'] = $workById;
-//    var_dump($_SESSION);
 
+//    if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 3 ) {
+//        
+//    }
 
     if (isset($_POST['submitArtWorkInterest']) && isset($_SESSION['user'])) {
         $interest = new artWorkInterest();
@@ -20,9 +21,6 @@ if (isset($_GET['id'])) {
         $exist = $interest->alreadyExistArtWorkInterest();
         if ($exist == FALSE) {
             $interest->newArtWorkInterest();
-            $_SESSION['toast'] = 'intérêt enregistré';
-        } else {
-            $_SESSION['toast'] = 'vous avez déjà cette oeuvre dans votre liste';
-        }
+        } 
     }
 }

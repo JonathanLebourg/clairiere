@@ -10,16 +10,16 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
     <?php if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $_SESSION['user']->idUser == $_GET['id']) { ?>
         <div class="row border">
             <div class="card white darken-1">  
-                <div class="col s6 m3">
+                <div class="col s12 m6 l3">
                     <a class="btn validateButton" name="profileModif" href="./index.php?page=modifProfile&id=<?= $artistById->idUser ?>">Modifier votre profil</a>
                 </div>
-                <div class="col s6 m3">
+                <div class="col s12 m6 l3">
                     <a class="btn validateButton" name="addWork" href="./index.php?page=ajoutOeuvre&id=<?= $artistById->idUser ?>">Ajouter une œuvre</a>
                 </div>
-                <div class="col s6 m3">
+                <div class="col s12 m6 l3">
                     <a class="btn modal-trigger validateButton" href="#modalModifPassword">Modifier mot de passe</a>
                 </div>
-                <div class="col s6 m3">
+                <div class="col s12 m6 l3">
                     <a class="btn modal-trigger validateButton" href="#modalDeleteProfil">Supprimer mon profil</a>
                 </div>
             </div>

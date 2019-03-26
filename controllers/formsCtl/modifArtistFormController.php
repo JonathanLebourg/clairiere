@@ -60,6 +60,7 @@ if (isset($_SESSION['user'])) {
             $bioToModif->idSpeciality = $_POST['speciality'];
             $bioToModif->updateSpeciality();
         }
+        
         if (!empty($_FILES['fileToUpload']['name'])) {
             $uploadError = [];
 
