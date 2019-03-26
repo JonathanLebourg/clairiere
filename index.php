@@ -59,12 +59,12 @@ if (session_status() == PHP_SESSION_NONE) {
                     case 'ajoutOeuvre':
                         include('views/form/worksForm.php');
                         break;
-                    case 'validateUser':
-                        include('views/form/validate/validateUser.php');
-                        break;
                     case 'modifWork':
                         include('views/form/modifWorkForm.php');
                         break;
+                    case 'validateUser':
+                        include('views/form/validate/validateUser.php');
+                        break;                    
 //                        -----------PROFILS-----------
                     case 'myprofileAdmin':
                         include('views/profile/myprofileAdmin.php');
@@ -85,6 +85,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     case 'listArtWorks':
                         include('views/lists/listArtWorks.php');
                         break;
+//                    ----------VALIDATIONS----------
                     case 'validateInscription':
                         include('views/validate/validateInscription.php');
                         break;
@@ -93,9 +94,6 @@ if (session_status() == PHP_SESSION_NONE) {
                         break;
                     case 'validateDelete':
                         include('views/validate/validateDelete.php');
-                        break;
-                    case 'validate':
-                        include('views/validate/validate.php');
                         break;
                     case 'mentions':
                         include('views/legalMention.php');

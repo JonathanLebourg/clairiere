@@ -103,10 +103,5 @@ class artWorkInterest extends BDD {
         $count = $ListArtWorkInterestByArtist->rowCount();
         return $count;
     }    
-    
-//    public function getInterestedByArtWorkId($idArtWork) {
-//        $req = $this->BDD->prepare('SELECT idArtWorlInterest FROM clair_artWorkInterest WHERE idArtWork = ?');
-//        $req = $req->execute([$idArtWork]);
-//        return $req->rowCount();
-//    }
+
 }

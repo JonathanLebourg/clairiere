@@ -138,34 +138,7 @@ class artWork extends BDD {
         $updateArtWorkDate->bindValue(':idArtWork', $this->idArtWork, PDO::PARAM_INT);
         return $updateArtWorkDate->execute();
     }
-
     
-    
-    
-    public function updateArtWork() {
-        $query = 'UPDATE `clair_artWorks` '
-                . '      SET `title`= :title, '
-                . '      `technicalDescription`= :technicalDescription,'
-                . '      `date`= :date,'
-                . '      `optionalDescription`= :optionalDescription,'
-                . '      `picture`=:picture, '
-                . '      `price`=:price, '
-                . '      `idUser`= :idUser,'
-                . '      `idWorkStyle`= :idWorkStyle, `idnModality` = :idModality '
-                . '      WHERE `clair_artWorks`.`idArtWork` = :id';
-        $updateArtWork = $this->BDD->prepare($query);
-        $addArtWork->bindValue(':title', $this->title, PDO::PARAM_STR);
-        $addArtWork->bindValue(':technicalDescription', $this->technicalDescription, PDO::PARAM_STR);
-        $addArtWork->bindValue(':date', $this->date, PDO::PARAM_STR);
-        $addArtWork->bindValue(':optionalDescription', $this->optionalDescription, PDO::PARAM_STR);
-        $addArtWork->bindValue(':picture', $this->picture, PDO::PARAM_STR);
-        $addArtWork->bindValue(':price', $this->price, PDO::PARAM_INT);
-        $addArtWork->bindValue(':idUser', $this->idUser, PDO::PARAM_INT);
-        $addArtWork->bindValue(':idWorkStyle', $this->idWorkStyle, PDO::PARAM_INT);
-        $addArtWork->bindValue(':idModality', $this->idModality, PDO::PARAM_INT);
-        return $updateArtWork->execute();
-    }
-
 //  FONCTION EFFACER
     /**
      * 
@@ -201,7 +174,7 @@ class artWork extends BDD {
         return $count;
     }
 
-//  Fonction qui liste les oeuvres par artistes
+//  Fonction qui liste les oeuvres par artistes 
     /**
      * 
      * @return type
@@ -211,8 +184,7 @@ class artWork extends BDD {
                 . 'INNER JOIN `clair_users` ON `clair_artworks`.`idUser` = `clair_users`.`idUser` '
                 . 'INNER JOIN `clair_workStyles` '
                 . 'ON `clair_artWorks`.`idWorkStyle` = `clair_workStyles`.`idWorkStyle` '
-                . 'LEFT JOIN (SELECT  idArtwork AS new_id, COUNT(*) AS interets '
-                . 'FROM `clair_artWorkInterest` GROUP BY new_id) AS new_tab '
+                . 'LEFT JOIN (SELECT  idArtwork AS new_id, COUNT(*) AS interets FROM `clair_artWorkInterest` GROUP BY new_id) AS new_tab '
                 . 'ON `clair_artworks`.`idArtwork` = `new_tab`.`new_id` '
                 . 'WHERE `clair_artworks`.`idUser` = :idUser ';
         $listByArtist = $this->BDD->prepare($query);

@@ -2,10 +2,6 @@
 require 'controllers/navCtl.php';
 require 'controllers/connectCtl.php';
 ?>
-<!------------------------
-----------NAVBAR----------
-------------------------->
-<!--navbar-->
 <div class="navbar-fixed" style="width:100%;background-color:white;">
     <nav class="">
         <div>

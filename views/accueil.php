@@ -33,8 +33,8 @@ include './controllers/accueilCtl.php';
                     </div>
                     <div class="accueilText">
                         <p>La clairière est un site gratuit qui souhaite donner de la visibilité à toute personne se sentant artiste et souhaitant partager et/ou vendre son travail à toute personne amatrice d’art en tout genre désirant éventuellement acquérir des œuvres.
-                            Le site se veut comme un endroit où chaque forme de création peut trouver sa part de lumière.
-                            La clairière n’autorise aucuneS transactionS monétaires mais fonctionne comme une plateforme de mise en relation entre artistes et éventuels clients par le biais d’une messagerie.
+                            <br /><br />Le site se veut comme un endroit où chaque forme de création peut trouver sa part de lumière.
+                            <br /><br />La clairière n’autorise aucuneS transactionS monétaires mais fonctionne comme une plateforme de mise en relation entre artistes et éventuels clients par le biais d’une messagerie.
                             Les artistes pourront après avoir créer leur profil mettre en ligne leurs œuvres avec un visuel et un descriptif en précisant si c’est à vendre et combien. Et de l’autre côtés les visiteurs pourront parcourir les œuvres des artistes et ceux inscrits pourront montrer leur intérêt pour les artistes de leurs choix et entrer en contact avec eux afin d’éventuellement discuter des modalités d’une vente.
                         </p>
                     </div>

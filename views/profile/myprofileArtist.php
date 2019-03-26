@@ -67,18 +67,30 @@ require 'controllers/profileCtl/myprofileArtistCtl.php';
                     </div>
                     <hr>
                 </div>
-                <?php if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $_SESSION['user']->idUser == $_GET['id']) {
+                <?php
+                
+                if (isset($_SESSION['user']) && $_SESSION['user']->idUserType == 2 && $_SESSION['user']->idUser == $_GET['id']) {
                     if ($work->interets == NULL) {
                         ?>
                         <div class="row">
                             <p>-</p>
                         </div>     
-                        <?php } else {
-                        ?>
-                        <div class="row">
-                            <p><b> <?= $work->interets; ?></b> personnes interessées</p>
-                        </div>     
-                        <?php }
+                    <?php
+                    } else {
+
+                        if ($work->interets == 1) {
+                            ?>
+                            <div class="row">
+                                <p><b>1 </b> personne interessée</p>
+                            </div>
+                            <?php } else {
+                            ?>
+                            <div class = "row">
+                                <p><b> <?= $work->interets; ?></b> personnes interessées</p>
+                            </div>     
+                            <?php
+                        }
+                    }
                     ?>
 
                     <div class="row">

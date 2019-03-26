@@ -1,4 +1,3 @@
-<!--**-----------FOOTER------------**-->
 <footer class="page-footer">
     <div class="container">
         <p class="black-text"><a class="black-text text-lighten-3" href="index.php?page=accueil">Retour à l'accueil</a>
@@ -8,8 +7,6 @@
     <div class="container">
         <p class="black-text">© 2019 <a class="black-text text-lighten-3" href="https://jonathanlebourg.github.io/monCV/monCV.html">JON</a></p>
     </div>
-
-
     <!-- Modal Structure -->
     <div id="modal2" class="modal modal-fixed-footer">
         <div class="modal-content black-text">
